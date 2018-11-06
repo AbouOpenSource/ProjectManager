@@ -20,8 +20,7 @@ class CreateEquipesTable extends Migration
             $table->text('descriptionEquipe');
             $table->text('objectifEquipe');
             
-            $table->primary('identifiantEquipe');
-        
+            
             $table->timestamps();
         });
     }

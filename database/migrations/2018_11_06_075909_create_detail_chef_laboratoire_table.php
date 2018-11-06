@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInvestigateurExternesTable extends Migration
+class CreateDetailChefLaboratoireTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateInvestigateurExternesTable extends Migration
      */
     public function up()
     {
-        Schema::create('_investigateur_externes', function (Blueprint $table) {
-            $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Pro_codeMuraz');
+        Schema::create('detail_chef_laboratoire', function (Blueprint $table) {
+           $table->unsignedInteger('Per_identifiantPersonne');
+            $table->unsignedInteger('Lab_identifiantLaboratoire');
             
-            $table->primary('Per_identifiantPersonne', 'Pro_codeMuraz');
+            $table->primary('Per_identifiantPersonne', 'Lab_identifiantLaboratoire');
         
             $table->timestamps();
         });
@@ -30,6 +30,6 @@ class CreateInvestigateurExternesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_investigateur_externes');
+        Schema::dropIfExists('detail_chef_laboratoire');
     }
 }

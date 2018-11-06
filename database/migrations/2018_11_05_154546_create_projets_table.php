@@ -18,25 +18,19 @@ class CreateProjetsTable extends Migration
             $table->unsignedInteger('Uni_identifientUnite')->nullable();
             $table->unsignedInteger('Equ_identifiantEquipe')->nullable();
             $table->unsignedInteger('Ide_identifiantIdeeProjet')->nullable();
-            //ambiguie
-            $table->unsignedInteger('Ins_identifiantInstitutionFinanceur');
-            $table->integer('volumeProjetFinance');
-            $table->dateTime('anneeFinancementProjet');
-            
             $table->string('intitule', 30);
             $table->string('dureeProjet',30);
             $table->text('resumeProjet');
-            $table->string('budgetProjet');
-            $table->string('siteDeMiseEnOeuvre',40);
-            $table->text('contexteProjet');
+            $table->string('budgetProjet')->nullable();
+            $table->string('siteDeMiseEnOeuvre',40)->nullable();
+            $table->text('contexteProjet')->nullable();
             $table->integer('nombreEmploi')->default(0);
-            $table->float('fraisIndirectverseCM');
-            $table->string('typeProjet', 40);
-            
-            $table->text('questionDeRecherche');
-            $table->text('resumeDesMethodeEtude');
-            $table->text('beneficeNational');
-            $table->text('beneficeInstitutionnel');
+            $table->float('fraisIndirectverseCM')->nullable();
+            $table->string('typeProjet', 40)->nullable();
+            $table->text('questionDeRecherche')->nullable();
+            $table->text('resumeDesMethodeEtude')->nullable();
+            $table->text('beneficeNational')->nullable();
+            $table->text('beneficeInstitutionnel')->nullable();
             
             $table->timestamps();
         });

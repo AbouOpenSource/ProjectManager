@@ -14,7 +14,7 @@ class CreateCoInvestigateurExternesTable extends Migration
     public function up()
     {
         Schema::create('co_investigateur_externe', function (Blueprint $table) {
-            $table->unsignedInterger('Per_identifiantPersonne');
+            $table->unsignedInteger('Per_identifiantPersonne');
             $table->unsignedInteger('Pro_codeMuraz');
             
             $table->primary('Per_identifiantPersonne', 'Pro_codeMuraz');

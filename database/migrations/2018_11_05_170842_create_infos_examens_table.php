@@ -14,12 +14,12 @@ class CreateInfosExamensTable extends Migration
     public function up()
     {
         Schema::create('infos_examens', function (Blueprint $table) {
-              $table->unsignedInteger('Sec_identifiatUnite');
+              $table->unsignedInteger('Sec_identifiantUnite');
               $table->unsignedInteger('Exa_identifiantExamen');
               $table->year('anneeExamen');
               $table->integer('nombreExamen');
             
-              $table->primary('Sec_identifiatUnite', 'Exa_identifiantExamen', 'anneeExamen');
+             //$table->primary('Sec_identifiantUnite', 'Exa_identifiantExamen', 'anneeExamen');
         
               $table->timestamps();
         

@@ -20,7 +20,7 @@ class CreateEquipementsAcquisTable extends Migration
             $table->text('description');
             $table->integer('prix');
             
-            $table->primary('identifiantEquipement');
+            
         
             $table->timestamps();
         
