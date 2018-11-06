@@ -15,14 +15,14 @@ class CreateInstitutionsTable extends Migration
     {
         Schema::create('institutions', function (Blueprint $table) {
             $table->increments('identifiantInstitution');
-            $table->unsignedInteger('Typ_identifiantInstituion');
+            $table->unsignedInteger('Typ_identifiantTypeInstitution');
             $table->string('nomInstitution',100);
             $table->string('emailInstitution',60);
             $table->string('adresseInstitution',100);
             $table->string('paysInstitution', 50);
-            
+
             $table->timestamps();
-        
+
         });
     }
 

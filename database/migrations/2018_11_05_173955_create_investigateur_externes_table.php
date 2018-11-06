@@ -16,9 +16,9 @@ class CreateInvestigateurExternesTable extends Migration
         Schema::create('investigateur_externes', function (Blueprint $table) {
             $table->unsignedInteger('Per_identifiantPersonne');
             $table->unsignedInteger('Pro_codeMuraz');
-            
+
             $table->primary('Per_identifiantPersonne', 'Pro_codeMuraz');
-        
+
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateInvestigateurExternesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('_investigateur_externes');
+        Schema::dropIfExists('investigateur_externes');
     }
 }

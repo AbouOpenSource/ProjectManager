@@ -15,14 +15,14 @@ class CreateDetailChefUniteTable extends Migration
     {
         Schema::create('detail_chef_unite', function (Blueprint $table) {
             $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Uni_identifientUnite');
+            $table->unsignedInteger('Uni_identifiantUnite');
             $table->dateTime('debutMandat');
             $table->dateTime('finMandat')->nullable();
-           
+
             $table->primary('Per_identifiantPersonne', 'Uni_identifientUnite');
-        
+
             $table->timestamps();
-        
+
         });
     }
 

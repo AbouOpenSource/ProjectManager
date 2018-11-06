@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateResultatsTable extends Migration
+class CreateResultatsAttendusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateResultatsTable extends Migration
      */
     public function up()
     {
-        Schema::create('resultats', function (Blueprint $table) {
-            $table->increments('identifiantResultat');
+        Schema::create('resultats_attendus', function (Blueprint $table) {
+            $table->increments('identifiantResultatAttendus');
             $table->unsignedInteger('Ide_identifiantIdeeProjet');
-            $table->unsignedInteger('Pro_codeMuraz');
             $table->text('contenu');
-            $table->dateTime('dateRealisation');
-            $table->text('detailResutltat');
+            $table->boolean('realisation')->default(0);
+
             $table->timestamps();
         });
     }
@@ -31,6 +30,6 @@ class CreateResultatsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resultats');
+        Schema::dropIfExists('resultats_attendus');
     }
 }

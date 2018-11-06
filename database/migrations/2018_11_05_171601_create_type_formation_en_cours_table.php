@@ -14,7 +14,7 @@ class CreateTypeFormationEnCoursTable extends Migration
     public function up()
     {
         Schema::create('type_formation_en_cours', function (Blueprint $table) {
-            $table->increments('identifiantTypeFormationEncours');
+            $table->increments('identifiantTypeFormationEnCours');
             $table->string('intituleTypeFormation', 30);
             $table->timestamps();
         });

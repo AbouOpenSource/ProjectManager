@@ -15,7 +15,7 @@ class CreateProjetsTable extends Migration
     {
         Schema::create('projets', function (Blueprint $table) {
             $table->increments('codeMuraz');
-            $table->unsignedInteger('Uni_identifientUnite')->nullable();
+            $table->unsignedInteger('Uni_identifiantUnite')->nullable();
             $table->unsignedInteger('Equ_identifiantEquipe')->nullable();
             $table->unsignedInteger('Ide_identifiantIdeeProjet')->nullable();
             $table->string('intitule', 30);
@@ -31,7 +31,7 @@ class CreateProjetsTable extends Migration
             $table->text('resumeDesMethodeEtude')->nullable();
             $table->text('beneficeNational')->nullable();
             $table->text('beneficeInstitutionnel')->nullable();
-            
+
             $table->timestamps();
         });
     }

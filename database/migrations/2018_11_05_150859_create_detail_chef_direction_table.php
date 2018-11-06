@@ -15,12 +15,12 @@ class CreateDetailChefDirectionTable extends Migration
     {
         Schema::create('detail_chef_direction', function (Blueprint $table) {
             $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Dir_idenfiantDirection');
+            $table->unsignedInteger('Dir_identifiantDirection');
             $table->dateTime('debutMandat');
             $table->dateTime('finMandat')->nullable();
             $table->primary('Per_identifiantPersonne', 'Dir_idenfiantDirection');
             $table->timestamps();
-        
+
         });
     }
 

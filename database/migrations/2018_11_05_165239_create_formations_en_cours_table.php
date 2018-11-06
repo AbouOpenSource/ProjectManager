@@ -15,11 +15,13 @@ class CreateFormationsEnCoursTable extends Migration
     {
         Schema::create('formations_en_cours', function (Blueprint $table) {
             $table->increments('identifiantFormation');
-            $table->unsignedInteger('Type_identifiantTypeFormationEncours');
+            $table->unsignedInteger('Typ_identifiantTypeFormationEnCours');
             $table->string('libelleFormation', 254);
+            $table->dateTime('debut');
             $table->string('lieuFormation', 254);
-            
-        
+            $table->unsignedInteger('Per_identifiantPersonne');
+
+
             $table->timestamps();
         });
     }

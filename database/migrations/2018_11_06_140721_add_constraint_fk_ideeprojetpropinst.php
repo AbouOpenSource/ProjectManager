@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class AddConstraintFkIdeeprojetpropinst extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('idees_de_projet', function (Blueprint $table) {
+          $table->foreign('Ins_identifiantInstitutionProposeur')
+          ->references('identifiantInstitution')
+          ->on('institutions')
+          ->onUpdate('restrict')
+          ->onDelete('restrict');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('idees_de_projet', function (Blueprint $table) {
+            $table->dropForeign(['Ins_identifiantInstitutionProposeur']);
+        });
+    }
+}
