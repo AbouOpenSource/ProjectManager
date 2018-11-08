@@ -30,8 +30,14 @@ class AddConstraintFkQualiint extends Migration
      */
     public function down()
     {
+<<<<<<< HEAD
         Schema::table('qualification_personne_internes', function (Blueprint $table) {
           $table->dropForeign('qualifications_qualpexter');
         });
+=======
+        Schema::table('qualification_personne_internes', function (Blueprint $tabl) {
+          $table->dropForeign(['Qua_identifiantQualification']);
+           });
+>>>>>>> ec85a2d6830659ccb7d67df229a7117f725068de
     }
 }
