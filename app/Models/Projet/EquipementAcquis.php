@@ -6,5 +6,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class EquipementAcquis extends Model
 {
-    //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    protected $table= 'equipements_acquis';
 }

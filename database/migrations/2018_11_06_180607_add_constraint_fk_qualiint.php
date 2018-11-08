@@ -18,7 +18,8 @@ class AddConstraintFkQualiint extends Migration
           ->references('identifiantQualification')
           ->on('qualifications')
           ->onUpdate('restrict')
-          ->onDelete('restrict')->name('qualifications_qualpexter');
+          ->onDelete('restrict')
+          ->name('qualifications_qualpexter');
         });
     }
 
@@ -30,7 +31,7 @@ class AddConstraintFkQualiint extends Migration
     public function down()
     {
         Schema::table('qualification_personne_internes', function (Blueprint $table) {
-          $table->dropForeign(['Qua_identifiantQualification']);
+          $table->dropForeign('qualifications_qualpexter');
         });
     }
 }

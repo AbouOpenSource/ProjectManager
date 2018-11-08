@@ -17,9 +17,10 @@ class CreateInfosExamensTable extends Migration
               $table->unsignedInteger('Sec_identifiantSection');
               $table->unsignedInteger('Exa_identifiantExamen');
               $table->year('anneeExamen');
-              $table->integer('nombreExamen');
+              $table->unsignedInteger('nombreExamen');
 
-             //$table->primary('Sec_identifiantUnite', 'Exa_identifiantExamen', 'anneeExamen');
+             $table->primary(['Sec_identifiantUnite', 'Exa_identifiantExamen', 'anneeExamen'])
+             ->name('infos_examens_pk');
 
               $table->timestamps();
 

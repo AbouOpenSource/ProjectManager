@@ -13,7 +13,7 @@ class CreateQualicationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('qualications', function (Blueprint $table) {
+        Schema::create('qualifications', function (Blueprint $table) {
             $table->increments('identifiantQualification');
             $table->string('nomQualification', 20);
             $table->text('descriptionQualification');
@@ -29,6 +29,6 @@ class CreateQualicationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('qualications');
+        Schema::dropIfExists('qualifications');
     }
 }
