@@ -32,3 +32,4 @@ class CreateQualicationsTable extends Migration
         Schema::dropIfExists('qualifications');
     }
 }
+
