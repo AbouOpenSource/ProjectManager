@@ -16,11 +16,11 @@ class CreateEquipesTable extends Migration
         Schema::create('equipes', function (Blueprint $table) {
             $table->increments('identifiantEquipe');
             $table->unsignedInteger('Dep_identifiantDepartement');
-            $table->string('nomEquipe',50);
+            $table->string('nomEquipe');
             $table->text('descriptionEquipe');
             $table->text('objectifEquipe');
-            
-            
+
+
             $table->timestamps();
         });
     }
