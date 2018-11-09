@@ -24,9 +24,9 @@ class CreatePersonneInternesTable extends Migration
             $table->string('lieuNaissance', 50);
             $table->string('nationalite',50);
             $table->string('email')->unique();
-            $table->string('residence', 75);
+            $table->string('residence');
             $table->string('login')->unique();
-            $table->string('motDePasse', 50);
+            $table->string('motDePasse');
             $table->timestamps();
         });
     }

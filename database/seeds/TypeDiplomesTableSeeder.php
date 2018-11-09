@@ -19,7 +19,7 @@ class TypeDiplomesTableSeeder extends Seeder
       ]);
 
       DB::table('type_diplomes')->insert([
-      'libelleDiplome'=>' BAC',
+      'libelleDiplome'=>'BAC',
       'niveauDiplome'=>'2',
       ]);
 

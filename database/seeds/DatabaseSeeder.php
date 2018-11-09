@@ -17,8 +17,15 @@ class DatabaseSeeder extends Seeder
           LaboratoiresTableSeeder::class,
           EquipesTableSeeder::class,
           SectionsTableSeeder::class,
-
-
+          UniteDeRecherchesTableSeeder::class,
+          LanguesTableSeeder::class,
+          TypeDiplomesTableSeeder::class,
+          TypeFormationEnCoursTableSeeder::class,
+          TypeInstitutionsTableSeeder::class,
+          TypePublicationsTableSeeder::class,
+          StatutsTableSeeder::class,
+          AssociationsTableSeeder::class,
+          PersonneInternesTableSeeder::class,
 
 
 

@@ -1,5 +1,6 @@
 <?php
-
+use App\Models\StructAdmin\Equipe;
+use App\Models\Cv\PersonneInterne;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,5 +13,11 @@
 */
 
 Route::get('/', function () {
+
+
+    dump(PersonneInterne::all());
+
+
+
     return view('welcome');
 });

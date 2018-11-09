@@ -18,7 +18,7 @@ class CreateProjetsTable extends Migration
             $table->unsignedInteger('Uni_identifiantUnite')->nullable();
             $table->unsignedInteger('Equ_identifiantEquipe')->nullable();
             $table->unsignedInteger('Ide_identifiantIdeeProjet')->nullable();
-            $table->string('intitule', 30);
+            $table->string('intitule');
             $table->string('dureeProjet',30);
             $table->text('resumeProjet');
             $table->string('budgetProjet')->nullable();

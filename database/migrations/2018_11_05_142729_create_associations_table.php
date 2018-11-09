@@ -17,7 +17,7 @@ class CreateAssociationsTable extends Migration
             $table->increments('identifiantAssociation');
             $table->string('numeroPv');
             $table->string('nomAssociation', 50);
-            $table->string('typeAsssociation', 50);
+            $table->string('typeAssociation', 50);
             $table->text('but')->nullable();
             $table->string('corpsProffesorale', 50)->nullable();
             $table->timestamps();

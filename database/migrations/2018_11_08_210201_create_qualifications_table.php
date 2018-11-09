@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQualicationsTable extends Migration
+class CreateQualificationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,11 @@ class CreateQualicationsTable extends Migration
     public function up()
     {
         Schema::create('qualifications', function (Blueprint $table) {
-            $table->increments('identifiantQualification');
-            $table->string('nomQualification', 20);
-            $table->text('descriptionQualification');
-            $table->string('typeQualification',30)->nullable();
-            $table->timestamps();
+          $table->increments('identifiantQualification');
+          $table->string('nomQualification', 20);
+          $table->text('descriptionQualification');
+          $table->string('typeQualification',30)->nullable();
+          $table->timestamps();
         });
     }
 
@@ -32,4 +32,3 @@ class CreateQualicationsTable extends Migration
         Schema::dropIfExists('qualifications');
     }
 }
-
