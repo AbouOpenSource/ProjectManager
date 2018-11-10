@@ -12,6 +12,25 @@ use App\Models\Cv\PersonneInterne;
 |
 */
 
+
+
+
+
+
+
+Route::resource('bourses','BoursesController');
+
+Route::resource('departements','DepartementsController');
+
+Route::resource('directions','DirectionsController');
+
+Route::resource('projets','ProjetsController');
+
+Route::resource('ideeDeProjet','IdeeDeProjetsController');
+
+
+
+
 Route::get('/', function () {
 
 

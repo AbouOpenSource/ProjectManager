@@ -6,5 +6,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Qualification extends Model
 {
+    
+	protected $fillable=[
+
+
+
+	];
+
+protected function getDateFormat()
+		{
+
+					return 'd/m/Y';
+		}
+
+
+
+
+
+
+
+
+
+
+
+
     protected $table='qualications';
 }

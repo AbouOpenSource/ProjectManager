@@ -6,5 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Laboratoire extends Model
 {
+    
+
+	protected $fillable=[
+
+
+
+	];
+
+
+
+
+
+
+
+
+
     protected $table= 'laboratoires';
 }

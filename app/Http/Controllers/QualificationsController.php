@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Model\Projet\EquipementAcquis;
-class EquipementAcquisController extends Controller
+use App\Models\Cv\Qualification;
+class QualificationsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,8 +13,8 @@ class EquipementAcquisController extends Controller
      */
     public function index()
     {
-        $equipements=EquipementAcquis::all();
-        dump($equipements);
+        $qualifications=Qualification::all();
+        dump($qualifications);
     }
 
     /**
