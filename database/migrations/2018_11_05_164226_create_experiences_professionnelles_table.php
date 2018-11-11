@@ -14,9 +14,9 @@ class CreateExperiencesProfessionnellesTable extends Migration
     public function up()
     {
         Schema::create('experiences_professionnelles', function (Blueprint $table) {
-            $table->increments('identifiantExperience');
-            $table->unsignedInteger('Soc_identifiantSociete');
-            $table->unsignedInteger('Per_identifiantPersonne');
+            $table->increments('id');
+            $table->unsignedInteger('societe_id')->nullable();
+            $table->unsignedInteger('personne_id');
             $table->string('posteOccupe',30);
             $table->text('description');
             $table->dateTime('DebutExperience')->nullable();

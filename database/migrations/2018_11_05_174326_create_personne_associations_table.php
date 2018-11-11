@@ -14,10 +14,10 @@ class CreatePersonneAssociationsTable extends Migration
     public function up()
     {
         Schema::create('personne_associations', function (Blueprint $table) {
-            $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Ass_identifiantAssociation');
+            $table->unsignedInteger('personne_id');
+            $table->unsignedInteger('association_id');
             
-            $table->primary('Per_identifiantPersonne', 'Ass_identifiantAssociation');
+            $table->primary('personne_id', 'association_id');
         
             $table->timestamps();
         });

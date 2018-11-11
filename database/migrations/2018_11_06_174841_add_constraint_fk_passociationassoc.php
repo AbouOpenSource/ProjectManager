@@ -14,9 +14,10 @@ class AddConstraintFkPassociationassoc extends Migration
     public function up()
     {
         Schema::table('personne_associations', function (Blueprint $table) {
-          $table->foreign('Ass_identifiantAssociation')
+          $table
+          ->foreign('association_id')
 
-          ->references('identifiantAssociation')
+          ->references('id')
           ->on('associations')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -31,7 +32,7 @@ class AddConstraintFkPassociationassoc extends Migration
     public function down()
     {
         Schema::table('personne_associations', function (Blueprint $table) {
-            $table->dropForeign(['Ass_identifiantAssociation']);
+            $table->dropForeign(['association_id']);
         });
     }
 }

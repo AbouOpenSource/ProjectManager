@@ -14,8 +14,8 @@ class AddConstraintFkAffeclabo extends Migration
     public function up()
     {
         Schema::table('laboratoires', function (Blueprint $table) {
-          $table->foreign('Dep_identifiantDepartement')
-          ->references('identifiantDepartement')
+          $table->foreign('departement_id')
+          ->references('id')
           ->on('departements')
           ->onDelete('restrict')
           ->onUpdate('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkAffeclabo extends Migration
     public function down()
     {
         Schema::table('laboratoires', function (Blueprint $table) {
-            $table->dropForeign(['Dep_identifiantDepartement']);
+            $table->dropForeign(['departement_id']);
         });
     }
 }

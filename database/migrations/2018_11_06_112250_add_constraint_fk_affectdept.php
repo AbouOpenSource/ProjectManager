@@ -14,8 +14,8 @@ class AddConstraintFkAffectdept extends Migration
     public function up()
     {
         Schema::table('departements', function (Blueprint $table) {
-            $table->foreign('Dir_identifiantDirection')
-            ->references('identifiantDirection')
+            $table->foreign('direction_id')
+            ->references('id')
             ->on('directions')
             ->onDelete('restrict')
             ->onUpdate('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkAffectdept extends Migration
     public function down()
     {
         Schema::table('departements', function (Blueprint $table) {
-            $table->dropForeign(['Dir_identifiantDirection']);
+            $table->dropForeign(['direction_id']);
         });
     }
 }

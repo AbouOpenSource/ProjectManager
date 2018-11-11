@@ -13,11 +13,7 @@ class IdeeDeProjet extends Model
 
 	];
 
-protected function getDateFormat()
-		{
 
-					return 'd/m/Y';
-		}
 
 
 

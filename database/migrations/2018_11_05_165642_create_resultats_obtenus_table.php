@@ -14,8 +14,8 @@ class CreateResultatsObtenusTable extends Migration
     public function up()
     {
         Schema::create('resultats_obtenus', function (Blueprint $table) {
-            $table->increments('identifiantResultat');
-            $table->unsignedInteger('Pro_codeMuraz');
+            $table->increments('id');
+            $table->unsignedInteger('projet_id');
             $table->text('contenu');
             $table->dateTime('dateRealisation');
             $table->text('detailResutltat');

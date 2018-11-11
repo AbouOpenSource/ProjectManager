@@ -14,8 +14,8 @@ class CreateEquipesTable extends Migration
     public function up()
     {
         Schema::create('equipes', function (Blueprint $table) {
-            $table->increments('identifiantEquipe');
-            $table->unsignedInteger('Dep_identifiantDepartement');
+            $table->increments('id');
+            $table->unsignedInteger('departement_id');
             $table->string('nomEquipe');
             $table->text('descriptionEquipe');
             $table->text('objectifEquipe');

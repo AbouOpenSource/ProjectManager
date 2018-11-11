@@ -14,8 +14,8 @@ class AddConstraintFkFormcourtyp extends Migration
     public function up()
     {
         Schema::table('formations_en_cours', function (Blueprint $table) {
-          $table->foreign('Typ_identifiantTypeFormationEnCours')
-          ->references('identifiantTypeFormationEnCours')
+          $table->foreign('typeFormationEnCours_id')
+          ->references('id')
           ->on('type_formation_en_cours')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkFormcourtyp extends Migration
     public function down()
     {
         Schema::table('formations_en_cours', function (Blueprint $table) {
-            $table->dropForeign(['Typ_identifiantTypeFormationEnCours']);
+            $table->dropForeign(['typeFormationEnCours_id']);
         });
     }
 }

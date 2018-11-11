@@ -14,8 +14,8 @@ class AddConstraintFkChefequipeequipe extends Migration
     public function up()
     {
         Schema::table('detail_chef_equipe', function (Blueprint $table) {
-          $table->foreign('Equ_identifiantEquipe')
-          ->references('identifiantEquipe')
+          $table->foreign('equipe_id')
+          ->references('id')
           ->on('equipes')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkChefequipeequipe extends Migration
     public function down()
     {
         Schema::table('detail_chef_equipe', function (Blueprint $table) {
-            $table->dropForeign(['Equ_identifiantEquipe']);
+            $table->dropForeign(['equipe_id']);
         });
     }
 }

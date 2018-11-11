@@ -14,8 +14,8 @@ class AddConstraintFkAssocieInterneEquipe extends Migration
     public function up()
     {
         Schema::table('associe_internes', function (Blueprint $table) {
-          $table->foreign('Equ_identifiantEquipe')
-          ->references('identifiantEquipe')
+          $table->foreign('equipe_id')
+          ->references('id')
           ->on('equipes')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -31,7 +31,7 @@ class AddConstraintFkAssocieInterneEquipe extends Migration
     public function down()
     {
         Schema::table('associe_internes', function (Blueprint $table) {
-            $table->dropForeign(['Equ_identifiantEquipe']);
+            $table->dropForeign(['equipe_id']);
         });
     }
 }

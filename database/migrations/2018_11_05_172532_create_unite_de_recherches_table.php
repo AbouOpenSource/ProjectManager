@@ -14,8 +14,8 @@ class CreateUniteDeRecherchesTable extends Migration
     public function up()
     {
         Schema::create('unite_de_recherches', function (Blueprint $table) {
-            $table->increments('identifiantUnite');
-            $table->unsignedInteger('Lab_identifiantLaboratoire');
+            $table->increments('id');
+            $table->unsignedInteger('laboratoire_id');
             $table->string('nomUnite', 30);
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateUniteDeRecherchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unite_de_recherches');
+        Schema::dropIfExists(['laboratoire_id']);
     }
 }

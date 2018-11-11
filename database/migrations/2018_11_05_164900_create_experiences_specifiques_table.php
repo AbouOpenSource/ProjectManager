@@ -14,8 +14,8 @@ class CreateExperiencesSpecifiquesTable extends Migration
     public function up()
     {
         Schema::create('experiences_specifiques', function (Blueprint $table) {
-            $table->increments('identifiantExperience');
-            $table->unsignedInteger('Per_identifiantPersonne');
+            $table->increments('id');
+            $table->unsignedInteger('personne_id');
             $table->text('resume');
             $table->dateTime('dateFinExperience');
             $table->string('pays',50);

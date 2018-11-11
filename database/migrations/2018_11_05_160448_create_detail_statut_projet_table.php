@@ -14,12 +14,12 @@ class CreateDetailStatutProjetTable extends Migration
     public function up()
     {
         Schema::create('detail_statut_projet', function (Blueprint $table) {
-            $table->unsignedInteger('Sta_identifiantStatut');
-            $table->unsignedInteger('Pro_codeMuraz');
+            $table->unsignedInteger('statut_id');
+            $table->unsignedInteger('projet_id');
             $table->dateTime('debutStatut')->nullable();
             $table->dateTime('finStatut')->nullable();
             
-            $table->primary('Sta_identifiantStatut', 'Pro_codeMuraz');
+            $table->primary(['statut_id', 'projet_id']);
         
             $table->timestamps();
         

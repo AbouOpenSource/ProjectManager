@@ -14,8 +14,8 @@ class CreatePerspectivesTable extends Migration
     public function up()
     {
         Schema::create('perspectives', function (Blueprint $table) {
-           $table->increments('identifiantPerspective');
-            $table->unsignedInteger('Pro_codeMuraz');
+           $table->increments('id');
+            $table->unsignedInteger('projet_id');
             $table->text('contenu');
             $table->timestamps();
         });

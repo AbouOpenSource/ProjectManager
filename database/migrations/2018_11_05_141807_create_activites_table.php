@@ -14,8 +14,8 @@ class CreateActivitesTable extends Migration
     public function up()
     {
         Schema::create('activites', function (Blueprint $table) {
-            $table->increments('identifiantActivite');
-            $table->unsignedInteger('Pro_codeMuraz');
+            $table->increments('id');
+            $table->unsignedInteger('projet_id');
             $table->text('contenu');
             $table->dateTime('dateActivite');
             $table->timestamps();

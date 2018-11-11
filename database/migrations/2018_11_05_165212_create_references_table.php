@@ -14,12 +14,12 @@ class CreateReferencesTable extends Migration
     public function up()
     {
         Schema::create('references', function (Blueprint $table) {
-            $table->increments('identifiantRessource');
-            $table->unsignedInteger('Per_identifiantPersonne');
-            $table->string('nomRessource', 30);
-            $table->string('prenomRessource', 30);
-            $table->string('emailRessource', 30);
-            $table->string('telephoneRessource',20);
+            $table->increments('id');
+            $table->unsignedInteger('personne_id');
+            $table->string('nomReference', 30);
+            $table->string('prenomReference', 30);
+            $table->string('emailReference', 30);
+            $table->string('telephoneReference',20);
             $table->timestamps();
         
         });

@@ -14,7 +14,7 @@ class CreateTypePublicationsTable extends Migration
     public function up()
     {
         Schema::create('type_publications', function (Blueprint $table) {
-            $table->increments('identifiantTypePublication');
+            $table->increments('id');
             $table->string('intituleType', 30);
             $table->text('descriptionType');
             $table->timestamps();

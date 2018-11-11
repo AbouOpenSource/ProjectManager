@@ -14,8 +14,8 @@ class AddConstraintFkQualiext extends Migration
   public function up()
   {
       Schema::table('qualification_personne_externes', function (Blueprint $table) {
-        $table->foreign('Qua_identifiantQualification')
-        ->references('identifiantQualification')
+        $table->foreign('qualification_id')
+        ->references('id')
         ->on('qualifications')
         ->onUpdate('restrict')
         ->onDelete('restrict')
@@ -31,7 +31,7 @@ class AddConstraintFkQualiext extends Migration
   public function down()
   {
       Schema::table('qualification_personne_externes', function (Blueprint $table) {
-          $table->dropForeign('Qua_identifiantQualification');
+          $table->dropForeign('qualification_id');
       });
   }
 }

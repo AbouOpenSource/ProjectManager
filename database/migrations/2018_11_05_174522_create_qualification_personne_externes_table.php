@@ -14,10 +14,10 @@ class CreateQualificationPersonneExternesTable extends Migration
     public function up()
     {
         Schema::create('qualification_personne_externes', function (Blueprint $table) {
-            $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Qua_identifiantQualification');
+            $table->unsignedInteger('personne_id');
+            $table->unsignedInteger('qualification_id');
             
-            $table->primary('Per_identifiantPersonne', 'Qua_identifiantQualification');
+            $table->primary('personne_id', 'qualification_id');
         
             $table->timestamps();
         });

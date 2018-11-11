@@ -14,8 +14,8 @@ class AddConstraintFkTypagepubl extends Migration
     public function up()
     {
         Schema::table('publications', function (Blueprint $table) {
-            $table->foreign('Typ_identifiantTypePublication')
-            ->references('identifiantTypePublication')
+            $table->foreign('typePublication_id')
+            ->references('id')
             ->on('type_publications')
             ->onUpdate('restrict')
             ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkTypagepubl extends Migration
     public function down()
     {
         Schema::table('publications', function (Blueprint $table) {
-            $table->dropForeign(['Typ_identifiantTypePublication']);
+            $table->dropForeign(['typePublication_id']);
         });
     }
 }

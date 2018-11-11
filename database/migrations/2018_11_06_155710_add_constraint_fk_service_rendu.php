@@ -14,8 +14,8 @@ class AddConstraintFkServiceRendu extends Migration
     public function up()
     {
         Schema::table('prestation_de_services', function (Blueprint $table) {
-            $table->foreign('Equ_identifiantEquipe')
-            ->references('identifiantEquipe')
+            $table->foreign('equipe_id')
+            ->references('id')
             ->on('equipes')
             ->onUpdate('restrict')
             ->onDelete('restrict')
@@ -31,7 +31,7 @@ class AddConstraintFkServiceRendu extends Migration
     public function down()
     {
         Schema::table('prestation_de_services', function (Blueprint $table) {
-            $table->dropForeign(['Equ_identifiantEquipe']);
+            $table->dropForeign(['equipe_id']);
         });
     }
 }

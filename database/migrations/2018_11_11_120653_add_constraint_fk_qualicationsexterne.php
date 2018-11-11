@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddConstraintFkQualificationexterne extends Migration
+class AddConstraintFkQualicationsexterne extends Migration
 {
     /**
      * Run the migrations.
@@ -14,12 +14,13 @@ class AddConstraintFkQualificationexterne extends Migration
     public function up()
     {
         Schema::table('qualification_personne_externes', function (Blueprint $table) {
-          $table->foreign('Per_identifiantPersonne')
-          ->references('identifiantPersonne')
+          $table->foreign('personne_id')
+          ->references('id')
           ->on('personne_externes')
           ->onUpdate('restrict')
           ->onDelete('restrict');
         });
+
     }
 
     /**
@@ -30,7 +31,7 @@ class AddConstraintFkQualificationexterne extends Migration
     public function down()
     {
         Schema::table('qualification_personne_externes', function (Blueprint $table) {
-            $table->dropForeign(['Per_identifiantPersonne']);
-        });
+            $table->dropForeign(['personne_id']);
+        }); 
     }
 }

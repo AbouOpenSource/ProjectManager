@@ -14,10 +14,10 @@ class CreateInvestigateurInternesTable extends Migration
     public function up()
     {
         Schema::create('investigateur_internes', function (Blueprint $table) {
-            $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Pro_codeMuraz');
+            $table->unsignedInteger('personne_id');
+            $table->unsignedInteger('projet_id');
             
-            $table->primary('Per_identifiantPersonne', 'Pro_codeMuraz');
+            $table->primary('personne_id', 'projet_id');
         
             $table->timestamps();
         });

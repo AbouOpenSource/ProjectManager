@@ -14,8 +14,8 @@ class CreateEquipementsAcquisTable extends Migration
     public function up()
     {
         Schema::create('equipements_acquis', function (Blueprint $table) {
-             $table->increments('identifiantEquipement');
-            $table->unsignedInteger('Pro_codeMuraz');
+             $table->increments('id');
+            $table->unsignedInteger('projet_id');
             $table->string('typeEquipement',50);
             $table->text('description');
             $table->integer('prix');

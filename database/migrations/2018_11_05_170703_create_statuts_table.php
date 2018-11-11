@@ -14,9 +14,9 @@ class CreateStatutsTable extends Migration
     public function up()
     {
         Schema::create('statuts', function (Blueprint $table) {
-            $table->increments('identifiantStatut');
-            $table->string('intituleStatut', 30);
-            $table->text('descriptionStatut');
+            $table->increments('id');
+            $table->string('intituleStatut', 50);
+            $table->string('descriptionStatut')->nullable();
             
             $table->timestamps();
         });

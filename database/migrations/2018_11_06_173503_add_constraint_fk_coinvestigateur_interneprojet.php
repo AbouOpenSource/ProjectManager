@@ -14,8 +14,8 @@ class AddConstraintFkCoinvestigateurInterneprojet extends Migration
     public function up()
     {
         Schema::table('co_investigateur_internes', function (Blueprint $table) {
-          $table->foreign('Pro_codeMuraz')
-          ->references('codeMuraz')
+          $table->foreign('projet_id')
+          ->references('id')
           ->on('projets')
           ->onDelete('restrict')
           ->onUpdate('restrict');
@@ -31,7 +31,7 @@ class AddConstraintFkCoinvestigateurInterneprojet extends Migration
     public function down()
     {
         Schema::table('co_investigateur_internes', function (Blueprint $table) {
-            $table->dropForeign(['Pro_codeMuraz']);
+            $table->dropForeign(['projet_id']);
         });
     }
 }

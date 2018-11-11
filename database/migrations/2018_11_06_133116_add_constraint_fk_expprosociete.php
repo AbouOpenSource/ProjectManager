@@ -14,8 +14,8 @@ class AddConstraintFkExpprosociete extends Migration
     public function up()
     {
         Schema::table('experiences_professionnelles', function (Blueprint $table) {
-          $table->foreign('Soc_identifiantSociete')
-          ->references('identifiantSociete')
+          $table->foreign('societe_id')
+          ->references('id')
           ->on('societes')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkExpprosociete extends Migration
     public function down()
     {
         Schema::table('experiences_professionnelles', function (Blueprint $table) {
-            $table->dropForeign(['Soc_identifiantSociete']);
+            $table->dropForeign(['societe_id']);
         });
     }
 }

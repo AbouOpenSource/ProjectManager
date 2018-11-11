@@ -14,8 +14,8 @@ class CreateResultatsAttendusTable extends Migration
     public function up()
     {
         Schema::create('resultats_attendus', function (Blueprint $table) {
-            $table->increments('identifiantResultatAttendus');
-            $table->unsignedInteger('Ide_identifiantIdeeProjet');
+            $table->increments('id');
+            $table->unsignedInteger('ideeDeProjet_id');
             $table->text('contenu');
             $table->boolean('realisation')->default(0);
 

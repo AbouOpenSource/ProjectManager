@@ -14,8 +14,8 @@ class CreatePersonneExternesTable extends Migration
     public function up()
     {
         Schema::create('personne_externes', function (Blueprint $table) {
-            $table->increments('identifiantPersonne');
-            $table->unsignedInteger('Ins_identifiantInstitution')->nullable();
+            $table->increments('id');
+            $table->unsignedInteger('institution_id')->nullable();
             $table->string('posteOccupe',50)->nullable();
             $table->string('nom', 50);
             $table->string('prenom', 75);

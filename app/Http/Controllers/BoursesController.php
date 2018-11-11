@@ -21,7 +21,7 @@ class BoursesController extends Controller
 
 
 
-        dd($bourses);
+        dump($bourses);
         
 
 
@@ -58,7 +58,10 @@ class BoursesController extends Controller
      */
     public function show($id)
     {
-        //
+        $bourse=Bourse::findOrFail($id);
+        
+        dump($bourse);
+
     }
 
     /**

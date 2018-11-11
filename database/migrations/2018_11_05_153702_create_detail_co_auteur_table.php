@@ -14,13 +14,13 @@ class CreateDetailCoAuteurTable extends Migration
     public function up()
     {
         Schema::create('detail_co_auteur', function (Blueprint $table) {
-            $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Pub_identifiantPublication');
+            $table->unsignedInteger('personne_id');
+            $table->unsignedInteger('publication_id');
             $table->integer('ordreDimplication');
             //->default(0);
             $table->text('descriptionParticipation')-> nullable();
             
-            $table->primary('Per_identifiantPersonne', 'Pub_identifiantPublication');
+            $table->primary(['personne_id', 'publication_id']);
         
             $table->timestamps();
         

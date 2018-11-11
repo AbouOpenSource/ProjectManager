@@ -14,7 +14,7 @@ class CreateQualificationsTable extends Migration
     public function up()
     {
         Schema::create('qualifications', function (Blueprint $table) {
-          $table->increments('identifiantQualification');
+          $table->increments('id');
           $table->string('nomQualification', 20);
           $table->text('descriptionQualification');
           $table->string('typeQualification',30)->nullable();

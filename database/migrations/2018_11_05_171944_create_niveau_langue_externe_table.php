@@ -14,13 +14,13 @@ class CreateNiveauLangueExterneTable extends Migration
     public function up()
     {
         Schema::create('niveau_langue_externe', function (Blueprint $table) {
-            $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Lan_identifiantLangue');
+            $table->unsignedInteger('personne_id');
+            $table->unsignedInteger('langue_id');
             $table->integer('niveauLu')->default(0);
             $table->integer('niveauParle')->default(0);
             $table->integer('niveauEcrit')->default(0);
 
-            $table->primary('Per_identifiantPersonne', 'Lan_idLangue');
+            $table->primary(['personne_id', 'langue_id']);
 
             $table->timestamps();
 

@@ -14,8 +14,8 @@ class AddConstraintFkIdeeprojetpropinst extends Migration
     public function up()
     {
         Schema::table('idees_de_projet', function (Blueprint $table) {
-          $table->foreign('Ins_identifiantInstitutionProposeur')
-          ->references('identifiantInstitution')
+          $table->foreign('institutionProposeur_id')
+          ->references('id')
           ->on('institutions')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkIdeeprojetpropinst extends Migration
     public function down()
     {
         Schema::table('idees_de_projet', function (Blueprint $table) {
-            $table->dropForeign(['Ins_identifiantInstitutionProposeur']);
+            $table->dropForeign(['institutionProposeur_id']);
         });
     }
 }

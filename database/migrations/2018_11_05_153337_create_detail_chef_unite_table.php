@@ -14,12 +14,12 @@ class CreateDetailChefUniteTable extends Migration
     public function up()
     {
         Schema::create('detail_chef_unite', function (Blueprint $table) {
-            $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Uni_identifiantUnite');
+            $table->unsignedInteger('personne_id');
+            $table->unsignedInteger('unite_id');
             $table->dateTime('debutMandat');
             $table->dateTime('finMandat')->nullable();
 
-            $table->primary('Per_identifiantPersonne', 'Uni_identifientUnite');
+            $table->primary('personne_id', 'unite_id');
 
             $table->timestamps();
 

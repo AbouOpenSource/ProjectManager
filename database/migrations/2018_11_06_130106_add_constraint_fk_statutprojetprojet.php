@@ -14,8 +14,8 @@ class AddConstraintFkStatutprojetprojet extends Migration
     public function up()
     {
         Schema::table('detail_statut_projet', function (Blueprint $table) {
-          $table->foreign('Pro_codeMuraz')
-          ->references('codeMuraz')
+          $table->foreign('projet_id')
+          ->references('id')
           ->on('projets')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkStatutprojetprojet extends Migration
     public function down()
     {
         Schema::table('detail_statut_projet', function (Blueprint $table) {
-          $table->dropForeign(['Pro_codeMuraz']);
+          $table->dropForeign(['projet_id']);
         });
     }
 }

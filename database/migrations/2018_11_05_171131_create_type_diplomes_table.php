@@ -14,7 +14,7 @@ class CreateTypeDiplomesTable extends Migration
     public function up()
     {
         Schema::create('type_diplomes', function (Blueprint $table) {
-            $table->increments('identifiantTypeDiplome');
+            $table->increments('id');
             $table->string('libelleDiplome', 30);
             $table->integer('niveauDiplome');
             $table->timestamps();

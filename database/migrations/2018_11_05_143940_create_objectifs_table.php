@@ -14,8 +14,8 @@ class CreateObjectifsTable extends Migration
     public function up()
     {
         Schema::create('objectifs', function (Blueprint $table) {
-            $table->increments('identifiantObectif');
-            $table->unsignedInteger('Pro_codeMuraz');
+            $table->increments('id');
+            $table->unsignedInteger('projet_id');
             $table->string('intiule', 100);
             $table->text('description');
             $table->string('typeObjectif', 20);

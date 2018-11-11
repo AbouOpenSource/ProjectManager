@@ -14,16 +14,16 @@ class CreateIdeesDeProjetTable extends Migration
     public function up()
     {
         Schema::create('idees_de_projet', function (Blueprint $table) {
-            $table->increments('identifiantIdeeProjet');
-            $table->unsignedInteger('Ins_identifiantInstitutionSouhaite')->nullable();
+            $table->increments('id');
+            $table->unsignedInteger('institutionSouhaite_id')->nullable();
             //partenariat souhaite 
-            $table->unsignedInteger('Ins_identifiantInstitutionProposeur')->nullable();
+            $table->unsignedInteger('institutionProposeur_id')->nullable();
             //idee propose par institution
-            $table->unsignedInteger('Pro_codeMuraz');
+            $table->unsignedInteger('projet_id');
             //idee propose par personne interne
-            $table->unsignedInteger('Per_identifiantPersonneInterne')->nullable();
+            $table->unsignedInteger('personneinterne_id')->nullable();
             //idee propose par personne externe
-            $table->unsignedInteger('Per_identifiantPersonneExterne')->nullable();
+            $table->unsignedInteger('personneexterne_id')->nullable();
             $table->string('cheminProtocole', 40);
             $table->boolean('soumis')->default(0);
             $table->dateTime('dateSoumission')->nullable();

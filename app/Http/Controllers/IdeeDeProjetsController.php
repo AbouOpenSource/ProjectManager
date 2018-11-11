@@ -13,7 +13,8 @@ class IdeeDeProjetsController extends Controller
      */
     public function index()
     {
-     $ideeDeProjet=IdeeDeProjet::all();   
+     $ideeDeProjet=IdeeDeProjet::all(); 
+     dump($ideeDeProjet);  
     }
 
     /**

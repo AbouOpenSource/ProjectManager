@@ -14,11 +14,11 @@ class CreatePublicationsTable extends Migration
     public function up()
     {
         Schema::create('publications', function (Blueprint $table) {
-            $table->increments('identifiantPublication');
-            $table->unsignedInteger('Typ_identifiantTypePublication');
-            $table->unsignedInteger('Eve_identifiantEvenement')-> nullable();
-            $table->unsignedInteger('Pro_codeMuraz') -> nullable();
-            $table->unsignedInteger('Per_identifiantPersonne')-> nullable();
+            $table->increments('id');
+            $table->unsignedInteger('typePublication_id');
+            $table->unsignedInteger('evenement_id')-> nullable();
+            $table->unsignedInteger('projet_id') -> nullable();
+            $table->unsignedInteger('personne_id')-> nullable();
             $table->string('libellePublication', 100);
             $table->text('description');
             $table->dateTime('datePublication');

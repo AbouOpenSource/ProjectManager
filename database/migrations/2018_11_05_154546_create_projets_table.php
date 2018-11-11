@@ -14,10 +14,11 @@ class CreateProjetsTable extends Migration
     public function up()
     {
         Schema::create('projets', function (Blueprint $table) {
-            $table->increments('codeMuraz');
-            $table->unsignedInteger('Uni_identifiantUnite')->nullable();
-            $table->unsignedInteger('Equ_identifiantEquipe')->nullable();
-            $table->unsignedInteger('Ide_identifiantIdeeProjet')->nullable();
+            $table->increments('id');
+            $table->string('codeMuraz');
+            $table->unsignedInteger('unite_id')->nullable();
+            $table->unsignedInteger('equipe_id')->nullable();
+            $table->unsignedInteger('ideeDeProjet_id')->nullable();
             $table->string('intitule');
             $table->string('dureeProjet',30);
             $table->text('resumeProjet');

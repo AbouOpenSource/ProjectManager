@@ -14,8 +14,8 @@ class AddConstraintFkSectionexamensection extends Migration
     public function up()
     {
         Schema::table('infos_examens', function (Blueprint $table) {
-          $table->foreign('Sec_identifiantSection')
-          ->references('identifiantSection')
+          $table->foreign('section_id')
+          ->references('id')
           ->on('sections')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkSectionexamensection extends Migration
     public function down()
     {
         Schema::table('infos_examens', function (Blueprint $table) {
-            $table->dropForeign(['Sec_identifiantSection']);
+            $table->dropForeign(['section_id']);
         });
     }
 }

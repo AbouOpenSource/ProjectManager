@@ -14,8 +14,8 @@ class AddConstraintProvenancePersoExterne extends Migration
     public function up()
     {
         Schema::table('personne_externes', function (Blueprint $table) {
-            $table->foreign('Ins_identifiantInstitution')
-            ->references('identifiantInstitution')
+            $table->foreign('institution_id')
+            ->references('id')
             ->on('institutions')
             ->onUpdate('restrict')
             ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintProvenancePersoExterne extends Migration
     public function down()
     {
         Schema::table('personne_externes', function (Blueprint $table) {
-            $table->dropForeign(['Ins_identifiantInstitution']);
+            $table->dropForeign(['institution_id']);
         });
     }
 }

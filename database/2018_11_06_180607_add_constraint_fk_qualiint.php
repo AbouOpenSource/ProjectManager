@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddConstraintFkQualipintern extends Migration
+class AddConstraintFkQualiint extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,12 @@ class AddConstraintFkQualipintern extends Migration
     public function up()
     {
         Schema::table('qualification_personne_internes', function (Blueprint $table) {
-            $table->foreign('Per_identifiantPersonne')
-            ->references('identifiantPersonne')
-            ->on('personne_internes')
-            ->onUpdate('restrict')
-            ->onDelete('restrict');
+          $table->foreign('qualification_id')
+          ->references('id')
+          ->on('qualifications')
+          ->onUpdate('restrict')
+          ->onDelete('restrict')
+          ->name('qualifications_qualpexter');
         });
     }
 
@@ -29,8 +30,8 @@ class AddConstraintFkQualipintern extends Migration
      */
     public function down()
     {
-        Schema::table('qualification_personne_internes', function (Blueprint $table) {
-            $table->dropForeign(['Per_identifiantPersonne']);
-        });
+        Schema::table('qualification_personne_internes', function (Blueprint $tabl) {
+          $table->dropForeign(['qualification_id']);
+           });
     }
 }

@@ -14,8 +14,8 @@ class AddConstraintFormationencourspers extends Migration
     public function up()
     {
         Schema::table('formations_en_cours', function (Blueprint $table) {
-        $table->foreign('Per_identifiantPersonne')
-        ->references('identifiantPersonne')
+        $table->foreign('personne_id')
+        ->references('id')
         ->on('personne_internes')
         ->onDelete('cascade')
         ->onUpdate('cascade');
@@ -30,7 +30,7 @@ class AddConstraintFormationencourspers extends Migration
     public function down()
     {
         Schema::table('formations_en_cours', function (Blueprint $table) {
-          $table->dropForeign(['Per_identifiantPersonne']);
+          $table->dropForeign(['personne_id']);
         });
     }
 }

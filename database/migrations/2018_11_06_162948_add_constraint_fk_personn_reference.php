@@ -14,8 +14,11 @@ class AddConstraintFkPersonnReference extends Migration
     public function up()
     {
         Schema::table('references', function (Blueprint $table) {
-          $table->foreign('Per_identifiantPersonne')->references('identifiantPersonne')
-          ->on('personne_internes')->onUpdate('restrict')->onDelete('restrict');
+          $table->foreign('personne_id')
+          ->references('id')
+          ->on('personne_internes')
+          ->onUpdate('restrict')
+          ->onDelete('restrict');
         });
     }
 
@@ -27,7 +30,7 @@ class AddConstraintFkPersonnReference extends Migration
     public function down()
     {
         Schema::table('references', function (Blueprint $table) {
-          $table->dropForeign(['Per_identifiantPersonne']);
+          $table->dropForeign(['personne_id']);
         });
     }
 }

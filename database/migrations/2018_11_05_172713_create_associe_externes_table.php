@@ -14,9 +14,9 @@ class CreateAssocieExternesTable extends Migration
     public function up()
     {
         Schema::create('associe_externes', function (Blueprint $table) {
-            $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Equ_identifiantEquipe');
-            $table->primary('Per_identifiantPersonne', 'Equ_identifiantEquipe');
+            $table->unsignedInteger('personne_id');
+            $table->unsignedInteger('equipe_id');
+            $table->primary(['personne_id', 'equipe_id']);
             $table->timestamps();
         });
     }

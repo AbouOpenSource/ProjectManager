@@ -14,7 +14,7 @@ class CreateAssociationsTable extends Migration
     public function up()
     {
         Schema::create('associations', function (Blueprint $table) {
-            $table->increments('identifiantAssociation');
+            $table->increments('id');
             $table->string('numeroPv');
             $table->string('nomAssociation', 50);
             $table->string('typeAssociation', 50);

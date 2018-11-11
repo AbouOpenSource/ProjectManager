@@ -14,8 +14,8 @@ class AddConstraintFkTypageInstitution extends Migration
     public function up()
     {
         Schema::table('institutions', function (Blueprint $table) {
-        $table->foreign('Typ_identifiantTypeInstitution')
-        ->references('identifiantTypeInstitution')
+        $table->foreign('typeInstitution_id')
+        ->references('id')
         ->on('type_institutions')
         ->onUpdate('restrict')
         ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkTypageInstitution extends Migration
     public function down()
     {
         Schema::table('institutions', function (Blueprint $table) {
-            $table->dropForeign(['Typ_identifiantTypeInstitution']);
+            $table->dropForeign(['typeInstitution_id']);
         });
     }
 }

@@ -14,7 +14,7 @@ class CreateTypeInstitutionsTable extends Migration
     public function up()
     {
         Schema::create('type_institutions', function (Blueprint $table) {
-            $table->increments('identifiantTypeInstitution');
+            $table->increments('id');
             $table->string('intituleType', 30);
             $table->timestamps();
         });

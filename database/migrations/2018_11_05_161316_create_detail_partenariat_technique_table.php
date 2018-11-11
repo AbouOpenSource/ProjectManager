@@ -14,11 +14,11 @@ class CreateDetailPartenariatTechniqueTable extends Migration
     public function up()
     {
         Schema::create('detail_partenariat_technique', function (Blueprint $table) {
-            $table->unsignedInteger('Ins_identifiantInstitution');
-            $table->unsignedInteger('Pro_codeMuraz');
+            $table->unsignedInteger('institution_id');
+            $table->unsignedInteger('projet_id');
             $table->text('descriptionPartenariat');
             
-            $table->primary('Ins_identifiantInstitution', 'Pro_codeMuraz');
+            $table->primary('institution_id', 'projet_id');
         
             $table->timestamps();
         });

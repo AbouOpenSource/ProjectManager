@@ -14,8 +14,8 @@ class AddConstraintFkImageeve extends Migration
     public function up()
     {
         Schema::table('images', function (Blueprint $table) {
-            $table->foreign('Eve_identifiantEvenement')
-            ->references('identifiantEvenement')
+            $table->foreign('evenement_id')
+            ->references('id')
             ->on('evenements')
             ->onUpdate('restrict')
             ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkImageeve extends Migration
     public function down()
     {
         Schema::table('images', function (Blueprint $table) {
-            $table->dropForeign(['Eve_identifiantEvenement']);
+            $table->dropForeign(['evenement_id']);
         });
     }
 }

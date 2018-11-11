@@ -14,11 +14,11 @@ class CreateDetailPartenariatFinancierTable extends Migration
     public function up()
     {
         Schema::create('detail_partenariat_financier', function (Blueprint $table) {
-            $table->unsignedInteger('Ins_identifiantInstitutionFinanceur');
-            $table->unsignedInteger('Pro_codeMuraz');
+            $table->unsignedInteger('institution_id');
+            $table->unsignedInteger('projet_id');
             $table->integer('volumeProjetFinance');
             $table->dateTime('anneeFinancementProjet');
-            $table->primary('Ins_identifiantInstitutionFinanceur','Pro_codeMuraz');
+            $table->primary(['institution_id','projet_id']);
         });
     }
 

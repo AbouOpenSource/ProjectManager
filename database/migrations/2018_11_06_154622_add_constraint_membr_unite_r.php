@@ -14,8 +14,8 @@ class AddConstraintMembrUniteR extends Migration
     public function up()
     {
         Schema::table('personne_internes', function (Blueprint $table) {
-          $table->foreign('Uni_identifiantUnite')
-          ->references('identifiantUnite')
+          $table->foreign('unite_id')
+          ->references('id')
           ->on('unite_de_recherches')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintMembrUniteR extends Migration
     public function down()
     {
         Schema::table('personne_internes', function (Blueprint $table) {
-            $table->dropForeign(['Uni_identifiantUnite']);
+            $table->dropForeign(['unite_id']);
         });
     }
 }

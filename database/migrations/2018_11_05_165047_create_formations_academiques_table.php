@@ -14,8 +14,8 @@ class CreateFormationsAcademiquesTable extends Migration
     public function up()
     {
         Schema::create('formations_academiques', function (Blueprint $table) {
-            $table->increments('identifiantFormationAcademique');
-            $table->unsignedInteger('Per_identifiantPersonne');
+            $table->increments('id');
+            $table->unsignedInteger('personne_id');
             $table->string('nomFormationAcademique', 100);
             $table->dateTime('dateFormationAcademique');
             $table->string('lieuFormationAcademique', 50);

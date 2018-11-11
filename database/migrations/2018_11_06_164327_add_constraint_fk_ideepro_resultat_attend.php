@@ -14,8 +14,8 @@ class AddConstraintFkIdeeproResultatAttend extends Migration
     public function up()
     {
         Schema::table('resultats_attendus', function (Blueprint $table) {
-          $table->foreign('Ide_identifiantIdeeProjet')
-          ->references('identifiantIdeeProjet')
+          $table->foreign('ideeDeProjet_id')
+          ->references('id')
           ->on('idees_de_projet')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkIdeeproResultatAttend extends Migration
     public function down()
     {
         Schema::table('resultats_attendus', function (Blueprint $table) {
-            $table->dropForeign(['Ide_identifiantIdeeProjet']);
+            $table->dropForeign(['ideeDeProjet_id']);
         });
     }
 }

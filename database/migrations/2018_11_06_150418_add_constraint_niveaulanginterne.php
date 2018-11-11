@@ -14,8 +14,8 @@ class AddConstraintNiveaulanginterne extends Migration
     public function up()
     {
         Schema::table('niveau_langue_interne', function (Blueprint $table) {
-          $table->foreign('Lan_identifiantLangue')
-          ->references('identifiantLangue')
+          $table->foreign('langue_id')
+          ->references('id')
           ->on('langues')
           ->onUpdate('restrict')
           ->onDelete('restrict');
@@ -30,7 +30,7 @@ class AddConstraintNiveaulanginterne extends Migration
     public function down()
     {
         Schema::table('niveau_langue_interne', function (Blueprint $table) {
-            $table->dropForeign(['Lan_identifiantLangue']);
+            $table->dropForeign(['langue_id']);
         });
     }
 }

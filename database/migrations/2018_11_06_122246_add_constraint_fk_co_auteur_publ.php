@@ -13,12 +13,14 @@ class AddConstraintFkCoAuteurPubl extends Migration
      */
     public function up()
     {
-        Schema::table('detail_co_auteur', function (Blueprint $table) {
-            $table->foreign('Pub_identifiantPublication')
-            ->references('identifiantPublication')
+        Schema::table('detail_co_auteur', function (Blueprint $table) 
+        {
+            $table->foreign('publication_id')
+            ->references('id')
             ->on('publications')
             ->onDelete('restrict')
             ->onUpdate('restrict');
+            
         });
     }
 
@@ -29,8 +31,13 @@ class AddConstraintFkCoAuteurPubl extends Migration
      */
     public function down()
     {
-        Schema::table('detail_co_auteur', function (Blueprint $table) {
-          $table->dropForeign(['Pub_identifiantPublication']);
+        Schema::table('detail_co_auteur', function (Blueprint $table) 
+        {
+        
+
+          $table->dropForeign(['publication_id']);
+        
+
         });
     }
 }

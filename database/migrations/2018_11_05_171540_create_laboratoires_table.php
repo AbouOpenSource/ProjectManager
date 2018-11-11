@@ -14,8 +14,8 @@ class CreateLaboratoiresTable extends Migration
     public function up()
     {
         Schema::create('laboratoires', function (Blueprint $table) {
-            $table->increments('identifiantLaboratoire');
-            $table->unsignedInteger('Dep_identifiantDepartement');
+            $table->increments('id');
+            $table->unsignedInteger('departement_id');
             $table->string('nomLaboratoire');
 
             $table->timestamps();

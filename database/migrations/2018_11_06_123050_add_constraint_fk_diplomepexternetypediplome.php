@@ -14,8 +14,8 @@ class AddConstraintFkDiplomepexternetypediplome extends Migration
     public function up()
     {
         Schema::table('detail_diplome_externe', function (Blueprint $table) {
-          $table->foreign('Typ_identifiantTypeDiplome')
-          ->references('identifiantTypeDiplome')
+          $table->foreign('typeDiplome_id')
+          ->references('id')
           ->on('type_diplomes')
           ->onDelete('restrict')
           ->onUpdate('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkDiplomepexternetypediplome extends Migration
     public function down()
     {
         Schema::table('detail_diplome_externe', function (Blueprint $table) {
-            $table->dropForeign(['Typ_identifiantTypeDiplome']);
+            $table->dropForeign(['typeDiplome_id']);
         });
     }
 }

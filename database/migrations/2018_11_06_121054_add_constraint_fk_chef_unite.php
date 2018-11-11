@@ -14,8 +14,8 @@ class AddConstraintFkChefUnite extends Migration
     public function up()
     {
         Schema::table('detail_chef_unite', function (Blueprint $table) {
-            $table->foreign('Uni_identifiantUnite')
-            ->references('identifiantUnite')
+            $table->foreign('unite_id')
+            ->references('id')
             ->on('unite_de_recherches')
             ->onDelete('restrict')
             ->onUpdate('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkChefUnite extends Migration
     public function down()
     {
         Schema::table('detail_chef_unite', function (Blueprint $table) {
-          $table->dropForeign(['Uni_identifiantUnite']);
+          $table->dropForeign(['unite_id']);
         });
     }
 }

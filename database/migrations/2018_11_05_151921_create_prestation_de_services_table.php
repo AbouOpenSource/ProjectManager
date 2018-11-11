@@ -14,9 +14,9 @@ class CreatePrestationDeServicesTable extends Migration
     public function up()
     {
         Schema::create('prestation_de_services', function (Blueprint $table) {
-           $table->increments('identifiantPrestation');
-            $table->unsignedInteger('Ins_identifiantInstitution');
-            $table->unsignedInteger('Equ_identifiantEquipe');
+           $table->increments('id');
+            $table->unsignedInteger('institution_id');
+            $table->unsignedInteger('equipe_id');
             $table->text('nomDescription');
             $table->string('typePrestation', 50);    
             $table->timestamps();

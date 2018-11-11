@@ -14,8 +14,8 @@ class AddConstraintFkAssocieDetailclLabo extends Migration
     public function up()
     {
         Schema::table('detail_chef_laboratoire', function (Blueprint $table) {
-            $table->foreign('Lab_identifiantLaboratoire')
-            ->references('identifiantLaboratoire')
+            $table->foreign('laboratoire_id')
+            ->references('id')
             ->on('laboratoires')
             ->onDelete('restrict')
             ->onUpdate('restrict');
@@ -30,7 +30,7 @@ class AddConstraintFkAssocieDetailclLabo extends Migration
     public function down()
     {
         Schema::table('detail_chef_laboratoire', function (Blueprint $table) {
-          $table->dropForeign(['Lab_identifiantLaboratoire']);
+          $table->dropForeign(['laboratoire_id']);
         });
     }
 }

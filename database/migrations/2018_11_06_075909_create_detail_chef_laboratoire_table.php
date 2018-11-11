@@ -14,10 +14,12 @@ class CreateDetailChefLaboratoireTable extends Migration
     public function up()
     {
         Schema::create('detail_chef_laboratoire', function (Blueprint $table) {
-           $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Lab_identifiantLaboratoire');
+           $table->unsignedInteger('personne_id');
+            $table->unsignedInteger('laboratoire_id');
+            $table->dateTime('debutMandat');
+            $table->dateTime('finMandat')->nullable();
             
-            $table->primary('Per_identifiantPersonne', 'Lab_identifiantLaboratoire');
+            $table->primary(['personne_id', 'laboratoire_id']);
         
             $table->timestamps();
         });

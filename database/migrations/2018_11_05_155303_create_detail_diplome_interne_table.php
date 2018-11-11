@@ -14,13 +14,13 @@ class CreateDetailDiplomeInterneTable extends Migration
     public function up()
     {
         Schema::create('detail_diplome_interne', function (Blueprint $table) {
-            $table->unsignedInteger('Per_identifiantPersonne');
-            $table->unsignedInteger('Typ_identifiantTypeDiplome');
+            $table->unsignedInteger('personne_id');
+            $table->unsignedInteger('typeDiplome_id');
             $table->string('numeroDiplome');
             $table->dateTime('dateDoptention');
             $table->string('mention')->default("")->nullable();
 
-            $table->primary('Per_identifiantPersonne', 'Typ_identifiantTypeDiplome');
+            $table->primary(['personne_id', 'typeDiplome_id']);
 
             $table->timestamps();
 
