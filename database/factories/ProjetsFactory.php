@@ -5,9 +5,10 @@ use Faker\Generator as Faker;
 
 $factory->define(Projet::class, function (Faker $faker) {
     return [
-      'Uni_identifiantUnite' => rand(1,9),
+      'unite_id' => rand(1,9),
       //'Equ_identifiantEquipe' =>,
       //'Ide_identifiantIdeeProjet' =>,
+      'codeMuraz'=>str_random(10),
       'intitule' => 'Etude de hyposussions ', // secret
       'dureeProjet' => 'deux ans',
       'resumeProjet'=>$faker->text,

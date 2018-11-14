@@ -12,12 +12,12 @@ class LaboratoiresTableSeeder extends Seeder
     public function run()
     {
       DB::table('laboratoires')->insert([
-      'Dep_identifiantDepartement' => 1 ,
+      'departement_id' => 1 ,
       'nomLaboratoire'=>'Laboratoire de Biologie Clinique',
       ]);
 
       DB::table('laboratoires')->insert([
-      'Dep_identifiantDepartement' => 1 ,
+      'departement_id' => 1 ,
       'nomLaboratoire'=>'Laboratoire de Recherche',
       ]);
     }

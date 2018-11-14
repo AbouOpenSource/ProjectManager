@@ -14,7 +14,7 @@ $factory->define(PersonneInterne::class, function (Faker $faker) {
 
     return [
 
-      'Equ_identifiantEquipe' => rand(1,6),
+      'equipe_id' => rand(1,6),
 
       'nom' => $faker->lastName(),
       'prenom' =>$faker->firstName('femelle'),

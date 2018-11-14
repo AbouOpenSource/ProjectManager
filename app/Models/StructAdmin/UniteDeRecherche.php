@@ -29,4 +29,9 @@ class UniteDeRecherche extends Model
 
 
     protected $table= 'unite_de_recherches';
+	public function PersonneInterne()
+			{
+				return $this->hasMany('App\Models\Cv\PersonneInterne','unite_id');
+			}
+
 }

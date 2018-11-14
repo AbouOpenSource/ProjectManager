@@ -18,8 +18,7 @@ class AddConstraintFkQualint extends Migration
           ->references('id')
           ->on('qualifications')
           ->onUpdate('restrict')
-          ->onDelete('restrict')
-          ->name('qualifications_qualpexter');
+          ->onDelete('restrict');
         });
     }
 

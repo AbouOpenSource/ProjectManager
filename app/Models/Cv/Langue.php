@@ -14,13 +14,7 @@ class Langue extends Model
 
 	];
 
-	protected function getDateFormat()
-		{
-
-					return 'd/m/Y';
-		}
-
-
+	
 
 
 

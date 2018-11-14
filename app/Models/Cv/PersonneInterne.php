@@ -4,6 +4,9 @@ namespace App\Models\Cv;
 
 use Illuminate\Database\Eloquent\Model;
 
+//use App\Models\StructAdmin\Equipe;
+
+
 class PersonneInterne extends Model
 {
     
@@ -14,12 +17,7 @@ class PersonneInterne extends Model
 
 	];
 
-	protected function getDateFormat()
-		{
-
-					return 'd/m/Y';
-		}
-
+	
 
 
 
@@ -33,4 +31,10 @@ class PersonneInterne extends Model
 
 
     protected $table='personne_internes';
+    public function Equipe()
+    {
+    	//return 'Salut';
+ 		return $this->belongsTo('App\Models\StructAdmin\Equipe','equipe_id');
+    
+    }
 }

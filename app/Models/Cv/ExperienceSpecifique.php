@@ -13,13 +13,7 @@ protected $fillable=[
 
 	];
 
-	protected function getDateFormat()
-		{
-
-					return 'd/m/Y';
-		}
-
-
+	
 
 
 

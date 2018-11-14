@@ -16,7 +16,7 @@ class EquipesController extends Controller
         
         $equipes=Equipe::all();
 
-     
+        return view('equipe.index',compact('equipes'));
 
     }
 

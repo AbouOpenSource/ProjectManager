@@ -26,9 +26,9 @@ class DatabaseSeeder extends Seeder
           StatutsTableSeeder::class,
           AssociationsTableSeeder::class,
           PersonneInternesTableSeeder::class,
-
-
-
+          ProjetsTableSeeder::class,
+          InstitutionsTableSeeder::class,
+          IdeeDeProjetTableSeeder::class,
         ]);
     }
 }

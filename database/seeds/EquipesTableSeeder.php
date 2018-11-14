@@ -16,42 +16,42 @@ class EquipesTableSeeder extends Seeder
 
 
       DB::table('equipes')->insert([
-      'Dep_identifiantDepartement' => 2 ,
+      'departement_id' => 2 ,
       'nomEquipe'=>'Equipe Médicale',
       'descriptionEquipe'=>$faker->text,
       'objectifEquipe'=>$faker->text
       ]);
 
       DB::table('equipes')->insert([
-      'Dep_identifiantDepartement' => 2 ,
+      'departement_id' => 2 ,
       'nomEquipe'=>'Equipe essais clinique',
       'descriptionEquipe'=>$faker->text,
       'objectifEquipe'=>$faker->text
       ]);
 
       DB::table('equipes')->insert([
-      'Dep_identifiantDepartement' => 3 ,
+      'departement_id' => 3 ,
       'nomEquipe'=>'Equipe santé de la mère et de l\'enfant',
       'descriptionEquipe'=>$faker->text,
       'objectifEquipe'=>$faker->text
       ]);
 
       DB::table('equipes')->insert([
-      'Dep_identifiantDepartement' => 3 ,
+      'departement_id' => 3 ,
       'nomEquipe'=>'Equipe politiques et système de Santé',
       'descriptionEquipe'=>$faker->text,
       'objectifEquipe'=>$faker->text
       ]);
 
       DB::table('equipes')->insert([
-      'Dep_identifiantDepartement' => 3 ,
+      'departement_id' => 3 ,
       'nomEquipe'=>'Equipe sociétés et santé',
       'descriptionEquipe'=>$faker->text,
       'objectifEquipe'=>$faker->text
       ]);
 
       DB::table('equipes')->insert([
-      'Dep_identifiantDepartement' => 3 ,
+      'departement_id' => 3 ,
       'nomEquipe'=>'Equipe santé environnementale, maladies chroniques et nutrition',
       'descriptionEquipe'=>$faker->text,
       'objectifEquipe'=>$faker->text

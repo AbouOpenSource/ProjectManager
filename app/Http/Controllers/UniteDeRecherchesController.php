@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\StructAdmin\UniteDeRecherche;
+
 class UniteDeRecherchesController extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class UniteDeRecherchesController extends Controller
      */
     public function index()
     {
-        $uniteDeRecherches=UniteDeRecherche::all();
+        $unites=UniteDeRecherche::all();
+        return view('uniterecherche.index',compact('unites'));
     }
 
     /**

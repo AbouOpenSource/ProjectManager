@@ -25,4 +25,15 @@ class Projet extends Model
 
 
   protected $table= 'projets';
+
+	public function institutionFinacier()
+		{
+			
+		}
+	public function instituionTechnique()
+		{
+
+		}
+
+
 }

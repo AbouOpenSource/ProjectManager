@@ -15,21 +15,21 @@ class DepartementsTableSeeder extends Seeder
       $faker = Faker\Factory::create();
 
       DB::table('departements')->insert([
-      'Dir_identifiantDirection' => 1 ,
+      'direction_id' => 1 ,
       'nomDepartement'=>'Departement des Sciences Biomédiadicales',
       'descriptionDepartement'=>$faker->text,
       'objectifDepartement'=>$faker->text
       ]);
 
       DB::table('departements')->insert([
-      'Dir_identifiantDirection' => 1 ,
+      'direction_id' => 1 ,
       'nomDepartement'=>'Departement de Recherche clinique  ',
       'descriptionDepartement'=>$faker->text,
       'objectifDepartement'=>''
       ]);
 
       DB::table('departements')->insert([
-      'Dir_identifiantDirection' => 1 ,
+      'direction_id' => 1 ,
       'nomDepartement'=>'Departement de Santé Publique',
       'descriptionDepartement'=>$faker->text,
       'objectifDepartement'=>$faker->text

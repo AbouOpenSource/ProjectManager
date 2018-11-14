@@ -7,12 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class IdeeDeProjet extends Model
 {
 
-	protected $fillable=[
-
-
-
-	];
-
 
 
 

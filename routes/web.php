@@ -28,8 +28,11 @@ Route::resource('projets','ProjetsController');
 
 Route::resource('ideeDeProjet','IdeeDeProjetsController');
 
+Route::resource('personneinterne','PersonneInternesController');
 
+Route::resource('equipe','EquipesController');
 
+Route::resource('uniterecherche','UniteDeRecherchesController');
 
 Route::get('/', function () {
 

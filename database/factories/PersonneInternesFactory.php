@@ -14,9 +14,9 @@ $factory->define(PersonneInterne::class, function (Faker $faker) {
 
 
     return [
-      'Equ_identifiantEquipe' => rand(1,6),
-      //'Uni_identifiantUnite' => rand(1,9),
-      'nom' => $faker->lastName(),
+      //'equipe_id' => rand(1,6),
+      'unite_id' => rand(1,9),
+      'name' => $faker->lastName(),
       'prenom' =>$faker->firstName('femelle'),
       'dateNaissance'=>$faker->dateTimeThisCentury->format('Y-m-d'),
       'lieuNaissance'=>'Burkina Faso',
@@ -24,6 +24,6 @@ $factory->define(PersonneInterne::class, function (Faker $faker) {
       'email'=>$faker->unique()->safeEmail,
       'residence'=>$faker->address,
       'login'=>$faker->username,
-      'motDePasse' =>bcrypt('secret'),
+      'password' =>bcrypt('secret'),
       ];
 });

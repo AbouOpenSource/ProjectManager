@@ -19,7 +19,7 @@ class CreateInstitutionsTable extends Migration
             $table->string('nomInstitution',100);
             $table->string('emailInstitution',60);
             $table->string('adresseInstitution',100);
-            $table->string('paysInstitution', 50);
+            $table->string('paysInstitution');
 
             $table->timestamps();
 

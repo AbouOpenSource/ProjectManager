@@ -14,7 +14,7 @@ class ProjetsController extends Controller
     public function index()
     {
         $projets=Projet::all();
-        dump($projets);
+        return view('projet.index',compact('projets'));
     }
 
     /**
@@ -46,7 +46,8 @@ class ProjetsController extends Controller
      */
     public function show($id)
     {
-        //
+     $projet=Projet::findOrFail($id);
+      return view('projet.show',compact('projet'));  
     }
 
     /**

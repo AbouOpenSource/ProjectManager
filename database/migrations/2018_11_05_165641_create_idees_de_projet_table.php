@@ -19,15 +19,15 @@ class CreateIdeesDeProjetTable extends Migration
             //partenariat souhaite 
             $table->unsignedInteger('institutionProposeur_id')->nullable();
             //idee propose par institution
-            $table->unsignedInteger('projet_id');
+            $table->unsignedInteger('projet_id')->nullable();
             //idee propose par personne interne
             $table->unsignedInteger('personneinterne_id')->nullable();
             //idee propose par personne externe
             $table->unsignedInteger('personneexterne_id')->nullable();
-            $table->string('cheminProtocole', 40);
+            $table->string('cheminProtocole');
             $table->boolean('soumis')->default(0);
             $table->dateTime('dateSoumission')->nullable();
-            
+            $table->timestamps(); 
         });
     }
 

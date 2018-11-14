@@ -28,6 +28,6 @@ class CreateUniteDeRecherchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists(['laboratoire_id']);
+        Schema::dropIfExists('unite_de_recherches');
     }
 }

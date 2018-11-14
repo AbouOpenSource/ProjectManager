@@ -13,8 +13,8 @@ class PersonneInternesController extends Controller
      */
     public function index()
     {
-        $personnesinternes=PersonneInterne::all();
-        dump($personnesinternes);
+        $personnes=PersonneInterne::all();
+        return view('personneinterne.index',compact('personnes'));
     }
 
     /**
@@ -46,7 +46,8 @@ class PersonneInternesController extends Controller
      */
     public function show($id)
     {
-        //
+        $personne=PersonneInterne::findOrFail($id);
+        dump($personne);
     }
 
     /**

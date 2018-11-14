@@ -12,36 +12,36 @@ class SectionsTableSeeder extends Seeder
     public function run()
     {
       DB::table('sections')->insert([
-      'Lab_identifiantLaboratoire' => 1 ,
+      'laboratoire_id' => 1 ,
       'nomSection'=>'Section Hematologie',
       ]);
 
 
       DB::table('sections')->insert([
-      'Lab_identifiantLaboratoire' => 1 ,
+      'laboratoire_id' => 1 ,
       'nomSection'=>'Section Biochimie',
       ]);
 
       DB::table('sections')->insert([
-      'Lab_identifiantLaboratoire' => 1 ,
+      'laboratoire_id' => 1 ,
       'nomSection'=>'Section Sérologie-Immunologie',
       ]);
 
 
       DB::table('sections')->insert([
-      'Lab_identifiantLaboratoire' => 1 ,
+      'laboratoire_id' => 1 ,
       'nomSection'=>'Section Bactériologie',
       ]);
 
 
       DB::table('sections')->insert([
-      'Lab_identifiantLaboratoire' => 1 ,
+      'laboratoire_id' => 1 ,
       'nomSection'=>'Section Parasitologie',
       ]);
 
 
       DB::table('sections')->insert([
-      'Lab_identifiantLaboratoire' => 1 ,
+      'laboratoire_id' => 1 ,
       'nomSection'=>'Section Virologie',
       ]);
 

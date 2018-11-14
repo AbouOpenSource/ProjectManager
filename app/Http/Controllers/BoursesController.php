@@ -36,7 +36,17 @@ class BoursesController extends Controller
      */
     public function create()
     {
-        //
+     
+
+
+
+
+
+
+
+
+        return view('bourse.create');
+
     }
 
     /**

@@ -30,7 +30,7 @@ class AddConstraintFkUniteRecheraddLabo extends Migration
     public function down()
     {
         Schema::table('unite_de_recherches', function (Blueprint $table) {
-            $table->dropForeign('laboratoire_id');
+            $table->dropForeign(['laboratoire_id']);
         });
     }
 }

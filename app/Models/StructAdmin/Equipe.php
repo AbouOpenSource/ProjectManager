@@ -19,4 +19,11 @@ class Equipe extends Model
 
 
     protected $table= 'equipes';
+
+public function PersonneInterne()
+{
+	return $this->hasMany('App\Models\Cv\PersonneInterne');
+}
+
+
 }
