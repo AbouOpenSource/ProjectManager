@@ -11,16 +11,6 @@ class Diplome extends Model
 
 
 	];
- 
-	protected function getDateFormat()
-		{
-
-					return 'd/m/Y';
-		}
-
-
-	
-
 
 
 

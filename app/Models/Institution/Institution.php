@@ -13,11 +13,6 @@ class Institution extends Model
 	];
 
 
-protected function getDateFormat()
-		{
-
-					return 'd/m/Y';
-		}
 
 
 
@@ -25,8 +20,5 @@ protected function getDateFormat()
 
 
 
-
-
-
-protected $table="institutions"
+protected $table="institutions";
 }

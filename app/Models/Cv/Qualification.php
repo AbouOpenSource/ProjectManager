@@ -25,5 +25,5 @@ class Qualification extends Model
 
 
 
-    protected $table='qualications';
+    protected $table='qualifications';
 }

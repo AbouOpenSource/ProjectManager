@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\StructAdmin\Equipe;
+use App\Models\StructAdmin\UniteDeRecherche;
 
 use Illuminate\Http\Request;
 use App\Models\Projet\Projet;
+use App\Models\Projet\TypeProjet;
 class ProjetsController extends Controller
 {
     /**
@@ -12,8 +15,8 @@ class ProjetsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $projets=Projet::all();
+    {   
+        $projets=Projet::with('Statut')->get();
         return view('projet.index',compact('projets'));
     }
 
@@ -24,7 +27,14 @@ class ProjetsController extends Controller
      */
     public function create()
     {
-        //
+        $unites=UniteDeRecherche::all();
+        $equipes=Equipe::all();
+        $typeProjets=TypeProjet::all();
+
+        return view('projet.create')
+        ->with(['typeProjets'=>$typeProjets])
+        ->with(['unites'=>$unites])
+        ->with(['equipes'=>$equipes]);
     }
 
     /**
@@ -35,7 +45,33 @@ class ProjetsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Projet::create([
+            'codeMuraz'=>$request->codeMuraz,
+            // 'unite_id'=>,
+             'equipe_id'=>$request->equipe_id,
+            // 'ideeDeProjet_id'=>,
+             'intitule'=>$request->intitule,
+             'dureeProjet'=>$request->dureeProjet,
+            'resumeProjet'=>$request->resumeProjet,
+            'budgetProjet'=>$request->budgetProjet,
+            'siteDeMiseEnOeuvre'=>$request->siteDeMiseEnOeuvre,
+            'contexteProjet'=>$request->contexteProjet,
+           // 'nombreEmploi'=>$request->nombreEmploi,
+            'fraisIndirectverseCM'=>$request->fraisIndirectverseCM,
+            'typeProjet_id'=>$request->typeProjet_id,
+            'questionDeRecherche'=>$request->questionDeRecherche,
+            'resumeDesMethodeEtude'=>$request->resumeDesMethodeEtude,
+            'beneficeNational'=>$request->beneficeNational,
+            'beneficeInstitutionnel'=>$request->beneficeInstitutionnel,
+
+
+
+
+
+
+
+
+        ]);
     }
 
     /**

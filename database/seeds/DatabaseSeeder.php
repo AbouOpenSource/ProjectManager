@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
           StatutsTableSeeder::class,
           AssociationsTableSeeder::class,
           PersonneInternesTableSeeder::class,
+          TypeProjetsTableSeeder::class,
           ProjetsTableSeeder::class,
           InstitutionsTableSeeder::class,
           IdeeDeProjetTableSeeder::class,

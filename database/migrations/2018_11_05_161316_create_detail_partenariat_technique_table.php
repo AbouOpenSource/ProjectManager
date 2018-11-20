@@ -16,7 +16,7 @@ class CreateDetailPartenariatTechniqueTable extends Migration
         Schema::create('detail_partenariat_technique', function (Blueprint $table) {
             $table->unsignedInteger('institution_id');
             $table->unsignedInteger('projet_id');
-            $table->text('descriptionPartenariat');
+            $table->text('descriptionPartenariat')->nullable();
             
             $table->primary('institution_id', 'projet_id');
         

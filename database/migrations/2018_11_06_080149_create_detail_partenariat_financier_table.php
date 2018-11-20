@@ -17,7 +17,7 @@ class CreateDetailPartenariatFinancierTable extends Migration
             $table->unsignedInteger('institution_id');
             $table->unsignedInteger('projet_id');
             $table->integer('volumeProjetFinance');
-            $table->dateTime('anneeFinancementProjet');
+            $table->year('anneeFinancementProjet');
             $table->primary(['institution_id','projet_id']);
         });
     }

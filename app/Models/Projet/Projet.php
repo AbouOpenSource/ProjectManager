@@ -3,15 +3,12 @@
 namespace App\Models\Projet;
 
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Projet\DetailStatutProjet;
 class Projet extends Model
 {
 
-	protected $fillable=[
-
-
-
-	];
+	protected $fillable=['codeMuraz','unite_id','equipe_id','ideeDeProjet_id','intitule','dureeProjet','resumeProjet','budgetProjet','siteDeMiseEnOeuvre','contexteProjet','nombreEmploi','fraisIndirectverseCM','typeProjet_id','questionDeRecherche','resumeDesMethodeEtude','beneficeNational','beneficeInstitutionnel'
+];
 
 	
 
@@ -22,18 +19,57 @@ class Projet extends Model
 
 
 
-
-
   protected $table= 'projets';
 
-	public function institutionFinacier()
+	public function institutionFinancier()
 		{
-			
+			return $this
+					->belongsToMany('App\Models\Institution\Institution', 'detail_partenariat_financier', 
+      'projet_id', 'institution_id')
+				->withPivot('volumeProjetFinance','anneeFinancementProjet');	
 		}
-	public function instituionTechnique()
+	public function institutionTechnique()
+		{
+					return $this
+					->belongsToMany('App\Models\Institution\Institution', 'detail_partenariat_technique', 
+      'projet_id', 'institution_id');
+					
+		}
+
+	public function changeStatut($id)
+		{
+		
+				$this->Statut()->attach($id, ['debutStatut' => now()]);			
+		}	
+
+	public function Statut()
 		{
 
+					
+			return $this->belongsToMany('App\Models\Projet\Statut', 'detail_statut_projet', 
+      'projet_id', 'statut_id')
+			->withPivot('debutStatut','finStatut');
+
+		}	
+
+
+	public function Bourse()
+		{
+			return $this->hasMany('App\Models\Cv\Bourse','projet_id'); 
 		}
+	public function EquipementAcquis()
+		{
+			return $this->hasMany('App\Models\Cv\EquipementAcquis','projet_id'); 
+		
+		}
+	public function Objectif()
+		{
+	
+		return $this->hasMany('App\Models\Projet\Objectif','projet_id'); 
+	
+		}
+
+
 
 
 }

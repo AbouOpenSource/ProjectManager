@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Institution\Institution;
 
 use Illuminate\Http\Request;
 use App\Models\Projet\IdeeDeProjet;
@@ -13,9 +14,14 @@ class IdeeDeProjetsController extends Controller
      */
     public function index()
     {
-     $ideeDeProjet=IdeeDeProjet::all(); 
-     dump($ideeDeProjet);  
-    }
+    
+
+
+        $ideeDeProjet=IdeeDeProjet::all(); 
+        return view('ideedeprojet.index')
+            ->with(['ideeDeProjet'=>$ideeDeProjet]);
+
+     }
 
     /**
      * Show the form for creating a new resource.
@@ -24,7 +30,14 @@ class IdeeDeProjetsController extends Controller
      */
     public function create()
     {
-        //
+
+     
+     $institutions=Institution::all();
+
+
+
+     return view('ideedeprojet.create')
+     ->with(['institutions'=>$institutions]);
     }
 
     /**

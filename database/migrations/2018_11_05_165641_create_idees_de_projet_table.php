@@ -17,6 +17,8 @@ class CreateIdeesDeProjetTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('institutionSouhaite_id')->nullable();
             //partenariat souhaite 
+            $table->string('intituleIdee');
+
             $table->unsignedInteger('institutionProposeur_id')->nullable();
             //idee propose par institution
             $table->unsignedInteger('projet_id')->nullable();

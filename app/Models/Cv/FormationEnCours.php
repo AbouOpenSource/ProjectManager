@@ -24,5 +24,5 @@ class FormationEnCours extends Model
 
 
 
-    protected $table='formations_en_cours ';
+    protected $table='formations_en_cours';
 }

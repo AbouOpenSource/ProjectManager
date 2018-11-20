@@ -1,22 +1,25 @@
 <?php
-use App\Models\StructAdmin\Equipe;
+use App\Models\Projet\Projet;
+use App\Models\Projet\Statut;
 use App\Models\Cv\PersonneInterne;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+Route::get('test',function(){
+$test=Projet::find(1);
+return $test->EquipementAcquis;
+});
 
 
 
+Route::get('/', function () {
 
+    dump(PersonneInterne::all());
 
+    return view('welcome');
+});
 
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('bourses','BoursesController');
 
@@ -33,13 +36,3 @@ Route::resource('personneinterne','PersonneInternesController');
 Route::resource('equipe','EquipesController');
 
 Route::resource('uniterecherche','UniteDeRecherchesController');
-
-Route::get('/', function () {
-
-
-    dump(PersonneInterne::all());
-
-
-
-    return view('welcome');
-});

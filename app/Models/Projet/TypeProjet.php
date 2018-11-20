@@ -4,14 +4,21 @@ namespace App\Models\Projet;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Statut extends Model
+class TypeProjet extends Model
 {
-
-	protected $fillable=[
-
-];
+    
 
 
-  protected $table= 'statuts';
 
+
+
+
+
+
+
+
+
+
+
+    protected $table='type_projets';
 }
