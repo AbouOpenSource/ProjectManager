@@ -28,7 +28,7 @@ class CreateProjetsTable extends Migration
             $table->integer('nombreEmploi')->default(0);
             $table->float('fraisIndirectverseCM')->nullable();
             //$table->string('typeProjet', 40)->nullable();
-            
+            $table->integer('evolution')->default(0);
             $table->unsignedInteger('typeProjet_id');
             $table->text('questionDeRecherche')->nullable();
             $table->text('resumeDesMethodeEtude')->nullable();

@@ -1,9 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Publication\Publication;
+use App\Models\Publication\TypePublication;
+use App\Models\Projet\Projet;
+use App\Models\StructAdmin\Equipe; 
+use App\Models\StructAdmin\UniteDeRecherche;
+
 class PublicationsController extends Controller
 {
     /**
@@ -13,8 +18,8 @@ class PublicationsController extends Controller
      */
     public function index()
     {
-     $publications=Publication::all():
-     dump($publications);   
+        $publications=Publication::all()->where('personne_id','==',Auth::user()->id);
+        return view('publication.index')->with('publications',$publications);         
     }
 
     /**
@@ -24,7 +29,30 @@ class PublicationsController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::check())
+                    {
+                            $user=Auth::user();
+                 //           dd($user);
+                            if($user->unite_id)
+                                {
+                                     $struct=UniteDeRecherche::find($user->unite_id);
+                                }
+                             else
+                                {
+                                     $struct=Equipe::find($user->equipe_id);
+                                }
+
+                             $projets=$struct->projet; 
+                           
+                             $typePublications=TypePublication::all();
+
+
+                            return view('publication.create')
+                                ->with('typePublications',$typePublications)
+                                ->with('projets',$projets);
+                    }
+
+
     }
 
     /**
@@ -35,7 +63,23 @@ class PublicationsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        Publication::create([
+            'typePublication_id'=>$request->typePublication_id,
+            'projet_id'=>$request->projet_id,
+            'libellePublication'=>$request->libellePublication,
+            'personne_id'=>Auth::user()->id,
+            'description'=>$request->description,
+            'datePublication'=>$request->datePublication,
+            'sourcePublication'=>$request->sourcePublication,
+            'media'=>$request->media,
+
+
+
+        ]);
+
+      $this->index();  
     }
 
     /**

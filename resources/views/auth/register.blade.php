@@ -129,14 +129,13 @@
 
 <!--Select form equipe-->
 
-
-
+ 
                  <div class="form-group row">
-                            <label for="equipe" class="col-md-4 col-form-label text-md-right">{{ __('Equipe') }}</label>
+                            <label for="equipe_id" class="col-md-4 col-form-label text-md-right">{{ __('Equipe') }}</label>
 
                             <div class="col-md-6">
-                                <select class="custom-select custom-select-lg mb-3">
-                                    <option selected>Choisir son equipe</option>
+                                <select name="equipe_id" class="custom-select custom-select-lg mb-3">
+                                    <option selected value="">Choisir son equipe</option>
                                     @foreach($equipes as $equipe)
                                     
                                     <option value="{{$equipe->id}}">{{$equipe->nomEquipe}}</option>
@@ -158,11 +157,13 @@
                             <label for="unite" class="col-md-4 col-form-label text-md-right">{{ __('Unite') }}</label>
 
                             <div class="col-md-6">
-                                <select class="custom-select custom-select-lg mb-3">
-                                    <option selected>Choisir son unite</option>
+                                <select name="unite_id" class="custom-select custom-select-lg mb-3">
+                                    <option selected value="">Choisir son unite
+                                    </option>
                                     @foreach($unites as $unite)
                                     
-                                    <option value="{{$unite->id}}">{{$unite->nomUnite}}</option>
+                                    <option value="{{$unite->id}}">{{$unite->nomUnite}}
+                                    </option>
                                     
                                     @endforeach
                             </select>   

@@ -13,21 +13,5 @@ class TypePublication extends Model
 
 	];
 
-
-protected function getDateFormat()
-		{
-
-					return 'd/m/Y';
-		}
-
-
-
-
-
-
-
-
-
-
     protected $table= 'type_publications';
 }

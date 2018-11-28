@@ -71,6 +71,8 @@ class RegisterController extends Controller
             'dateNaissance'=>$data['dateNaissance'],
             'lieuNaissance'=>$data['lieuNaissance'],
             'nationalite'=>$data['nationalite'],
+            'equipe_id'=>$data['equipe_id'],
+            'unite_id'=>$data['unite_id'],
             'residence'=>$data['residence'],
             'password' => Hash::make($data['password']),
         ]);

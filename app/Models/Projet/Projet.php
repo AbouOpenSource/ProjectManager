@@ -10,17 +10,6 @@ class Projet extends Model
 	protected $fillable=['codeMuraz','unite_id','equipe_id','ideeDeProjet_id','intitule','dureeProjet','resumeProjet','budgetProjet','siteDeMiseEnOeuvre','contexteProjet','nombreEmploi','fraisIndirectverseCM','typeProjet_id','questionDeRecherche','resumeDesMethodeEtude','beneficeNational','beneficeInstitutionnel'
 ];
 
-	
-
-
-
-
-
-
-
-
-  protected $table= 'projets';
-
 	public function institutionFinancier()
 		{
 			return $this
@@ -35,13 +24,11 @@ class Projet extends Model
       'projet_id', 'institution_id');
 					
 		}
-
 	public function changeStatut($id)
 		{
 		
 				$this->Statut()->attach($id, ['debutStatut' => now()]);			
 		}	
-
 	public function Statut()
 		{
 
@@ -51,8 +38,6 @@ class Projet extends Model
 			->withPivot('debutStatut','finStatut');
 
 		}	
-
-
 	public function Bourse()
 		{
 			return $this->hasMany('App\Models\Cv\Bourse','projet_id'); 
@@ -68,8 +53,38 @@ class Projet extends Model
 		return $this->hasMany('App\Models\Projet\Objectif','projet_id'); 
 	
 		}
+	public function ResultatObtenu()
+		{
+			return $this->hasMany('App\Models\Projet\ResultatObtenu');
+		}
+	public function CoInvestigateurInterne()
+		{
+			return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'co_investigateur_internes', 
+      'projet_id', 'personne_id');
+
+		}	
+	
 
 
+	public function CoInvestigateurExterne()
+		{
+return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'co_investigateur_externes', 
+      'projet_id', 'personne_id');
+		}	
+  	public function InvestigateurInterne()
+  		{
+			return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'investigateur_internes', 
+      'projet_id', 'personne_id');
+  		}
 
+  	public function InvestigateurExterne()
+  		{
+			return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'investigateur_externes', 
+      'projet_id', 'personne_id');
+  		}
+	
+
+
+  	protected $table= 'projets';
 
 }

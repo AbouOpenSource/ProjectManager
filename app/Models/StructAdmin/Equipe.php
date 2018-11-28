@@ -25,5 +25,9 @@ public function PersonneInterne()
 	return $this->hasMany('App\Models\Cv\PersonneInterne');
 }
 
+public function Projet()
+{
+	return $this->hasMany('App\Models\Projet\Projet');
+}
 
 }

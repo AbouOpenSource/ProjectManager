@@ -1,13 +1,18 @@
 <?php
+
 use App\Models\Projet\Projet;
 use App\Models\Projet\Statut;
 use App\Models\Cv\PersonneInterne;
+use App\Models\StructAdmin\UniteDeRecherche;
+use App\Models\Institution\Institution;
 
-Route::get('test',function(){
-$test=Projet::find(1);
-return $test->EquipementAcquis;
+Route::get('/notify', function(){
+
+notify()->flash('Yo have success','success');
+ 
+ return redirect()->to('/');
+
 });
-
 
 
 Route::get('/', function () {
@@ -29,10 +34,12 @@ Route::resource('directions','DirectionsController');
 
 Route::resource('projets','ProjetsController');
 
-Route::resource('ideeDeProjet','IdeeDeProjetsController');
+Route::resource('ideeDeProjets','IdeeDeProjetsController');
 
-Route::resource('personneinterne','PersonneInternesController');
+Route::resource('personneinternes','PersonneInternesController');
 
-Route::resource('equipe','EquipesController');
+Route::resource('equipes','EquipesController');
 
-Route::resource('uniterecherche','UniteDeRecherchesController');
+Route::resource('uniterecherches','UniteDeRecherchesController');
+
+Route::resource('publications','PublicationsController');

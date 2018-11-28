@@ -23,6 +23,10 @@ class UniteDeRecherche extends Model
 
 
 
+public function Projet()
+{
+	return $this->hasMany('App\Models\Projet\Projet','unite_id');
+}
 
 
 

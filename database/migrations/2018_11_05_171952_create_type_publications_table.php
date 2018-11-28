@@ -18,6 +18,7 @@ class CreateTypePublicationsTable extends Migration
             $table->string('intituleType', 30);
             $table->text('descriptionType');
             $table->timestamps();
+            $table->integer('point');
         });
     }
 
