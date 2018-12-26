@@ -1,11 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
 @section('content')
+<br>
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Create Project') }}</div>
+                <div class="card-header">{{ __('Creation de projet') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('projets.store') }}">
@@ -227,7 +229,7 @@
                             <label for="equipe_id" class="col-md-4 col-form-label text-md-right">{{ __('Equipe') }}</label>
 
                             <div class="col-md-6">
-                                <select name="equipe_id" class="custom-select custom-select-lg mb-3">
+                                <select name="equipe_id" id="equipe_select" class="custom-select custom-select-lg mb-3" onchange="uniteDisable()">
                                     <option selected>Choisir son equipe hebergeuse</option>
                                     @foreach($equipes as $equipe)
                                     
@@ -248,7 +250,7 @@
                             <label for="unite_id" class="col-md-4 col-form-label text-md-right">{{ __('Unite de Recherche') }}</label>
 
                             <div class="col-md-6">
-                                <select name="unite_id" class="custom-select custom-select-lg mb-3">
+                                <select name="unite_id" id="unite_select" class="custom-select custom-select-lg mb-3" onchange="equipeDisable()">
                                     <option selected>Choisir son unite hebergeuse</option>
                                     @foreach($unites as $unite)unite
                                     
@@ -272,16 +274,6 @@
                                 </button>
                             </div>
                         </div>
- 
-
-
-
-
-
-
-
-
-
 
                 </form>
 
@@ -292,3 +284,25 @@
     </div>
 </div>
 @endsection
+@section('javascripts')
+<script>
+"use strict";
+function clicked() {
+    // var input_value = document.getElementById('data').value;
+    // document.getElementById('display').innerHTML = input_value;
+    alert('Salut');
+}
+function uniteDisable()
+{    
+document.getElementById("unite_select").disabled = true;
+}
+function equipeDisable()
+{    
+document.getElementById("equipe_select").disabled = true;
+}
+
+
+
+//document.getElementById('equipe_id_listen').addEventListener('click', clicked);;
+</script>
+@stop

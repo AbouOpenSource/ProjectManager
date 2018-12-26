@@ -1,72 +1,27 @@
-@extends('layouts.app')
+@extends('layouts.master')
 @section('title')
-Liste Des Projets
+Projets
 @endsection
-@section('content')
+@section('css')
 
-
-{{-- <div class="container">
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-action active">
-    Liste Des Projet
-  </a>
-  
-
-		@foreach($projets as $projet)
-		  <a href="{{route('projets.show',$projet->id)}}" class="list-group-item list-group-item-action">{{$projet->intitule}}</a>
-				@foreach($projet->Statut as $stat)
-					
-						<a href="#" class="badge badge-success">{{$stat->intituleStatut }}</a>
-				@endforeach
-		@endforeach
-</div>
-</div>
- --}}
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <link href="../assets/img/brand/favicon.png" rel="icon" type="image/png">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
 
+@endsection
 
-
-
-</head>
-
-<body>
-	<script >
-		swal("Good job!",
-		 "You clicked the button!",
-		  "success");
-
-
-
-	</script>
+@section('content')
 
 <div class="row">
         <div class="col">
-            <div class="card shadow">
-            
-
-            <div class="card-header border-0">
-              <h3 class="mb-0">Projet Au Centre MURAZ</h3>
-            </div>
-            
-
+            <div class="card shadow">            
             <div class="table-responsive">
-              <table class="table align-items-center table-flush">
+              <table class="table align-items-center table-flush" id="datatable">
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Projets</th>
                     <th scope="col">Budgets</th>
                     <th scope="col">Status</th>
-                    <th scope="col">Users</th>
                     <th scope="col">Niveau d'avancement</th>
                     <th scope="col"></th>
                   </tr>
@@ -93,22 +48,6 @@ Liste Des Projets
                       </span>
                     </td>
                     <td>
-                      <div class="avatar-group">
-                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                          <img alt="Image placeholder" src="../assets/img/theme/team-1-800x800.jpg" class="rounded-circle">
-                        </a>
-                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Romina Hadid">
-                          <img alt="Image placeholder" src="../assets/img/theme/team-2-800x800.jpg" class="rounded-circle">
-                        </a>
-                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Alexander Smith">
-                          <img alt="Image placeholder" src="../assets/img/theme/team-3-800x800.jpg" class="rounded-circle">
-                        </a>
-                        <a href="#" class="avatar avatar-sm" data-toggle="tooltip" data-original-title="Jessica Doe">
-                          <img alt="Image placeholder" src="../assets/img/theme/team-4-800x800.jpg" class="rounded-circle">
-                        </a>
-                      </div>
-                    </td>
-                    <td>
                       <div class="d-flex align-items-center">
                         <span class="mr-2">60%</span>
                         <div>
@@ -131,38 +70,25 @@ Liste Des Projets
                       </div>
                     </td>
                   </tr>
-@endforeach
+                    @endforeach
                 </tbody>
-
-
               </table>
             </div>
-          
-
-
-
           </div>
         </div>
 </div>
-</body>
-<script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- Argon JS -->
-<script src="../assets/js/argon.js?v=1.0.0"></script>
-</html>
+@endsection
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+@section('javascripts')
+    <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  
+    <script src="../assets/js/argon.js?v=1.0.0"></script>
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#datatable').DataTable();
+        });
+    </script>
 @endsection
 

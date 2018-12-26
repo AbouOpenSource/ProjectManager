@@ -13,6 +13,7 @@ class ResultatObtenu extends Model
 
 	];
 
+	protected $dates = ['dateRealisation'];
 
 
 

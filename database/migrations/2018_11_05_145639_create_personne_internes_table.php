@@ -25,11 +25,13 @@ class CreatePersonneInternesTable extends Migration
             $table->string('nationalite',50);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('avatar')->default('user.jpg');
             $table->rememberToken();
             $table->string('residence');
             $table->string('login')->unique();
             $table->string('password');
             $table->timestamps();
+       
         });
     }
 

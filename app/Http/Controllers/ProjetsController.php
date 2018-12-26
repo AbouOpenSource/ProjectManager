@@ -16,8 +16,8 @@ class ProjetsController extends Controller
      */
     public function index()
     {   
-        $projets=Projet::with('Statut')->get();
-        return view('projet.index',compact('projets'));
+        $projets=Projet::all();
+        return view('projet.index',compact('projets'))->with(['comeForm','projets']);
     }
 
     /**
@@ -63,15 +63,9 @@ class ProjetsController extends Controller
             'resumeDesMethodeEtude'=>$request->resumeDesMethodeEtude,
             'beneficeNational'=>$request->beneficeNational,
             'beneficeInstitutionnel'=>$request->beneficeInstitutionnel,
-
-
-
-
-
-
-
-
         ]);
+    
+        $this->index();
     }
 
     /**
@@ -82,7 +76,16 @@ class ProjetsController extends Controller
      */
     public function show($id)
     {
-     $projet=Projet::findOrFail($id);
+     $projet=Projet::with([ 'Objectif',
+                            'ResultatObtenu',
+                            'InvestigateurInterne',
+                            'CoInvestigateurInterne',
+                            'CoInvestigateurExterne',
+                            'InvestigateurInterne',
+                            'InvestigateurExterne',
+
+                                ])
+                    ->get()->find($id);
       return view('projet.show',compact('projet'));  
     }
 
@@ -119,4 +122,23 @@ class ProjetsController extends Controller
     {
         //
     }
+
+
+    public function changeStatut($idProjet,$idStatut)
+        {
+        $projet=Projet::find($idProjet);
+        if(!count($projet->Statut))
+        {
+          Projet::find($idProjet)->Statut()->attach($idStatut, ['debutStatut' => now()]);    
+        }
+       //   else
+       //  {              
+       // // $page->tags()->wherePivot('finStatut', null)->sync($tagIds);
+       //  }   
+
+}
+
+
+
+
 }

@@ -18,7 +18,7 @@ $factory->define(Projet::class, function (Faker $faker) {
       'nombreEmploi'=>0,
       'typeProjet_id'=>rand(1,3),
       'fraisIndirectverseCM'=>'200.00',
-      //'typeProjet_id'=>'Projet de Recherche',
+      'typeProjet_id'=>rand(1,3),
       'questionDeRecherche'=>$faker->text,
       'resumeDesMethodeEtude'=>$faker->text,
       'beneficeNational'=>$faker->text,

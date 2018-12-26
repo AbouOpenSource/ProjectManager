@@ -7,6 +7,7 @@ use App\Models\Projet\DetailStatutProjet;
 class Projet extends Model
 {
 
+protected $dates = [''];
 	protected $fillable=['codeMuraz','unite_id','equipe_id','ideeDeProjet_id','intitule','dureeProjet','resumeProjet','budgetProjet','siteDeMiseEnOeuvre','contexteProjet','nombreEmploi','fraisIndirectverseCM','typeProjet_id','questionDeRecherche','resumeDesMethodeEtude','beneficeNational','beneficeInstitutionnel'
 ];
 
@@ -24,18 +25,21 @@ class Projet extends Model
       'projet_id', 'institution_id');
 					
 		}
-	public function changeStatut($id)
-		{
-		
-				$this->Statut()->attach($id, ['debutStatut' => now()]);			
-		}	
+	
 	public function Statut()
+		{					
+			return $this->belongsToMany('App\Models\Projet\Statut', 'detail_statut_projet', 
+      'projet_id', 'statut_id')
+			->withPivot('debutStatut','finStatut');
+
+		}	
+public function Currentstatut()
 		{
 
 					
 			return $this->belongsToMany('App\Models\Projet\Statut', 'detail_statut_projet', 
       'projet_id', 'statut_id')
-			->withPivot('debutStatut','finStatut');
+			->withPivot('debutStatut','finStatut')->wherePivot('finStatut', null);
 
 		}	
 	public function Bourse()
@@ -68,7 +72,7 @@ class Projet extends Model
 
 	public function CoInvestigateurExterne()
 		{
-return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'co_investigateur_externes', 
+return $this->belongsToMany('App\Models\Cv\PersonneExterne', 'co_investigateur_externes', 
       'projet_id', 'personne_id');
 		}	
   	public function InvestigateurInterne()
@@ -79,7 +83,7 @@ return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'co_investigateur_e
 
   	public function InvestigateurExterne()
   		{
-			return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'investigateur_externes', 
+			return $this->belongsToMany('App\Models\Cv\PersonneExterne', 'investigateur_externes', 
       'projet_id', 'personne_id');
   		}
 	

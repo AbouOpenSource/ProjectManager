@@ -1,6 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('title')
-Personne
+Projets
 @endsection
 @section('inclusion')
 
@@ -8,11 +8,8 @@ Personne
   <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/core.js">
 @endsection
-
 @section('content')
     <table class="table table-bordered" id="users-table">
-    
-
         <thead>
             <tr>
                 <th>Id</th>
@@ -22,11 +19,7 @@ Personne
                 <th>Updated At</th>
             </tr>
         </thead>
-    
-
-
     </table>
-
 @stop
 @push('scripts')
 <script>

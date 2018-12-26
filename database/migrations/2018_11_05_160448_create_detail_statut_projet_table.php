@@ -18,9 +18,7 @@ class CreateDetailStatutProjetTable extends Migration
             $table->unsignedInteger('projet_id');
             $table->dateTime('debutStatut')->nullable();
             $table->dateTime('finStatut')->nullable();
-            
             $table->primary(['statut_id', 'projet_id']);
-        
             $table->timestamps();
         
         });
