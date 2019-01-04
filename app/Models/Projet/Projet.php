@@ -22,48 +22,42 @@ protected $dates = [''];
 		{
 					return $this
 					->belongsToMany('App\Models\Institution\Institution', 'detail_partenariat_technique', 
-      'projet_id', 'institution_id');
-					
+      'projet_id', 'institution_id');			
 		}
 	
 	public function Statut()
 		{					
-			return $this->belongsToMany('App\Models\Projet\Statut', 'detail_statut_projet', 
+		return $this->belongsToMany('App\Models\Projet\Statut', 'detail_statut_projet', 
       'projet_id', 'statut_id')
 			->withPivot('debutStatut','finStatut');
 
 		}	
 public function Currentstatut()
-		{
-
-					
-			return $this->belongsToMany('App\Models\Projet\Statut', 'detail_statut_projet', 
+		{			
+		return $this->belongsToMany('App\Models\Projet\Statut', 'detail_statut_projet', 
       'projet_id', 'statut_id')
 			->withPivot('debutStatut','finStatut')->wherePivot('finStatut', null);
-
 		}	
 	public function Bourse()
 		{
-			return $this->hasMany('App\Models\Cv\Bourse','projet_id'); 
+		return $this->hasMany('App\Models\Cv\Bourse','projet_id'); 
 		}
 	public function EquipementAcquis()
 		{
-			return $this->hasMany('App\Models\Cv\EquipementAcquis','projet_id'); 
+		return $this->hasMany('App\Models\Cv\EquipementAcquis','projet_id'); 
 		
 		}
 	public function Objectif()
 		{
-	
 		return $this->hasMany('App\Models\Projet\Objectif','projet_id'); 
-	
 		}
 	public function ResultatObtenu()
 		{
-			return $this->hasMany('App\Models\Projet\ResultatObtenu');
+		return $this->hasMany('App\Models\Projet\ResultatObtenu');
 		}
 	public function CoInvestigateurInterne()
 		{
-			return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'co_investigateur_internes', 
+		return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'co_investigateur_internes', 
       'projet_id', 'personne_id');
 
 		}	
@@ -72,7 +66,7 @@ public function Currentstatut()
 
 	public function CoInvestigateurExterne()
 		{
-return $this->belongsToMany('App\Models\Cv\PersonneExterne', 'co_investigateur_externes', 
+		return $this->belongsToMany('App\Models\Cv\PersonneExterne', 'co_investigateur_externes', 
       'projet_id', 'personne_id');
 		}	
   	public function InvestigateurInterne()
@@ -86,9 +80,6 @@ return $this->belongsToMany('App\Models\Cv\PersonneExterne', 'co_investigateur_e
 			return $this->belongsToMany('App\Models\Cv\PersonneExterne', 'investigateur_externes', 
       'projet_id', 'personne_id');
   		}
-	
-
-
   	protected $table= 'projets';
 
 }

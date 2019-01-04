@@ -1,0 +1,308 @@
+@extends('layouts.root')
+@section('title')
+Creation de Projet-PorjectManager
+@stop
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Creation de projet') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ route('projets.store') }}">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="codeMuraz" class="col-md-4 col-form-label text-md-right">{{ __('Code Muraz') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="codeMuraz" type="text" class="form-control{{ $errors->has('codeMuraz') ? ' is-invalid' : '' }}" name="codeMuraz" value="{{ old('codeMuraz') }}" required autofocus>
+
+                                @if ($errors->has('codeMuraz'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('codeMuraz') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="intitule" class="col-md-4 col-form-label text-md-right">{{ __('L\'intitulé du projet') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="intitule" type="text" class="form-control{{ $errors->has('intitule') ? ' is-invalid' : '' }}" name="intitule" value="{{ old('intitule') }}" required autofocus>
+
+                                @if ($errors->has('intitule'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('intitule') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="typeProjet_id" class="col-md-4 col-form-label text-md-right">{{ __('Type de Projet') }}</label>
+
+                            <div class="col-md-6">
+                                <select name= "typeProjet_id"class="custom-select custom-select-lg mb-3">
+                                    <option selected>Choisir le type de Projet</option>
+                                    @foreach($typeProjets as $typeprojet)
+                                    
+                                    <option value="{{$typeprojet->id}}">{{$typeprojet->intitule}}</option>
+                                    
+                                    @endforeach
+                            </select>   
+                                @if ($errors->has('typeProjet_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('typeProjet_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+
+
+
+
+
+                        <div class="form-group row">
+                            <label for="dureeProjet" class="col-md-4 col-form-label text-md-right">{{ __('Estimation de la durée du projet') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="dureeProjet" type="text" class="form-control{{ $errors->has('dureeProjet') ? ' is-invalid' : '' }}" name="dureeProjet" value="{{ old('dureeProjet') }}" required autofocus>
+
+                                @if ($errors->has('dureeProjet'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('dureeProjet') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="resumeProjet" class="col-md-4 col-form-label text-md-right">{{ __('Resumé du projet') }}</label>
+
+                            <div class="col-md-6">
+                               {{-- <input id="resumeProjet" type="text" class="form-control{{ $errors->has('resumeProjet') ? ' is-invalid' : '' }}" name="resumeProjet" value="{{ old('resumeProjet') }}" required autofocus>
+                                --}}
+
+                                <textarea name="resumeProjet" class="form-control{{ $errors->has('resumeProjet') ? ' is-invalid' : '' }}" value="{{ old('resumeProjet') }}" required autofocus></textarea>
+        
+        
+
+
+
+
+
+                                @if ($errors->has('resumeProjet'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('resumeProjet') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="budgetProjet" class="col-md-4 col-form-label text-md-right">{{ __('Budget du projet') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="budgetProjet" type="text" class="form-control{{ $errors->has('budgetProjet') ? ' is-invalid' : '' }}" name="budgetProjet" value="{{ old('budgetProjet') }}" required autofocus>
+
+                                @if ($errors->has('budgetProjet'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('budgetProjet') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row">
+                            <label for="siteDeMiseEnOeuvre" class="col-md-4 col-form-label text-md-right">{{ __('Site de mise en oeuvre ') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="siteDeMiseEnOeuvre" type="text" class="form-control{{ $errors->has('siteDeMiseEnOeuvre') ? ' is-invalid' : '' }}" name="siteDeMiseEnOeuvre" value="{{ old('siteDeMiseEnOeuvre') }}" required autofocus>
+
+                                @if ($errors->has('siteDeMiseEnOeuvre'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('siteDeMiseEnOeuvre') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                        <div class="form-group row">
+                            <label for="contexteProjet" class="col-md-4 col-form-label text-md-right">{{ __('Contexte du Projet') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="contexteProjet" type="text" class="form-control{{ $errors->has('contexteProjet') ? ' is-invalid' : '' }}" name="contexteProjet" value="{{ old('contexteProjet') }}" required autofocus>
+
+                                @if ($errors->has('contexteProjet'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('contexteProjet') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                    
+                        
+
+
+                       <div class="form-group row">
+                            <label for="questionDeRecherche" class="col-md-4 col-form-label text-md-right">{{ __('La Question de Recherche') }}</label>
+
+                            <div class="col-md-6">
+                                <textarea name="questionDeRecherche" class="form-control{{ $errors->has('questionDeRecherche') ? ' is-invalid' : '' }}" value="{{ old('questionDeRecherche') }}" required autofocus></textarea>
+                                @if ($errors->has('questionDeRecherche'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('questionDeRecherche') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                           <div class="form-group row">
+                            <label for="resumeDesMethodeEtude" class="col-md-4 col-form-label text-md-right">{{ __('Resume des methodes d\'etude' ) }}</label>
+
+                            <div class="col-md-6">
+                                <textarea name="resumeDesMethodeEtude" class="form-control{{ $errors->has('resumeDesMethodeEtude') ? ' is-invalid' : '' }}" value="{{ old('resumeDesMethodeEtude') }}" required autofocus></textarea>
+                                @if ($errors->has('resumeDesMethodeEtude'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('resumeDesMethodeEtude') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+ 
+                        <div class="form-group row">
+                            <label for="beneficeNational" class="col-md-4 col-form-label text-md-right">{{ __('Benefice National' ) }}</label>
+
+                            <div class="col-md-6">
+                                <textarea name="beneficeNational" class="form-control{{ $errors->has('beneficeNational') ? ' is-invalid' : '' }}" value="{{ old('beneficeNational') }}" required autofocus></textarea>
+                                @if ($errors->has('beneficeNational'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('beneficeNational') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div> 
+
+                        <div class="form-group row">
+                            <label for="beneficeInstitutionnel" class="col-md-4 col-form-label text-md-right">{{ __('Benefice Institutionnel' ) }}</label>
+
+                            <div class="col-md-6">
+                                <textarea name="beneficeInstitutionnel" class="form-control{{ $errors->has('beneficeInstitutionnel') ? ' is-invalid' : '' }}" value="{{ old('beneficeInstitutionnel') }}" required autofocus></textarea>
+                                @if ($errors->has('beneficeInstitutionnel'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('beneficeInstitutionnel') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div> 
+
+
+
+
+                        <div class="form-group row">
+                            <label for="equipe_id" class="col-md-4 col-form-label text-md-right">{{ __('Equipe') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="equipe_id" id="equipe_select" class="custom-select custom-select-lg mb-3" onchange="uniteDisable()">
+                                    <option selected>Choisir son equipe hebergeuse</option>
+                                    @foreach($equipes as $equipe)
+                                    
+                                    <option value="{{$equipe->id}}">{{$equipe->nomEquipe}}</option>
+                                    
+                                    @endforeach
+                            </select>   
+                                @if ($errors->has('equipe'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('equipe') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+
+                          <div class="form-group row">
+                            <label for="unite_id" class="col-md-4 col-form-label text-md-right">{{ __('Unite de Recherche') }}</label>
+
+                            <div class="col-md-6">
+                                <select name="unite_id" id="unite_select" class="custom-select custom-select-lg mb-3" onchange="equipeDisable()">
+                                    <option selected>Choisir son unite hebergeuse</option>
+                                    @foreach($unites as $unite)unite
+                                    
+                                    <option value="{{$unite->id}}">{{$unite->nomUnite}}</option>
+                                    
+                                    @endforeach
+                            </select>   
+                                @if ($errors->has('unite'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('unite') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Enregistrer') }}
+                                </button>
+                            </div>
+                        </div>
+
+                </form>
+
+
+                    </div>
+             </div>
+        </div>
+    </div>
+</div>
+@endsection
+
+@section('javascripts')
+<script>
+"use strict";
+function clicked() {
+    // var input_value = document.getElementById('data').value;
+    // document.getElementById('display').innerHTML = input_value;
+    alert('Salut');
+}
+function uniteDisable()
+{    
+document.getElementById("unite_select").disabled = true;
+}
+function equipeDisable()
+{    
+document.getElementById("equipe_select").disabled = true;
+}
+
+
+
+//document.getElementById('equipe_id_listen').addEventListener('click', clicked);;
+</script>
+@stop

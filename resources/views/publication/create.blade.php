@@ -1,11 +1,14 @@
-@extends('layouts.app')
+@extends('layouts.root')
+
 
 @section('content')
+<br>
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Enregistrer Un Publication') }}</div>
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-header text-center">{{ __('Enregistrer une publication') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('publications.store') }}">
@@ -31,12 +34,12 @@
                         </div>
 
                         
-                        <div class="form-group row">
+{{--                         <div class="form-group row">
                             <label for="typePublication_id" class="col-md-4 col-form-label text-md-right">{{ __('Publication lié a quel projet') }}</label>
 
                             <div class="col-md-6">
                                 <select name= "projet_id"class="custom-select custom-select-lg mb-3">
-                                    <option selected>Choisir le Projet concerner </option>
+                                    <option selected>Choisir le Projet concerné</option>
                                     @foreach($projets as $projet)
                                     
                                     <option value="{{$projet->id}}">{{$projet->intitule}}</option>
@@ -50,7 +53,7 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group row">
+ --}}                        <div class="form-group row">
                             <label for="libellePublication" class="col-md-4 col-form-label text-md-right">{{ __('Libelle de la publication') }}</label>
 
                             <div class="col-md-6">
@@ -103,7 +106,7 @@
 
                         
                         <div class="form-group row">
-                            <label for="sourcePublication" class="col-md-4 col-form-label text-md-right">{{ __('Source de la publication') }}</label>
+                            <label for="sourcePublication" class="col-md-4 col-form-label text-md-right">{{ __('Reference de la publication') }}</label>
 
                             <div class="col-md-6">
                                 <input id="sourcePublication" type="text" class="form-control{{ $errors->has('sourcePublication') ? ' is-invalid' : '' }}" name="sourcePublication" value="{{ old('sourcePublication') }}" required autofocus>
@@ -115,14 +118,11 @@
                                 @endif
                             </div>
                         </div>
-
-
-                        
                         <div class="form-group row">
-                            <label for="media" class="col-md-4 col-form-label text-md-right">{{ __('Media la publication') }}</label>
+                            <label for="media" class="col-md-4 col-form-label text-md-right">{{ __('Joindre Un fichier') }}</label>
 
                             <div class="col-md-6">
-                                <input id="media" type="text" class="form-control{{ $errors->has('media') ? ' is-invalid' : '' }}" name="media" value="{{ old('media') }}" required autofocus>
+                                <input id="media" type="file" class="form-control{{ $errors->has('media') ? ' is-invalid' : '' }}" name="media" value="{{ old('media') }}" >
 
                                 @if ($errors->has('media'))
                                     <span class="invalid-feedback" role="alert">
@@ -131,8 +131,23 @@
                                 @endif
                             </div>
                         </div>
+                        
+     {{--                    <div class="form-group row">
+                            <label for="media" class="col-md-4 col-form-label text-md-right">{{ __('Joindre un fichier') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="media" type="file" class="form-control{{ $errors->has('media') ? ' is-invalid' : '' }}" name="media" value="{{ old('media') }}">
 
+                                @if ($errors->has('media'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('media') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+
+ --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -140,23 +155,10 @@
                                 </button>
                             </div>
                         </div>
- 
-
-
-
-
-
-
-
-
-
-
-                </form>
-
-
-                    </div>
+                    </form>
+                </div>
              </div>
         </div>
     </div>
 </div>
-@endsection
+@stop

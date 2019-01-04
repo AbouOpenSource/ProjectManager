@@ -10,6 +10,7 @@ $factory->define(IdeeDeProjet::class, function (Faker $faker) {
     return [
       			
             'institutionSouhaite_id'=>rand(1,20),
+            'intituleIdee'=>$faker->name,
             //partenariat souhaite 
             'institutionProposeur_id'=>rand(20,30),
             //idee propose par institution

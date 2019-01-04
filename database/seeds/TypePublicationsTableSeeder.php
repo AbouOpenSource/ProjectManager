@@ -17,23 +17,27 @@ class TypePublicationsTableSeeder extends Seeder
       DB::table('type_publications')->insert([
       'intituleType' =>'Article',
       'descriptionType'=>$faker->text,
+      'point'=>2
       ]);
 
       DB::table('type_publications')->insert([
       'intituleType' =>'Communication Orale',
       'descriptionType'=>$faker->text,
+      'point'=>2
       ]);
 
 
       DB::table('type_publications')->insert([
       'intituleType' =>'Poster',
       'descriptionType'=>$faker->text,
+      'point'=>2
       ]);
 
 
       DB::table('type_publications')->insert([
       'intituleType' =>'Livre',
       'descriptionType'=>$faker->text,
+      'point'=>5
       ]);
 
 

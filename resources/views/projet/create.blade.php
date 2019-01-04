@@ -1,13 +1,13 @@
-@extends('layouts.master')
-
+@extends('layouts.root')
+@section('title')
+Creation de Projet-PorjectManager
+@stop
 @section('content')
-<br>
-<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Creation de projet') }}</div>
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-header text-center">{{ __('Creation de projet') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('projets.store') }}">
@@ -41,7 +41,6 @@
                                 @endif
                             </div>
                         </div>
-
 
 
                         <div class="form-group row">
@@ -284,6 +283,7 @@
     </div>
 </div>
 @endsection
+
 @section('javascripts')
 <script>
 "use strict";

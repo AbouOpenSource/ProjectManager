@@ -17,21 +17,13 @@ class Publication extends Model
 		'datePublication',
 		'sourcePublication',
 		'media',
-
-
-
 	];
 
-	
+	public function auteur()
+	{
+		return $this->belongsTo('App\Models\Cv\PersonneInterne','personne_id');
+	}
 
-
-
-
-
-
-
-
-
-
-    protected $table= 'publications';
+protected $dates=['datePublication'];
+protected $table= 'publications';
 }

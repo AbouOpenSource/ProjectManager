@@ -1,17 +1,21 @@
-@extends('layouts.master')
-
+@extends('layouts.user')
+@section('title')
+L'inscription-ProjectManger
+@stop
 @section('content')
+<br>
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-20">
-            <div class="card">
-                <div class="card-header">{{ __('Inscription') }}</div>
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-header text-center">{{ __('Inscription') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
@@ -90,7 +94,8 @@
                             <label for="nationalite" class="col-md-4 col-form-label text-md-right">{{ __('Nationalite') }}</label>
 
                             <div class="col-md-6">
-                                <input id="nationalite" type="text" class="form-control{{ $errors->has('nationalite') ? ' is-invalid' : '' }}" name="nationalite" value="{{ old('nationalite') }}" required autofocus>
+                                {{-- <input id="nationalite" type="text" class="form-control{{ $errors->has('nationalite') ? ' is-invalid' : '' }}" name="nationalite" value="{{ old('nationalite') }}" required autofocus>
+                                 --}}<select id="nationalite" name="nationalite "class="selectpicker countrypicker form-control" data-live-search="true" data-default="Burkina Faso"></select>
 
                                 @if ($errors->has('nationalite'))
                                     <span class="invalid-feedback" role="alert">
@@ -191,7 +196,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -205,12 +210,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmer le mot de passe') }}</label>
 
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+
+                        
+        
+    
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -226,3 +235,24 @@
     </div>
 </div>
 @endsection
+@section('javascripts')
+<script src="country/countrypicker.js"></script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+
+
+
+@stop

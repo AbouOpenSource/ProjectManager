@@ -1,5 +1,7 @@
-@extends('layouts.master')
-
+@extends('layouts.user')
+@section('title')
+Login-ProjectManager
+@stop
 @section('content')
 <br>
 <br>
@@ -7,8 +9,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Authentification') }}</div>
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-header text-center">{{ __('Authentification') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -48,20 +50,20 @@
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Souvenir De') }}
+                                        {{ __('Se rappeller de moi') }}
                                     </label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div cla/ss="col-md-8 offset-md-4">
+                            <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                    {{ __('Mot de passe oublié?') }}
                                 </a>
                             </div>
                         </div>
@@ -71,4 +73,5 @@
         </div>
     </div>
 </div>
+
 @endsection

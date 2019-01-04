@@ -18,8 +18,10 @@ class PublicationsController extends Controller
      */
     public function index()
     {
-        $publications=Publication::all()->where('personne_id','==',Auth::user()->id);
+        $publications=Publication::all();
+        
         return view('publication.index')->with('publications',$publications);         
+    
     }
 
     /**
@@ -29,28 +31,28 @@ class PublicationsController extends Controller
      */
     public function create()
     {
-        if (Auth::check())
-                    {
-                            $user=Auth::user();
-                 //           dd($user);
-                            if($user->unite_id)
-                                {
-                                     $struct=UniteDeRecherche::find($user->unite_id);
-                                }
-                             else
-                                {
-                                     $struct=Equipe::find($user->equipe_id);
-                                }
+     
 
-                             $projets=$struct->projet; 
+                            // $user=Auth::user();
+                 
+                            // if($user->unite_id)
+                            //     {
+                            //          $struct=UniteDeRecherche::find($user->unite_id);
+                            //     }
+                            //  else
+                            //     {
+                            //          $struct=Equipe::find($user->equipe_id);
+                            //     }
+
+                            //  $projets=$struct->projet; 
                            
                              $typePublications=TypePublication::all();
 
 
                             return view('publication.create')
-                                ->with('typePublications',$typePublications)
-                                ->with('projets',$projets);
-                    }
+                                ->with('typePublications',$typePublications);
+                               // ->with('projets',$projets);
+                    
 
 
     }
@@ -73,8 +75,7 @@ class PublicationsController extends Controller
             'description'=>$request->description,
             'datePublication'=>$request->datePublication,
             'sourcePublication'=>$request->sourcePublication,
-            'media'=>$request->media,
-
+            
 
 
         ]);
@@ -90,7 +91,7 @@ class PublicationsController extends Controller
      */
     public function show($id)
     {
-        //
+        
     }
 
     /**
@@ -101,7 +102,7 @@ class PublicationsController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -113,7 +114,7 @@ class PublicationsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
     }
 
     /**

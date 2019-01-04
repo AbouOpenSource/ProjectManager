@@ -5,37 +5,23 @@ use App\Models\Projet\Statut;
 use App\Models\Cv\PersonneInterne;
 use App\Models\StructAdmin\UniteDeRecherche;
 use App\Models\Institution\Institution;
-
-// Route::get('/test', function(){
-// return view('publicView.menu');
-Route::get('/test', function(){
-return view('layouts.master');
-});
-
-//});
-// Route::get('/tester', function(){
-// return view('publicView.menu2');
-
-// });
-
-Route::get('users','publicViewController@getUsers')->name('get.users');
-Route::get('tester',function(){
-
-return view('datatables.index');
-
-});
-
-// Route::get('/datatable','publicViewController@getProjets')->name('get.projets');
+use App\Models\Publication\Publication;
 
 
-
-// Route::get('/datatable', function(){
-
-//     $projets=Projet::all();
-// 	return view('publicView.table',compact('projets'));
-// });
+//User profil route
+Route::get('/profile','UserController@profile')->name('profile');
+Route::post('/profile','UserController@updateAvatar');
 
 
+//Chemins des informations publiques 
+Route::get('/acceuil','PublicController@displayAcceuil')->name('get.home');
+Route::get('/projetspublics', 'PublicController@indexProjet')->name('get.projetsPublics');
+Route::get('/chercheurs', 'PublicController@indexChercheur')->name('get.chercheurs');
+Route::get('/publicationsPubliques','PublicController@indexPublication')->name('get.publications');
+
+
+//Chemins particuliers pour quelques informations
+Route::get('/chercheur/{id}/publications','PrivateController@indexPubliPerso')->name('get.publiperso');
 
 
 
@@ -49,6 +35,9 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+
+
+//Ressources fixées
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('bourses','BoursesController');
@@ -70,3 +59,7 @@ Route::resource('uniterecherches','UniteDeRecherchesController');
 Route::resource('publications','PublicationsController');
 
 Route::get('projets/{id}/changeStatut/{idStatut}','ProjetsController@changeStatut');
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
