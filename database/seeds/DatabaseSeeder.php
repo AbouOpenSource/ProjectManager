@@ -27,9 +27,9 @@ class DatabaseSeeder extends Seeder
           AssociationsTableSeeder::class,
           PersonneInternesTableSeeder::class,
           TypeProjetsTableSeeder::class,
-          //ProjetsTableSeeder::class,
+          ProjetsTableSeeder::class,
           InstitutionsTableSeeder::class,
-          //IdeeDeProjetTableSeeder::class,
+          IdeeDeProjetTableSeeder::class,
         ]);
     }
 }

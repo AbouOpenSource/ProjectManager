@@ -11,7 +11,7 @@
                 <div class="card-header text-center">{{ __('Enregistrer une publication') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('publications.store') }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('publications.store') }}" >
                         @csrf
                         <div class="form-group row">
                             <label for="typePublication_id" class="col-md-4 col-form-label text-md-right">{{ __('Type de Publication') }}</label>
@@ -34,26 +34,7 @@
                         </div>
 
                         
-{{--                         <div class="form-group row">
-                            <label for="typePublication_id" class="col-md-4 col-form-label text-md-right">{{ __('Publication lié a quel projet') }}</label>
-
-                            <div class="col-md-6">
-                                <select name= "projet_id"class="custom-select custom-select-lg mb-3">
-                                    <option selected>Choisir le Projet concerné</option>
-                                    @foreach($projets as $projet)
-                                    
-                                    <option value="{{$projet->id}}">{{$projet->intitule}}</option>
-                                    
-                                    @endforeach
-                            </select>   
-                                @if ($errors->has('typePublication_id'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('typePublication_id') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
- --}}                        <div class="form-group row">
+      <div class="form-group row">
                             <label for="libellePublication" class="col-md-4 col-form-label text-md-right">{{ __('Libelle de la publication') }}</label>
 
                             <div class="col-md-6">
@@ -115,6 +96,8 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('sourcePublication') }}</strong>
                                     </span>
+                                @else
+                                <small id="emailHelp" class="form-text text-muted">Lien web de publication</small>
                                 @endif
                             </div>
                         </div>

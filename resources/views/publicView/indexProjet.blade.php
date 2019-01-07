@@ -63,11 +63,6 @@ Les Projets-ProjectManager
 @stop
 
 @section('javascripts')
-    {{-- <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-  
-    <script src="../assets/js/argon.js?v=1.0.0"></script>
-     --}} 
     <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <script>
         $(document).ready( function () {

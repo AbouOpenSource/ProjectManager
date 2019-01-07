@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 use App\Models\StructAdmin\Equipe;
 use App\Models\StructAdmin\UniteDeRecherche;
-
+use Auth;
 use Illuminate\Http\Request;
 use App\Models\Projet\Projet;
 use App\Models\Projet\TypeProjet;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
 class ProjetsController extends Controller
 {
     /**
@@ -45,18 +48,18 @@ class ProjetsController extends Controller
      */
     public function store(Request $request)
     {
-        Projet::create([
+     $projet=Projet::create([
             'codeMuraz'=>$request->codeMuraz,
-            // 'unite_id'=>,
+            //'unite_id'=>,
              'equipe_id'=>$request->equipe_id,
-            // 'ideeDeProjet_id'=>,
+            //'ideeDeProjet_id'=>,
              'intitule'=>$request->intitule,
              'dureeProjet'=>$request->dureeProjet,
             'resumeProjet'=>$request->resumeProjet,
             'budgetProjet'=>$request->budgetProjet,
             'siteDeMiseEnOeuvre'=>$request->siteDeMiseEnOeuvre,
             'contexteProjet'=>$request->contexteProjet,
-           // 'nombreEmploi'=>$request->nombreEmploi,
+           //'nombreEmploi'=>$request->nombreEmploi,
             'fraisIndirectverseCM'=>$request->fraisIndirectverseCM,
             'typeProjet_id'=>$request->typeProjet_id,
             'questionDeRecherche'=>$request->questionDeRecherche,
@@ -64,8 +67,10 @@ class ProjetsController extends Controller
             'beneficeNational'=>$request->beneficeNational,
             'beneficeInstitutionnel'=>$request->beneficeInstitutionnel,
         ]);
-    
-        $this->index();
+        
+            $permission = Permission::create(['name' => 'edit projet '.$projet->id]);
+            Auth::user()->givePermissionTo('edit projet '.$projet->id);
+            return redirect('/projets');
     }
 
     /**

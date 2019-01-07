@@ -1,11 +1,21 @@
 <?php
-
 use App\Models\Projet\Projet;
 use App\Models\Projet\Statut;
 use App\Models\Cv\PersonneInterne;
 use App\Models\StructAdmin\UniteDeRecherche;
 use App\Models\Institution\Institution;
 use App\Models\Publication\Publication;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+
+//Pour les tests
+Route::get('/tester',function(){
+  
+  Alert::info('Info Message', 'Optional Title');
+  return view('bourse.create'); 
+});
+
+
 
 
 //User profil route
@@ -21,7 +31,7 @@ Route::get('/publicationsPubliques','PublicController@indexPublication')->name('
 
 
 //Chemins particuliers pour quelques informations
-Route::get('/chercheur/{id}/publications','PrivateController@indexPubliPerso')->name('get.publiperso');
+Route::get('/chercheur/{id}/publications','PublicationsController@indexPubliPerso')->name('get.publiperso');
 
 
 
@@ -60,6 +70,3 @@ Route::resource('publications','PublicationsController');
 
 Route::get('projets/{id}/changeStatut/{idStatut}','ProjetsController@changeStatut');
 
-Route::group(['prefix' => 'admin'], function () {
-    Voyager::routes();
-});

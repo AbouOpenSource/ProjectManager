@@ -24,7 +24,11 @@
                     <div class="card-header text-center">Profile de {{ $user->name }}</div>
                         {{ $user->avatar }}
                    
-            
+                    @role('writer')
+                    I am a writer!
+                    @else
+                    I am not a writer...
+                    @endrole
 
 
 

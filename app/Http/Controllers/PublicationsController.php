@@ -3,14 +3,53 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Publication\Publication;
 use App\Models\Publication\TypePublication;
 use App\Models\Projet\Projet;
 use App\Models\StructAdmin\Equipe; 
 use App\Models\StructAdmin\UniteDeRecherche;
+use Carbon\Carbon;
 
 class PublicationsController extends Controller
 {
+    
+
+
+    
+        public function __construct()
+    {
+        Carbon::setLocale(config('app.locale'));
+        Carbon::setToStringFormat('d/m/Y à H:i:s');
+    }
+
+
+
+
+
+
+         public function indexPubliPerso($id)
+         {
+            setlocale(LC_TIME, 'fr');
+            $publications=Publication::where('personne_id',$id)->get();
+
+            return view('publication.indexperso')->with(['publications'=>$publications]);
+         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -67,22 +106,36 @@ class PublicationsController extends Controller
     {
 
 
-        Publication::create([
-            'typePublication_id'=>$request->typePublication_id,
-            'projet_id'=>$request->projet_id,
-            'libellePublication'=>$request->libellePublication,
-            'personne_id'=>Auth::user()->id,
-            'description'=>$request->description,
-            'datePublication'=>$request->datePublication,
-            'sourcePublication'=>$request->sourcePublication,
-            
+
+return $request->media;
+
+return Storage::putFile('public',$request->file('media'));
 
 
-        ]);
 
-      $this->index();  
-    }
 
+
+ //        if($request->hasFile('media'))
+ //        { 
+ //        Publication::create([
+ //            'typePublication_id'=>$request->typePublication_id,
+ //            'projet_id'=>$request->projet_id,
+ //            'libellePublication'=>$request->libellePublication,
+ //            'personne_id'=>Auth::user()->id,
+ //            'description'=>$request->description,
+ //            'datePublication'=>$request->datePublication,
+ //            'sourcePublication'=>$request->sourcePublication,
+ //            'media'=> Storage::putFile('public/publications',$request->file('media'))
+
+
+ //         ]);
+ //    }
+                    
+
+ // return redirect('/chercheur/{id}/publications',Auth::user()->id);
+ //     }
+
+}
     /**
      * Display the specified resource.
      *

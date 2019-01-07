@@ -72,12 +72,15 @@ Creation de Projet-PorjectManager
                             <label for="dureeProjet" class="col-md-4 col-form-label text-md-right">{{ __('Estimation de la durée du projet') }}</label>
 
                             <div class="col-md-6">
-                                <input id="dureeProjet" type="text" class="form-control{{ $errors->has('dureeProjet') ? ' is-invalid' : '' }}" name="dureeProjet" value="{{ old('dureeProjet') }}" required autofocus>
+                                <input id="dureeProjet" type="number" class="form-control{{ $errors->has('dureeProjet') ? ' is-invalid' : '' }}" name="dureeProjet" value="{{ old('dureeProjet') }}" required autofocus min="1">
 
                                 @if ($errors->has('dureeProjet'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('dureeProjet') }}</strong>
                                     </span>
+                                @else
+                                <small id="emailHelp" class="form-text text-muted">Durée du projet en mois</small>
+                                
                                 @endif
                             </div>
                         </div>

@@ -94,9 +94,9 @@ L'inscription-ProjectManger
                             <label for="nationalite" class="col-md-4 col-form-label text-md-right">{{ __('Nationalite') }}</label>
 
                             <div class="col-md-6">
-                                {{-- <input id="nationalite" type="text" class="form-control{{ $errors->has('nationalite') ? ' is-invalid' : '' }}" name="nationalite" value="{{ old('nationalite') }}" required autofocus>
-                                 --}}<select id="nationalite" name="nationalite "class="selectpicker countrypicker form-control" data-live-search="true" data-default="Burkina Faso"></select>
-
+                                 <input id="nationalite" type="text" class="form-control{{ $errors->has('nationalite') ? ' is-invalid' : '' }}" name="nationalite" value="{{ old('nationalite') }}" required autofocus>
+                                 {{-- <select id="nationalite" name="nationalite "class="selectpicker countrypicker form-control" data-live-search="true" data-default="Burkina Faso"></select>
+ --}}
                                 @if ($errors->has('nationalite'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('nationalite') }}</strong>
