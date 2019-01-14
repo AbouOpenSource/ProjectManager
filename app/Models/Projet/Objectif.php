@@ -10,7 +10,11 @@ class Objectif extends Model
 
 
 
-
+		protected $fillable=['projet_id',
+	'intiule',
+	'description',
+	'typeObjectif',
+	];
 
 
 

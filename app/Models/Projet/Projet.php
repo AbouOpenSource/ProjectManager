@@ -44,7 +44,7 @@ public function Currentstatut()
 		}
 	public function EquipementAcquis()
 		{
-		return $this->hasMany('App\Models\Cv\EquipementAcquis','projet_id'); 
+		return $this->hasMany('App\Models\Projet\EquipementAcquis','projet_id'); 
 		
 		}
 	public function Objectif()
@@ -55,6 +55,17 @@ public function Currentstatut()
 		{
 		return $this->hasMany('App\Models\Projet\ResultatObtenu');
 		}
+	public function Activite()
+		{
+		return $this->hasMany('App\Models\Projet\Activite');
+		}
+	public function publication()
+		{
+		return $this->hasMany('App\Models\Publication\Publication');
+		}
+		
+
+
 	public function CoInvestigateurInterne()
 		{
 		return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'co_investigateur_internes', 
@@ -81,5 +92,29 @@ public function Currentstatut()
       'projet_id', 'personne_id');
   		}
   	protected $table= 'projets';
+
+
+  		 public function Equipe()
+    {
+        
+        return $this->belongsTo('App\Models\StructAdmin\Equipe','equipe_id');
+    
+    }
+
+
+         public function UniteDeRecherche()
+    {
+        //return 'Salut';
+        return $this->belongsTo('App\Models\StructAdmin\UniteDeRecherche','unite_id');
+    
+    }
+
+    public function Perspective()
+    {
+
+    	return $this->hasMany('App\Models\Projet\Perspective');
+    }
+
+
 
 }

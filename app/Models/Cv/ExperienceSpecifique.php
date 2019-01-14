@@ -8,9 +8,10 @@ class ExperienceSpecifique extends Model
 {
     
 protected $fillable=[
-
-
-
+'personne_id',
+'resume',
+'dateFinExperience',
+'pays'
 	];
 
 	

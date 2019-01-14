@@ -17,23 +17,26 @@ Mes publications
                 <thead class="thead-light">
                   <tr>
                     <th scope="col">Intitule de la Publication</th>
+                    <th scope="col">Type de Publication</th>
                     <th scope="col">Date de publication</th>
+                    <th scope="col">Fichier joint</th>
                     </tr>
                 </thead>
               <tbody class="tbody-dark">
                   @foreach($publications as $publication)
+                  
                   <tr>
-                    <th scope="row">
-                      <div class="media align-items-center">
-                       <div class="media-body">
-                          <span class="mb-0 text-sm"><a href="">{{$publication->libellePublication}}</a></span>
-                        </div>
-                      </div>
-                    </th>
-                    <td>
-                     {{$publication->datePublication->format('M d Y')}}
-                    </td>
-                    @endforeach
+                    <td >{{$publication->libellePublication}}</td>
+                    <td >{{$publication->typePublication->intituleType}}</td>
+                    <td >{{$publication->datePublication->format('M d Y')}}</td>
+                      <td>
+                       {{-- @if() --}}
+                        <a href=""><i class="far fa-file-pdf"></i></a>
+                     {{--  @endif --}}
+                 {{-- {{$publication->file}} --}}   
+                      </td>
+                  </tr>
+                @endforeach
                 </tbody>
               </table>
 </div>
@@ -44,7 +47,12 @@ Mes publications
 
 @stop
 @section('javascripts')
-
+<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+    <script>
+        $(document).ready( function () {
+            $('#datatable').DataTable();
+        });
+    </script>
 
 
 @stop

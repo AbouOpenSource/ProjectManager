@@ -1,6 +1,6 @@
 @extends('layouts.root')
 @section('css')
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
 @stop
 @section('content')
 
@@ -15,26 +15,30 @@
                   <tr>
                     <th scope="col">Auteur</th>
                     <th scope="col">Intitule de la Publication</th>
+                    <th scope="col">Type de publication</th>
                     <th scope="col">Date de publication</th>
                   </tr>
                 </thead>
               <tbody class="tbody-dark">
+                  
                   @foreach($publications as $publication)
                   <tr>
-                    <td scope="row">
-                      <div class="media align-items-center">
-                       <div class="media-body">
-                          <span class="mb-0 text-sm"><a href="">{{$publication->auteur->name}}</a></span>
-                        </div>
-                      </div>
+                    <td>
+                      <a href="">{{$publication->auteur->name}}</a>
                     </td>
                     <td>
                      {{$publication->libellePublication}}
                     </td>
                     <td>
+                     {{$publication->typePublication->intituleType}}
+                    </td>
+                    <td>
                      {{$publication->datePublication->format('M d Y')}}
                     </td>
+                  </tr>
                     @endforeach
+                
+
                 </tbody>
               </table>
 </div>

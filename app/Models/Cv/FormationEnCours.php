@@ -9,7 +9,11 @@ class FormationEnCours extends Model
    
 
 	protected $fillable=[
-
+		'typeFormationEnCours_id',
+		'libelleFormation',
+		'debut',
+		'lieuFormation',
+		'personne_id',
 
 
 	];

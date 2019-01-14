@@ -8,7 +8,13 @@ class Reference extends Model
 {
 
 
-
+protected $fillable=[
+	'nomReference',
+	'prenomReference',
+	'emailReference',
+	'telephoneReference',
+	'personne_id',
+	];
 
 
 

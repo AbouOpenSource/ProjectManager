@@ -111,6 +111,9 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('media') }}</strong>
                                     </span>
+                                @else
+                                <small id="emailHelp" class="form-text text-muted">Version admise pdf, jpeg, png</small>
+                                
                                 @endif
                             </div>
                         </div>

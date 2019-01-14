@@ -231,14 +231,14 @@ Creation de Projet-PorjectManager
                             <label for="equipe_id" class="col-md-4 col-form-label text-md-right">{{ __('Equipe') }}</label>
 
                             <div class="col-md-6">
-                                <select name="equipe_id" id="equipe_select" class="custom-select custom-select-lg mb-3" onchange="uniteDisable()">
+                        <select name="equipe_id" id="equipe_select" class="custom-select custom-select-lg mb-3" onchange="uniteDisable()">
                                     <option selected>Choisir son equipe hebergeuse</option>
                                     @foreach($equipes as $equipe)
                                     
                                     <option value="{{$equipe->id}}">{{$equipe->nomEquipe}}</option>
                                     
                                     @endforeach
-                            </select>   
+                        </select>   
                                 @if ($errors->has('equipe'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('equipe') }}</strong>
@@ -252,7 +252,8 @@ Creation de Projet-PorjectManager
                             <label for="unite_id" class="col-md-4 col-form-label text-md-right">{{ __('Unite de Recherche') }}</label>
 
                             <div class="col-md-6">
-                                <select name="unite_id" id="unite_select" class="custom-select custom-select-lg mb-3" onchange="equipeDisable()">
+                            
+                            <select name="unite_id" id="unite_select" class="custom-select custom-select-lg mb-3" onchange="equipeDisable()">
                                     <option selected>Choisir son unite hebergeuse</option>
                                     @foreach($unites as $unite)unite
                                     
@@ -290,18 +291,17 @@ Creation de Projet-PorjectManager
 @section('javascripts')
 <script>
 "use strict";
-function clicked() {
-    // var input_value = document.getElementById('data').value;
-    // document.getElementById('display').innerHTML = input_value;
-    alert('Salut');
-}
+document.getElementById("equipe_select").addEventListener("change", function() {});
 function uniteDisable()
 {    
-document.getElementById("unite_select").disabled = true;
+    alert('Salut')
+    document.getElementById("unite_select").disabled = true;
+    
 }
+
 function equipeDisable()
-{    
-document.getElementById("equipe_select").disabled = true;
+{    alert('Salut')
+    document.getElementById("equipe_select").disabled = true;
 }
 
 

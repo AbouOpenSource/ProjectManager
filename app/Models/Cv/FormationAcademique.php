@@ -8,7 +8,10 @@ class FormationAcademique extends Model
 {
     
 	protected $fillable=[
-
+'personne_id',
+'nomFormationAcademique',
+'dateFormationAcademique',
+'lieuFormationAcademique'
 
 
 	];

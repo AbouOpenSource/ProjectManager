@@ -15,6 +15,8 @@ class CreatePersonneInternesTable extends Migration
     {
         Schema::create('personne_internes', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('matricule')->nullable();
+            
             $table->unsignedInteger('equipe_id')->nullable();
             $table->unsignedInteger('unite_id')->nullable();
             $table->string('posteOccupe',50)->nullable();

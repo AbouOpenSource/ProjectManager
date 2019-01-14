@@ -22,5 +22,5 @@ class Diplome extends Model
 
 
 
- protected $table='diplomes';
+ protected $table='type_diplomes';
 }

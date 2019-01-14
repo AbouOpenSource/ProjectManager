@@ -17,7 +17,7 @@ class DepartementsTableSeeder extends Seeder
       DB::table('departements')->insert([
       'direction_id' => 1 ,
       'nomDepartement'=>'Departement des Sciences Biomédiadicales',
-      'descriptionDepartement'=>$faker->text,
+      'descriptionDepartement'=>'',
       'objectifDepartement'=>$faker->text
       ]);
 

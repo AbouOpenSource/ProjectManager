@@ -31,7 +31,7 @@ class PublicationsController extends Controller
          public function indexPubliPerso($id)
          {
             setlocale(LC_TIME, 'fr');
-            $publications=Publication::where('personne_id',$id)->get();
+            $publications=Publication::with('typePublication')->where('personne_id',$id)->get();
 
             return view('publication.indexperso')->with(['publications'=>$publications]);
          }
@@ -57,7 +57,7 @@ class PublicationsController extends Controller
      */
     public function index()
     {
-        $publications=Publication::all();
+        $publications=Publication::with('typePublication')->get();
         
         return view('publication.index')->with('publications',$publications);         
     
@@ -107,35 +107,59 @@ class PublicationsController extends Controller
 
 
 
-return $request->media;
+//return $request->media;
 
-return Storage::putFile('public',$request->file('media'));
-
-
+//return Storage::putFile('public',$request->file('media'));
 
 
+        if($request->hasFile('media'))
+         { 
+            $request->file('media');
+            //$filename=time().$request->file('media')->getClientOriginalExtension();
+            $filename=$request->media->store('publication');
 
- //        if($request->hasFile('media'))
- //        { 
- //        Publication::create([
- //            'typePublication_id'=>$request->typePublication_id,
- //            'projet_id'=>$request->projet_id,
- //            'libellePublication'=>$request->libellePublication,
- //            'personne_id'=>Auth::user()->id,
- //            'description'=>$request->description,
- //            'datePublication'=>$request->datePublication,
- //            'sourcePublication'=>$request->sourcePublication,
- //            'media'=> Storage::putFile('public/publications',$request->file('media'))
+            
 
 
- //         ]);
- //    }
-                    
+    $file = $request->file('media');
+    // generate a new filename. getClientOriginalExtension() for the file extension
+    $filename = 'publication-' . time() . '.' . $file->getClientOriginalExtension();
+    // save to storage/app/photos as the new $filename
+    $path = $file->storeAs('publications', $filename);
 
- // return redirect('/chercheur/{id}/publications',Auth::user()->id);
- //     }
+            Publication::create([
+             'typePublication_id'=>$request->typePublication_id,
+             'projet_id'=>$request->projet_id,
+             'libellePublication'=>$request->libellePublication,
+             'personne_id'=>Auth::user()->id,
+             'description'=>$request->description,
+             'datePublication'=>$request->datePublication,
+             'sourcePublication'=>$request->sourcePublication,
+             'media'=> $path,
+             ]);
 
+            }
+        else
+            {
+            
+            Publication::create([
+             
+             'typePublication_id'=>$request->typePublication_id,
+             'projet_id'=>$request->projet_id,
+             'libellePublication'=>$request->libellePublication,
+             'personne_id'=>Auth::user()->id,
+             'description'=>$request->description,
+             'datePublication'=>$request->datePublication,
+             'sourcePublication'=>$request->sourcePublication,
+          
+
+          ]);
 }
+
+  return redirect()->route('get.publiperso',Auth::user()->id);
+}
+
+
     /**
      * Display the specified resource.
      *

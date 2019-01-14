@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class ResultatObtenu extends Model
 {
 
-	protected $fillable=[
-
-
-
+	protected $fillable=['projet_id',
+	'contenu',
+	'dateRealisation',
+	'detailResutltat',
 	];
 
 	protected $dates = ['dateRealisation'];

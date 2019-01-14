@@ -17,7 +17,7 @@ class CreateQualificationPersonneInternesTable extends Migration
             $table->unsignedInteger('personne_id');
             $table->unsignedInteger('qualification_id');
             
-            $table->primary('personne_id', 'qualification_id');
+            $table->primary(['personne_id', 'qualification_id']);
         
             $table->timestamps();
         });

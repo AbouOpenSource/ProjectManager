@@ -9,15 +9,12 @@ class Perspective extends Model
 
 	protected $fillable=[
 
-
+'projet_id',
+'contenu'
 
 	];
 
-	protected function getDateFormat()
-		{
-
-					return 'd/m/Y';
-		}
+	
 
 
 

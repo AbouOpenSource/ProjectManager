@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\StructAdmin\UniteDeRecherche;
+use App\Models\Projet\Projet;
 
 class UniteDeRecherchesController extends Controller
 {
@@ -83,4 +84,17 @@ class UniteDeRecherchesController extends Controller
     {
         //
     }
+
+   public function getProjet($id)
+   {
+        $projets=Projet::where('unite_id',$id)->get();
+       // return $projets;
+        return view('uniterecherche.indexProjet',['projets'=>$projets]);
+   }
+
+
+
+
+
+
 }

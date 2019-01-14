@@ -9,6 +9,10 @@ use App\Models\Projet\Projet;
 use App\Models\Projet\TypeProjet;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
+use App\Models\Projet\ResultatObtenu;
+use App\Models\Projet\Objectif;
+
+
 
 class ProjetsController extends Controller
 {
@@ -136,14 +140,35 @@ class ProjetsController extends Controller
         {
           Projet::find($idProjet)->Statut()->attach($idStatut, ['debutStatut' => now()]);    
         }
-       //   else
-       //  {              
-       // // $page->tags()->wherePivot('finStatut', null)->sync($tagIds);
-       //  }   
-
+       
 }
+    public function addResultat(Request $request, $idProjet)
+    { 
+            
+            ResultatObtenu::create([
+                'projet_id'=>$idProjet,
+                'contenu'=>$request->contenu,
+                'dateRealisation'=>now(),
+                'detailResutltat'=>' ',
+            ]);        
+    
+         return redirect()->route('projets.show',$idProjet);
+
+    }
+
+    public function addObectif(Request $request, $idProjet)
+    {
+        Objectif::create([
+            'projet_id'=>$idProjet,
+            'intiule'=>'Titre',
+            'description'=>$request->description,
+            'typeObjectif'=>$request->typeObjectif,
 
 
+        ]);
+
+     return redirect()->route('projets.show',$idProjet);
 
 
+    }
 }

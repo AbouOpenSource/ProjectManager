@@ -30,4 +30,17 @@ public function Projet()
 	return $this->hasMany('App\Models\Projet\Projet');
 }
 
+public function Associe()
+		{					
+		return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'associe_internes', 
+      'equipe_id', 'personne_id')
+		;
+
+		}	
+
+
+
+
+
+
 }

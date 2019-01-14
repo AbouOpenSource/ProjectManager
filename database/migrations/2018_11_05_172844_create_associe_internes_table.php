@@ -16,6 +16,7 @@ class CreateAssocieInternesTable extends Migration
         Schema::create('associe_internes', function (Blueprint $table) {
             $table->unsignedInteger('personne_id');
             $table->unsignedInteger('equipe_id');
+            $table->unsignedInteger('projet_id')->nullable();
             $table->primary(['personne_id', 'equipe_id']);
             $table->timestamps();
         });

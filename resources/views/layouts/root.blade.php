@@ -16,11 +16,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <!-- Font Awesome JS -->
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    
+
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.32.4/sweetalert2.js"></script>
-    {{-- <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-     --}}@yield('css')
+
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    
+
+    @yield('css')
     
 </head>
 <body>
@@ -62,10 +69,10 @@
                 
 @role('chef unite')
                 <li>
-                    <a href="#pageSubmenuUnite" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Unité de recherche </a>
-                    <ul class="collapse list-unstyled" id="#pageSubmenuUnite">
+                    <a href="#pageUnite" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Unite :{{Auth::user()->UniteDeRechercheChef->first()->nomUnite}} </a>
+                    <ul class="collapse list-unstyled" id="pageUnite">
                         <li>
-                            <a href="">Les projets au niveau de l'unité</a>
+                            <a href="{{route('get.UniteProjet',Auth::user()->UniteDeRechercheChef->first()->id)}}">Les projets de {{Auth::user()->UniteDeRechercheChef->first()->nomUnite}} </a>
                         </li>
                         <li>
                             <a href="{{route('get.publiperso',Auth::user()->id)}}">Faire un reporting</a>
@@ -136,7 +143,7 @@
 
 
                 <li>
-                    <a href="{{-- {{route('personneinternes.show',Auth::id)}} --}}">Mes informations</a>
+                    <a href="{{route('profile')}}">Mes informations</a>
                 </li>
                 <li>
                     <a href="#">Contactez l'administrateur</a>
@@ -209,10 +216,10 @@
                     </div>
                 </div>
             </nav>
+                @yield('content')
 
-        @yield('content')    
+            
     </div>
-        
 </body>           
    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <!-- Popper.JS -->
@@ -222,16 +229,19 @@
     <!-- jQuery Custom Scroller CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     
-    @yield('javascritps')
     
+    
+  
 
-
-    <script type="text/javascript">
+ <script type="text/javascript">
+   @yield('javascripts')
+   
         $(document).ready(function () {
             $("#sidebar").mCustomScrollbar({
                 theme: "minimal"
             });
 
+            
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar, #content').toggleClass('active');
                 $('.collapse.in').toggleClass('in');
@@ -241,4 +251,4 @@
 
     </script>
 
-</html>
+ </html>

@@ -28,6 +28,10 @@ public function Projet()
 	return $this->hasMany('App\Models\Projet\Projet','unite_id');
 }
 
+public function Projet()
+{
+	return $this->hasMany('App\Models\Projet\Projet','unite_id');
+}
 
 
 
@@ -37,5 +41,11 @@ public function Projet()
 			{
 				return $this->hasMany('App\Models\Cv\PersonneInterne','unite_id');
 			}
+
+
+	
+
+
+
 
 }

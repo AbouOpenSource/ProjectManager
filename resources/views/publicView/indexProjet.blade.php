@@ -5,11 +5,8 @@ Les Projets-ProjectManager
 @section('css')
 
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  {{-- <link type="text/css" href="../assets/css/argon.css?v=1.0.0" rel="stylesheet">
-   --}}
-
    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css"> 
-   @endsection
+@endsection
 
 @section('content')
 <div class="container ">

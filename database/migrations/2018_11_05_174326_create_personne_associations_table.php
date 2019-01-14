@@ -17,7 +17,7 @@ class CreatePersonneAssociationsTable extends Migration
             $table->unsignedInteger('personne_id');
             $table->unsignedInteger('association_id');
             
-            $table->primary('personne_id', 'association_id');
+            $table->primary(['personne_id','association_id']);
         
             $table->timestamps();
         });

@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
           SectionsTableSeeder::class,
           UniteDeRecherchesTableSeeder::class,
           LanguesTableSeeder::class,
+          QualificationsTableSeeder::class,
           TypeDiplomesTableSeeder::class,
           TypeFormationEnCoursTableSeeder::class,
           TypeInstitutionsTableSeeder::class,
