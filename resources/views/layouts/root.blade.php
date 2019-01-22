@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
    <title>@yield('title')</title>
 
-    <!-- Bootstrap CSS CDN -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <!-- Our Custom CSS -->
-    <link rel="stylesheet" href="{{asset('style2.css')}}">
-    <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <!-- Font Awesome JS -->
-    
+<!-- Bootstrap CSS CDN -->
+   
+   {{--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+--}} 
 
+<link rel="stylesheet" href="{{ asset('boot/dist/css/bootstrap.min.css') }}">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.32.4/sweetalert2.js"></script>
-
-
-
-    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
-    
-
+<!-- Our Custom CSS -->
+<link rel="stylesheet" href="{{asset('style2.css')}}">
+<!-- Scrollbar Custom CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     @yield('css')
-    
-</head>
+
+<!-- Font Awesome JS -->
+
+{{--
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.33.1/sweetalert2.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.32.4/sweetalert2.js"></script>
+--}}
+
+
+<script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 <body>
 
     <div class="wrapper">
@@ -48,7 +48,7 @@
                             <a href="{{route('projets.create')}}">Creer un projet</a>
                         </li>
                         <li>
-                            <a href="#">Extraire un projet</a>
+                            <a href="{{route('projets.index')}}">Projets</a>
                         </li>
                     </ul>
                 </li>
@@ -75,7 +75,7 @@
                             <a href="{{route('get.UniteProjet',Auth::user()->UniteDeRechercheChef->first()->id)}}">Les projets de {{Auth::user()->UniteDeRechercheChef->first()->nomUnite}} </a>
                         </li>
                         <li>
-                            <a href="{{route('get.publiperso',Auth::user()->id)}}">Faire un reporting</a>
+                            <a href="{{route('rapportUnite',Auth::user()->UniteDeRechercheChef->first()->id)}}">Faire un reporting</a>
                         </li>
                     </ul>
                 </li>
@@ -98,15 +98,15 @@
 @else
     
 @endrole
-@role('chef departement')
+@role('chefDepartement')
                 <li>
                     <a href="#pageSubmenudepartement" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Département</a>
-                    <ul class="collapse list-unstyled" id="#pageSubmenudepartement">
+                    <ul class="collapse list-unstyled" id="pageSubmenudepartement">
                         <li>
                             <a href="">Les projets au niveau du departement</a>
                         </li>
                         <li>
-                            <a href="{{route('get.publiperso',Auth::user()->id)}}">Faire un reporting</a>
+                            <a href="{{route('reportDept')}}">Faire un reporting</a>
                         </li>
                     </ul>
                 </li>
@@ -130,6 +130,34 @@
     
 @endrole
 
+@role('admin')
+                <li>
+                    <a href="#pageSubmenuadmin" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Administrateur</a>
+                    <ul class="collapse list-unstyled" id="pageSubmenuadmin">
+                        <li>
+                            <a href="{{route('createRequest')}}">Les demandes d'inscription</a>
+                        </li>
+                        <li>
+                            <a href="{{route('addChefDirection')}}">Ajouter un chef de direction</a>
+                        </li>
+                        <li>
+                            <a href="{{route('addChefDepartement')}}">Ajouter un chef de departement</a>
+                        </li>
+                        <li>
+                            <a href="{{route('addChefLaboratoire')}}">Ajouter un chef de Laboratoire </a>
+                        </li>
+                        <li>
+                            <a href="{{route('addChefEquipe')}}">Ajouter un chef de Equipe </a>
+                        </li>
+                        <li>
+                            <a href="{{route('addChefUnite')}}">Ajouter un chef de Unite</a>
+                        </li>
+                        
+                    </ul>
+                </li>
+@else
+    
+@endrole
 
 
 
@@ -170,9 +198,7 @@
                             <li class="nav-item {{url()->current()==url(route('personneinternes.index'))?'active':'' }}">
                                 <a class="nav-link" href="{{route('personneinternes.index')}}">Chercheurs</a>
                             </li>
-                            <li class="nav-item {{url()->current()==url(route('projets.index'))?'active':'' }}">
-                                <a class="nav-link" href="{{route('projets.index')}}">Projets</a>
-                            </li>
+                            
                            
 
 
@@ -183,18 +209,17 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    
+                                    <a class="dropdown-item" href="{{route('infosCompte',Auth::user()->id)}}"
+                                       >
+                                        <i class="fa fa-btn fa-user"></i> {{ __('Profile') }}
+                                    </a>
+                                            
+                            <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         <i class="fas fa-sign-out-alt"></i> {{ __('Logout') }}
                                     </a>
-                                    <a class="dropdown-item" href="{{route('profile')}}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('profil-form').submit();">
-                                        <i class="fa fa-btn fa-user"></i> {{ __('Profile') }}
-                                    </a>
-                                            
-                            
 
 
 
@@ -221,21 +246,30 @@
             
     </div>
 </body>           
-   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <!-- Popper.JS -->
+   {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    --}} <!-- Popper.JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
     <!-- Bootstrap JS -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    
+<script src="{{ asset('jquery-3.3.1.slim.min.js') }}"></script>
+
+    {{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+     --}}
+    <script src="{{ asset('boot/dist/js/bootstrap.min.js') }}"></script>
     <!-- jQuery Custom Scroller CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
     
+    <script src="{{ asset('jquery.mCustomScrollbar.concat.min.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.concat.min.js"></script>
+     --}}
     
+
     
   
-
+@yield('javascripts')
  <script type="text/javascript">
-   @yield('javascripts')
    
+     $('#keep-order').multiSelect({ keepOrder: true }); 
+
         $(document).ready(function () {
             $("#sidebar").mCustomScrollbar({
                 theme: "minimal"
@@ -248,7 +282,9 @@
                 $('a[aria-expanded=true]').attr('aria-expanded', 'false');
             });
         });
-
+        $(document).ready(function() {
+    $('.js-example-basic-multiple').select2();
+});
     </script>
 
  </html>

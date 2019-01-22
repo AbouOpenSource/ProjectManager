@@ -14,27 +14,32 @@ use App\Models\Cv\TypeFormationEnCours;
 use App\Models\Cv\ExperienceSpecifique;
 use App\Models\Cv\ExperienceProfessionnelle;
 use App\Models\Cv\Reference;
-
+use App\User;
 
 
 class UserController extends Controller
 {
     //
     public function profile()
-    {	
+    {   
         $typeforma=TypeFormationEnCours::all();
         $diplomes=Diplome::all();
-    	$langues=Langue::all();
-    	$qualifications=Qualification::all();
-    	
-    	return View('personneinterne.profile')
-    	                                   ->with(['user'=>Auth::user(),
-    											 'diplomes'=> $diplomes,
-    											 'langues'=> $langues,
-    											 'qualifications'=> $qualifications,
-                                                'typeFormationEnCours'=>$typeforma    											
+        $langues=Langue::all();
+        $qualifications=Qualification::all();
+        
+        return View('personneinterne.profile')
+                                           ->with(['user'=>Auth::user(),
+                                                 'diplomes'=> $diplomes,
+                                                 'langues'=> $langues,
+                                                 'qualifications'=> $qualifications,
+                                                'typeFormationEnCours'=>$typeforma                                              
                                                 ]);
-    	
+        
+     }
+        public function infosCompte($idUser)
+    {	
+        
+    	return view('personneinterne.photo')->with(['user'=>Auth::user()]);
      }
 
      public function updateAvatar(Request $request)
@@ -257,6 +262,11 @@ public function addReference(Request $request, $idUser)
 
     }
 
+public function mesProjets($idUser)
+    {
 
+            $user=User::find($idUser);
+            return $user->Projet;
+    }
 
 }

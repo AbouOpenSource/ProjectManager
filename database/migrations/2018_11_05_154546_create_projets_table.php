@@ -34,6 +34,7 @@ class CreateProjetsTable extends Migration
             $table->text('resumeDesMethodeEtude')->nullable();
             $table->text('beneficeNational')->nullable();
             $table->text('beneficeInstitutionnel')->nullable();
+            $table->boolean('visible')->default(false);
 
             $table->timestamps();
         });

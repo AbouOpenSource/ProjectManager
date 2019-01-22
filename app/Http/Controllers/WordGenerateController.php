@@ -40,7 +40,6 @@ class WordGenerateController extends Controller
 public function createWordCV()
 			{
 					$wordTest = new \PhpOffice\PhpWord\PhpWord();
-					
 					$styleTable = array('borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80);
 					$styleCell = array('valign' => 'center');
 					$styleFirstRow = array('borderBottomSize' => 18, 'borderBottomColor' => '0000FF', 'bgColor' => '66BBFF');
@@ -56,9 +55,9 @@ public function createWordCV()
 					$wordTest->addTitleStyle(1, array('bold' => true), array('spaceAfter' => 240));
 					$newSectionGenerale = $wordTest->addSection();
 
-					$newSectionFormation = $wordTest->addSection();
+//					$newSectionFormation = $wordTest->addSection();
 
-					$newSectionLangue = $wordTest->addSection();
+//					$newSectionLangue = $wordTest->addSection();
 
 					$Titre="CURRICULUM VITAE";
 
@@ -68,6 +67,7 @@ public function createWordCV()
 					$number++;
 					$newSectionGenerale->addTitle($Titre);
 					$newSectionGenerale->addText($title1);
+					$newSectionGenerale->addText(" ");
 					
 					$newSectionGenerale->addText('-  Nom de famille : '.$user->nom,
 						null,
@@ -80,15 +80,19 @@ public function createWordCV()
 								'indentation' => array('left' => 240)));
 					
 
-					$newSectionGenerale->addText('- Matricule:'.$user->id);
+					$newSectionGenerale->addText('-  Matricule:'.$user->id,null,
+						array('widowControl' => false, 
+								'indentation' => array('left' => 240)));
 
 
 if($user->Diplome->isNotEmpty())
-{
+					$newSectionGenerale->addText(" ");
+{					
 					$title2=$number.". Nationalité: Formation";
 					$number++;
 					$newSectionGenerale->addText($title2);
 					$rows = count($user->Diplome);
+					$newSectionGenerale->addText(" ");
 					
 					$table = $newSectionGenerale->addTable('Fancy Table');
 					$table->addRow();
@@ -107,10 +111,13 @@ if($user->Diplome->isNotEmpty())
 
 if($user->Langue->isNotEmpty())
 {
+					$newSectionGenerale->addText(" ");
+					
 					$title3=$number.". Niveau des langues connues: (par compétences de 1-excellent à 5- rudimentaire)";
 					$number++;
 					$newSectionGenerale->addText($title3);
-					$rows = count($user->Diplome);
+					//$rows = count($user->Diplome);
+					$newSectionGenerale->addText(" ");
 					
 					$tableLangue = $newSectionGenerale->addTable('Fancy Table');
 					$tableLangue->addRow();
@@ -140,9 +147,13 @@ if($user->Langue->isNotEmpty())
 				
 if($user->Association->isNotEmpty())
 {
+					$newSectionGenerale->addText(" ");
+					
 					$title4=$number.".Association ou corps professionnels: ";
 					$number++;
-					$newSectionGenerale->addText($title3);
+					$newSectionGenerale->addText(" ");
+					
+					$newSectionGenerale->addText($title4);
 					foreach($user->Association as $assoc) 
 					{
     			$newSectionGenerale->addText('-'.$assoc->nomAssociation,
@@ -157,11 +168,14 @@ if($user->Association->isNotEmpty())
 }
 
 if($user->Qualification->where('typeQualification','Secondaire'))
-{
+					$newSectionGenerale->addText(" ");
+{					
 					$title5=$number.".Autre qualifications ";
 					$number++;
-					$newSectionGenerale->addText($title3);
-					foreach($user->Qualification->where('typeQualification','secondaire') as $quali) 
+					$newSectionGenerale->addText($title5);
+					$newSectionGenerale->addText(" ");
+					
+					foreach($user->Qualification->where('typeQualification','Secondaire') as $quali) 
 					{
     			$newSectionGenerale->addText('-'.$quali->nomQualification,
 						null,
@@ -174,29 +188,34 @@ if($user->Qualification->where('typeQualification','Secondaire'))
         			}
 }
 if($user->Qualification->where('typeQualification','Principale'))
-{
+{	
+					$newSectionGenerale->addText(" ");				
 					$title6=$number.".Qualifications Principale: ";
 					$number++;
-					$newSectionGenerale->addText($title3);
-					foreach($user->Qualification->where('typeQualification','principale') as $quali) 
+					$newSectionGenerale->addText(" ");
+					
+					$newSectionGenerale->addText($title6);
+					foreach($user->Qualification->where('typeQualification','Principale') as $quali) 
 					{
-    			$newSectionGenerale->addText('-'.$quali->nomQualification,
+    						$newSectionGenerale->addText('-'.$quali->nomQualification,
 						null,
 						array('widowControl' => false, 
 								'indentation' => array('left' => 240)
 								)
 											);
-					
-					
         			}
+
 }
 
 if($user->ExperienceSpecifique->isNotEmpty())
 {
-					$title2=$number.". Experience Specifique";
-					$number++;
-					$newSectionGenerale->addText($title2);
+					$newSectionGenerale->addText(" ");
 					
+					$title7=$number.". Experience Specifique";
+					$number++;
+					$newSectionGenerale->addText($title7);
+					
+					$newSectionGenerale->addText(" ");
 					
 					$table = $newSectionGenerale->addTable('Fancy Table');
 					$table->addRow();
@@ -212,12 +231,14 @@ if($user->ExperienceSpecifique->isNotEmpty())
         			}
 }
 if($user->ExperienceProfessionnelle->isNotEmpty())
-{
-					$title2=$number.". Experience Specifique";
+					
+{					
+					$newSectionGenerale->addText(" ");
+					$title8=$number.". Experience Specifique";
 					$number++;
-					$newSectionGenerale->addText($title2);
+					$newSectionGenerale->addText($title8);
 					
-					
+					$newSectionGenerale->addText(" ");
 					$table = $newSectionGenerale->addTable('Fancy Table');
 					$table->addRow();
     				$table->addCell(1750,$styleCell)->addText("Debut et Fin");
@@ -238,11 +259,12 @@ if($user->ExperienceProfessionnelle->isNotEmpty())
 }
 
 if($user->Publication->sortBy('datePublication')->isNotEmpty())
-{
-					$title2=$number.". Les publications de $user->nom";
+{					$newSectionGenerale->addText(" ");
+					$title9=$number.". Les publications de $user->nom";
 					$number++;
-					$newSectionGenerale->addText($title2);
+					$newSectionGenerale->addText($title9);
 					//$newSectionGenerale->addText($i);
+					$newSectionGenerale->addText(" ");
 							foreach ($user->Publication->sortBy('datePublication') as $publi) 
 							{
 								$newSectionGenerale->addText($publi->libellePublication.' '.$publi->YearPubli->year,null,array('widowControl' => false, 
@@ -253,13 +275,14 @@ if($user->Publication->sortBy('datePublication')->isNotEmpty())
 
 
 if($user->Reference->isNotEmpty())
-{
+{					
 
-					$title2=$number.". Experience Specifique";
+					$newSectionGenerale->addText(" ");
+					$title10=$number.". Experience Specifique";
 					$number++;
-					$newSectionGenerale->addText($title2);
+					$newSectionGenerale->addText($title10);
 					
-					
+					$newSectionGenerale->addText(" ");
 					$table = $newSectionGenerale->addTable('Fancy Table');
 					$table->addRow();
     				$table->addCell(2000,$styleCell)->addText("Nom et prenoms");

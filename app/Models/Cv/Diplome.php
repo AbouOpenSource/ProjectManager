@@ -17,7 +17,12 @@ class Diplome extends Model
 
 
 
+	public function nonbreDiplome()
+	{
 
+		return $this->belongsToMany('App\Models\Cv\PersonneInterne', 'detail_diplome_interne', 
+      'typeDiplome_id', 'personne_id')->withPivot('numeroDiplome','dateDoptention','mention');	
+	}
 
 
 

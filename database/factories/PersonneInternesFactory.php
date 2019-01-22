@@ -25,5 +25,7 @@ $factory->define(PersonneInterne::class, function (Faker $faker) {
       'residence'=>$faker->address,
       'login'=>$faker->username,
       'password' =>bcrypt('secret'),
+      'approved_at' => now(),
+      
       ];
 });

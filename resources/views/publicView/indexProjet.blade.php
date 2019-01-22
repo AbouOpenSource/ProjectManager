@@ -29,7 +29,7 @@ Les Projets-ProjectManager
                     <th scope="row">
                       <div class="media align-items-center">
                        <div class="media-body">
-                          <span class="mb-0 text-sm"><a href="">{{$projet->intitule}}</a></span>
+                          <span class="mb-0 text-sm">{{$projet->intitule}}</span>
                         </div>
                       </div>
                     </th>

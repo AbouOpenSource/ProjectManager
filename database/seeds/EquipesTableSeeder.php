@@ -15,44 +15,51 @@ class EquipesTableSeeder extends Seeder
       $faker = Faker\Factory::create();
 
 
-      DB::table('equipes')->insert([
-      'departement_id' => 2 ,
-      'nomEquipe'=>'Equipe Médicale',
-      'descriptionEquipe'=>$faker->text,
-      'objectifEquipe'=>$faker->text
-      ]);
+      //Les equipes de Departement recherche cliniques 
 
       DB::table('equipes')->insert([
       'departement_id' => 2 ,
-      'nomEquipe'=>'Equipe essais clinique',
+      'nomEquipe'=>'L’équipe des essais cliniques (EEC)',
+      'descriptionEquipe'=>'L\'equipe est chargée de la coordination, du monitoring et de la mise en œuvre selon les standards internationaux, de l’ensemble des essais cliniques hébergés au Centre MURAZ.',
+      'objectifEquipe'=>$faker->text
+      ]);
+
+      DB::table('equipes')->insert([
+      'departement_id' => 2 ,
+      'nomEquipe'=>'Equipe médicale',
+      'descriptionEquipe'=>'est chargée de l’organisation et de la dispensation des soins offerts à la population dans les cliniques du Centre MURAZ, et de la recherche sur l’analyse décisionnelle médicale, en collaboration avec les chercheurs des différents Centres de Santé du Burkina.',
+      'objectifEquipe'=>$faker->text
+      ]);
+
+      
+
+
+
+
+      DB::table('equipes')->insert([
+      'departement_id' => 3 ,
+      'nomEquipe'=>'Equipe Politiques et Système de Santé (EPSS)',
       'descriptionEquipe'=>$faker->text,
       'objectifEquipe'=>$faker->text
       ]);
 
       DB::table('equipes')->insert([
       'departement_id' => 3 ,
-      'nomEquipe'=>'Equipe santé de la mère et de l\'enfant',
+      'nomEquipe'=>'Equipe Santé Environnementale, Maladies Chroniques et Nutrition (ESEMCN)',
       'descriptionEquipe'=>$faker->text,
       'objectifEquipe'=>$faker->text
       ]);
 
       DB::table('equipes')->insert([
       'departement_id' => 3 ,
-      'nomEquipe'=>'Equipe politiques et système de Santé',
+      'nomEquipe'=>'Equipe Santé de la Mère et de l’Enfant (ESME)',
       'descriptionEquipe'=>$faker->text,
       'objectifEquipe'=>$faker->text
       ]);
 
       DB::table('equipes')->insert([
       'departement_id' => 3 ,
-      'nomEquipe'=>'Equipe sociétés et santé',
-      'descriptionEquipe'=>$faker->text,
-      'objectifEquipe'=>$faker->text
-      ]);
-
-      DB::table('equipes')->insert([
-      'departement_id' => 3 ,
-      'nomEquipe'=>'Equipe santé environnementale, maladies chroniques et nutrition',
+      'nomEquipe'=>'Equipe Sociétés et Santé (ESS)',
       'descriptionEquipe'=>$faker->text,
       'objectifEquipe'=>$faker->text
       ]);

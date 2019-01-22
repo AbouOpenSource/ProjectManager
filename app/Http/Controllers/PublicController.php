@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Projet\Projet;
 use App\User;
 use App\Models\Publication\Publication;
+use App\Models\StructAdmin\Departement;
 class PublicController extends Controller
 {
     public function indexProjet()
@@ -18,8 +19,10 @@ class PublicController extends Controller
     }
     public function indexChercheur()
     {
-    		$users=User::all();
+    		$users=User::paginate(10);
     		return view('publicView.indexChercheur')->with(['users'=>$users]);
+
+
     }
 
     public function indexPublication()
@@ -34,9 +37,14 @@ class PublicController extends Controller
     {
         $publications=Publication::orderBy('datePublication','desc')->take(3)->get();
         $nbrProjet=count(Projet::all());
+        $departements=Departement::all();
+        $chercheurs=User::all();
         return view('publicView.accueil')
         ->with(['nbrProjet'=>$nbrProjet])
-        ->with(['publications'=>$publications]);
+        ->with(['publications'=>$publications])
+        ->with(['chercheurs'=>$chercheurs])
+        ->with(['departements'=>$departements]);
+    
     }
 
 }

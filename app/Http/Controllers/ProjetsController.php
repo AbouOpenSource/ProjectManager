@@ -11,11 +11,32 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\Projet\ResultatObtenu;
 use App\Models\Projet\Objectif;
-
-
+use App\User;
+use Carbon\Carbon;
 
 class ProjetsController extends Controller
 {
+    
+     public function __construct()
+    {
+        $this->middleware('auth');
+
+        Carbon::setLocale(config('app.locale'));
+        Carbon::setToStringFormat('d/m/Y à H:i:s');
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -75,6 +96,7 @@ class ProjetsController extends Controller
             $permission = Permission::create(['name' => 'edit projet '.$projet->id]);
             Auth::user()->givePermissionTo('edit projet '.$projet->id);
             return redirect('/projets');
+
     }
 
     /**
@@ -85,6 +107,8 @@ class ProjetsController extends Controller
      */
     public function show($id)
     {
+     
+    
      $projet=Projet::with([ 'Objectif',
                             'ResultatObtenu',
                             'InvestigateurInterne',
@@ -95,7 +119,11 @@ class ProjetsController extends Controller
 
                                 ])
                     ->get()->find($id);
-      return view('projet.show',compact('projet'));  
+    //return $projet->InvestigateurInterne->get('id')->toArray();
+
+        $users=User::all();
+        //whereNotIn('id',$projet->InvestigateurInterne->get('id'));
+      return view('projet.show',compact('projet'))->with(["users"=>$users]);  
     }
 
     /**
@@ -171,4 +199,22 @@ class ProjetsController extends Controller
 
 
     }
+
+
+    public function addInvestigateur(Request $request,$idProjet)
+    {
+    
+            
+            $projet=Projet::find($idProjet);
+            $projet->InvestigateurInterne->attach($request->personne_id);
+            return redirect()->route('projets.show',$idProjet);
+    
+
+    }
+
+    
+
+
+
+
 }

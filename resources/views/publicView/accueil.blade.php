@@ -1,6 +1,9 @@
 @extends('layouts.user')
+@section('title')
+Accueil-ProjectManager
+@stop
 @section('css')
-<style>
+{{-- <style>
 #intro{
 	min-height: 400px;
 	display: flex;
@@ -11,20 +14,43 @@
 	background-image: url('img/4.jpg');
 	color: #fff;
 }
-</style>
+</style> --}}
 @stop
 @section('content')
-<section id="intro">
-      <div class="container text-center">
-        <h1 class="display-3 mb-3">
-          <em>
-            Le Centre MURAZ 
-          </em>
-          :c'est {{$nbrProjet}} projets de recherche
-        </h1>
-        <a href="" class="btn btn-info btn-lg">Lire plus</a>
-      </div>  
-</section>	
+ <section id="team">
+  <div class="container">
+    <h2 class="section-title">
+      Chercheurs
+    </h2>
+    <div class="members-container">
+        <div class="row">
+                      @foreach($chercheurs as $chercheur)
+                        
+                        <div class="col-lg-3 col-md-6 col-sm-12">
+                           <div class="card shadow m-2">
+                                <img class="card-img-top" src="/uploads/avatars/{{ $chercheur->avatar }}" alt="Card image cap" {{-- style=" width: 150px;height: 150px ;float:left;border-radius: 50%; margin-right: 25px;" --}}>
+                                  <div class="card-body">
+                                  <h5 class="card-title">{{$chercheur->full_name}}</h5>
+                                  <p class="card-desc">
+                                    @foreach($chercheur->Qualification->where('typeQualification','secondaire') as $quali)
+                                                {{$quali->nomQualification}},
+                                    @endforeach  
+                                  <br>
+                                  @foreach($chercheur->Diplome as $diplome)
+                                    {{$diplome->libelleDiplome}} ,
+                                  @endforeach
+                                  </p>
+                            </div>
+                          </div>
+                        </div>     
+        
+                      @endforeach
+
+                      
+        </div>
+    </div>
+</div>
+</section>
 
 
 <div class="container">	
@@ -42,192 +68,57 @@
         </div>
         @endforeach
         <small class="d-block text-right mt-3">
-          <a href="#">All updates</a>
+          <a href="{{route('get.publications')}}">Toutes les publications</a>
         </small>
     </div>
 											
 </section>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <section class="about-us">
   <div class="container">
-    <h2 class="section-title"> About Us</h2>
+    <h2 class="section-title">Les départements</h2>
     <div id="service">
       <div class="row">
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="service">
-              <div class="icon">    
-              </div>
-              <div class="title">
-                <h5>
-                  Title
-                </h5>
-              </div>
-                <div class="desc">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio tempora fuga, eius cum animi veritatis explicabo dicta consequuntur veniam dolore pariatur molestias impedit provident rem culpa non. Vitae, illum, dolor.
-                </p>                  
-                </div>
-            </div>
-            
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="service">
-              <div class="icon">    
-              </div>
-              <div class="title">
-                <h5>
-                  Title
-                </h5>
-              </div>
-                <div class="desc">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio tempora fuga, eius cum animi veritatis explicabo dicta consequuntur veniam dolore pariatur molestias impedit provident rem culpa non. Vitae, illum, dolor.
-                </p>                  
-                </div>
-            </div>
-            
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="service">
-              <div class="icon">    
-              </div>
-              <div class="title">
-                <h5>
-                  Title
-                </h5>
-              </div>
-                <div class="desc">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio tempora fuga, eius cum animi veritatis explicabo dicta consequuntur veniam dolore pariatur molestias impedit provident rem culpa non. Vitae, illum, dolor.
-                </p>                  
-                </div>
-            </div>
-            
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="service">
-              <div class="icon">    
-              </div>
-              <div class="title">
-                <h5>
-                  Title
-                </h5>
-              </div>
-                <div class="desc">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio tempora fuga, eius cum animi veritatis explicabo dicta consequuntur veniam dolore pariatur molestias impedit provident rem culpa non. Vitae, illum, dolor.
-                </p>                  
-                </div>
-            </div>
-            
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="service">
-              <div class="icon">    
-              </div>
-              <div class="title">
-                <h5>
-                  Title
-                </h5>
-              </div>
-                <div class="desc">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio tempora fuga, eius cum animi veritatis explicabo dicta consequuntur veniam dolore pariatur molestias impedit provident rem culpa non. Vitae, illum, dolor.
-                </p>                  
-                </div>
-            </div>
-            
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="service">
-              <div class="icon">    
-              </div>
-              <div class="title">
-                <h5>
-                  Title
-                </h5>
-              </div>
-                <div class="desc">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio tempora fuga, eius cum animi veritatis explicabo dicta consequuntur veniam dolore pariatur molestias impedit provident rem culpa non. Vitae, illum, dolor.
-                </p>                  
-                </div>
-            </div>
-            
-        </div>
-        <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="service">
-              <div class="icon">    
-              </div>
-              <div class="title">
-                <h5>
-                  Title
-                </h5>
-              </div>
-                <div class="desc">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio tempora fuga, eius cum animi veritatis explicabo dicta consequuntur veniam dolore pariatur molestias impedit provident rem culpa non. Vitae, illum, dolor.
-                </p>                  
-                </div>
-            </div>
-            
-        </div>
-          <div class="col-lg-3 col-md-4 col-sm-12">
-            <div class="service">
-              <div class="icon">    
-              </div>
-              <div class="title">
-                <h5>
-                  Title
-                </h5>
-              </div>
-                <div class="desc">
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio tempora fuga, eius cum animi veritatis explicabo dicta consequuntur veniam dolore pariatur molestias impedit provident rem culpa non. Vitae, illum, dolor.
-                </p>                  
-                </div>
-            </div>
-            
-        </div>
+        @foreach($departements as $departement)
         
+        <div class="col-lg-3 col-md-4 col-sm-12">
+            <div class="service">
+              <div class="icon">    
+              </div>
+              <div class="title">
+                <h5>
+                  {{$departement->nomDepartement}}
+                </h5>
+              </div>
+                <div class="desc">
+                <p>
+                  {{$departement->descriptionDepartement}}
+                </p>                  
+                </div>
+            </div>    
+        </div>
+
+        @endforeach
+
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </div>
       </div>
     </div>
-
-
-
-  </div>
 </section>
 
 

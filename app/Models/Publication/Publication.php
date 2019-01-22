@@ -46,7 +46,14 @@ class Publication extends Model
 
 
 	}
-
+	public function coAuteur()
+		{
+			return $this
+					->belongsToMany('App\Models\Cv\PersonneInterne', 'detail_co_auteur', 
+      'publication_id', 'personne_id')
+				->withPivot('ordreDimplication','descriptionParticipation');	
+		}
+	
 
 protected $dates=['datePublication'];
 protected $table= 'publications';

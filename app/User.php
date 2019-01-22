@@ -127,10 +127,30 @@ public function Association()
     
     }
 
+public function Projet()
+    {   
+        /*if($this->Equipe->isEmpty())
+            {
+                $mesProjets = $this->UniteDeRecherche->projet;
+                $mesProjetsInvestigue=$this->ProjetInvestigue;
+                $mesProjetsCoInvestigue=$this->ProjetCoInvestigue;
+                $mesProjets->merge($mesProjetsInvestigue);
+                $mesProjets->merge($mesProjetsCoInvestigue);
+                
+                return $mesProjets;
+            }
+            else 
+            {
+                $mesProjets= $this->Equipe->projet;
+                $mesProjetsInvestigue=$this->ProjetInvestigue;
+                $mesProjetsCoInvestigue=$this->ProjetCoInvestigue;
+                $mesProjets->merge($mesProjetsInvestigue);
+                $mesProjets->merge($mesProjetsCoInvestigue);
 
-
-
-
+                return $mesProjets;
+            }
+    */
+    }
 public function Bourse()
     {
         return $this->hasMany('App\Models\Projet\Bourse','personne_id');    
@@ -139,6 +159,20 @@ public function Bourse()
 public function UniteDeRechercheChef()
     {
     return $this->belongsToMany('App\Models\StructAdmin\UniteDeRecherche', 'detail_chef_unite', 'personne_id', 'unite_id')->withPivot('debutMandat','finMandat');
+    }
+public function DepartementChef()
+    {
+   
+
+return $this->belongsToMany('App\Models\StructAdmin\Departement','detail_chef_departement','personne_id','departement_id')->withPivot('debutMandat','finMandat');
+    }
+public function ProjetInvestigue()
+    {
+    return $this->belongsToMany('App\Models\Projet\Projet', 'investigateur_internes', 'personne_id', 'projet_id');
+    }
+public function ProjetCoInvestigue()
+    {
+    return $this->belongsToMany('App\Models\Projet\Projet', 'co_investigateur_internes', 'personne_id', 'projet_id');
     }
 
 public function getFullNameAttribute()

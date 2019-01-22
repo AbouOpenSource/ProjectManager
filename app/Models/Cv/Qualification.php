@@ -8,6 +8,9 @@ class Qualification extends Model
 {
     
 	protected $fillable=[
+		'nomQualification',
+		'descriptionQualification',
+		'typeQualification',
 
 
 

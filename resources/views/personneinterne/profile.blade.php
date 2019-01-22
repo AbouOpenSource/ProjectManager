@@ -6,20 +6,9 @@ Mes informations
 <br>
 <br>
 <div class="list-inline">
-                {{-- <div class="row">
-                    <img src="/uploads/avatars/{{ $user->avatar }}" class="vcenter" style=" width: 150px;height: 150px ;float:left;border-radius: 50%; margin-right: 25px;">
-                        <form enctype="multipart/form-data" class="" action="/profile" method="POST">
-                                    <div class="form-group"> 
-                                    <label for="">Mettre a jour votre image </label><br>
-                                    <input type="file" name="avatar">
-                                    </div>
-                                    @csrf
-                                    <br>
-                                    <input type="submit" class="btn btn-sm btn-primary">
-                        </form>
-
-                </div> --}}
-<a href="{{route('/profile/cv')}}"><i class="fas fa-file-export"></i></a>
+                {{--  --}}
+<a href="{{route('/profile/cv')}}"><button><i class="fas fa-file-word"></i><strong>Exporter son CV</strong></button></a>
+<a href="{{route('/profile/cv')}}">Salut Salut</a>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -34,7 +23,6 @@ Mes informations
                             <th scope="col">Diplome</th>
                             <th scope="col">Numero diplome</th>
                             <th scope="col">Date d'optention</th>
-                           
                           </tr>
                   </thead>
                   
@@ -44,8 +32,7 @@ Mes informations
                       <th scope="row">{{$diplome->libelleDiplome}}</th>
                       <td>{{$diplome->pivot->numeroDiplome}}</td>
                       <td>{{$diplome->pivot->dateDoptention}}</td>
-                      
-                    </tr>
+                   </tr>
                   @endforeach
                   </tbody>
               </table>

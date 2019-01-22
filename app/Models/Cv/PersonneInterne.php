@@ -115,7 +115,10 @@ public function Bourse()
 
     }
 
-
+    public function getFullNameAttribute()
+    {
+        return $this->nom.' '.$this->prenom;
+    }
 
 
 

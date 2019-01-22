@@ -15,7 +15,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    Soyez les bienvenus sur la plateforme de gestion des projets du centre MURAz
+                    Soyez les bienvenus sur la plateforme de gestion des projets du centre MURAZ
                 </div>
             </div>
         </div>

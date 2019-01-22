@@ -1,6 +1,6 @@
 @extends('layouts.root')
 @section('title')
-Creation de Projet-PorjectManager
+Creation de Projet-ProjectManager
 @stop
 @section('content')
 <div class="container">
@@ -158,8 +158,8 @@ Creation de Projet-PorjectManager
                             <label for="contexteProjet" class="col-md-4 col-form-label text-md-right">{{ __('Contexte du Projet') }}</label>
 
                             <div class="col-md-6">
-                                <input id="contexteProjet" type="text" class="form-control{{ $errors->has('contexteProjet') ? ' is-invalid' : '' }}" name="contexteProjet" value="{{ old('contexteProjet') }}" required autofocus>
-
+                                <textarea name="contexteProjet" class="form-control{{ $errors->has('contexteProjet') ? ' is-invalid' : '' }}" value="{{ old('contexteProjet') }}" required autofocus></textarea>
+                                
                                 @if ($errors->has('contexteProjet'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('contexteProjet') }}</strong>

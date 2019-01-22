@@ -9,7 +9,8 @@ class UniteDeRecherche extends Model
     
 
 	protected $fillable=[
-
+		'nomUnite',
+		'laboratoire_id',
 
 
 	];
@@ -28,10 +29,6 @@ public function Projet()
 	return $this->hasMany('App\Models\Projet\Projet','unite_id');
 }
 
-public function Projet()
-{
-	return $this->hasMany('App\Models\Projet\Projet','unite_id');
-}
 
 
 

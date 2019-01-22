@@ -18,6 +18,10 @@ class Laboratoire extends Model
 
 
 
+public function Laboratoire()
+{
+return $this->hasMany('App\Models\StructAdmin\UniteDeRecherche','laboratoire_id');
+}
 
 
 

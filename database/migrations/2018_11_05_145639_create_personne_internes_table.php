@@ -33,7 +33,7 @@ class CreatePersonneInternesTable extends Migration
             $table->string('login')->unique();
             $table->string('password');
             $table->timestamps();
-       
+            $table->timestamp('approved_at')->nullable();       
         });
     }
 

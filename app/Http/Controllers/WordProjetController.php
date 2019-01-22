@@ -14,26 +14,55 @@ class WordProjetController extends Controller
 					$styleFirstRow = array('borderBottomSize' => 18, 'borderBottomColor' => '0000FF', 'bgColor' => '66BBFF');
 								
 					$word = new \PhpOffice\PhpWord\PhpWord();
+					
 					$word->addTableStyle('Fancy Table', $styleTable, $styleFirstRow);
 					
+					
+					$newSectionGenerale = $word->addSection();
+					
+					$entete = $newSectionGenerale->createHeader();		
+					
+					$entete->addText('MINISTERE DE LA SANTE');
+					$entete->addText('	  -------------	    ');
+					$entete->addText('SECRETARIAT GENERAL');
+					$entete->addText('	  -------------	    ');
+					
+
+					
+
+
+	$entete->addImage(public_path("logo.jpg"),array(
+    'width' => 100,
+    'height' => 50,
+    'wrappingStyle' => 'square',
+    'positioning' => 'absolute',
+    'posHorizontal'    => \PhpOffice\PhpWord\Style\Image::POSITION_HORIZONTAL_CENTER,
+    'posHorizontalRel' => 'margin',
+    'posVerticalRel' => 'line',
+));
+
+
+
 					$user=Auth::user();
 					$projets=Projet::whereNotNull('unite_id')->get();
 
 					//return $projets;
 					foreach ($projets as $projet) 
 					{
-							$newSectionGenerale = $word->addSection();
 							$newSectionGenerale->addTitle("Projet");
 					
 							$title="Project";
 						
 
 								$table = $newSectionGenerale->addTable('Fancy Table');
+								
+
 								$table->addRow();
 				 				$table->addCell(4000,$styleCell)->addText("Intitulé: ".$projet->intitule);
 			    				$table->addCell(4000,$styleCell)->addText("Unite de recherche : ".$projet->UniteDeRecherche->nomUnite);
-			    				$table->addRow();
 			    				
+
+			    				$table->addRow();
 			    				foreach ($projet->institutionFinancier as $inst)
 			    				{
 			    					$listInst.=$inst->nomInstitution.' ,';
@@ -73,11 +102,12 @@ class WordProjetController extends Controller
 								$table->addRow();
 								$table->addCell(4000,$styleCell)->addText("Site de mise en oeuvre au BF: ".$projet->siteDeMiseEnOeuvre);
 								$table->addCell(4000,$styleCell)->addText("Code Muraz: ".$projet->siteDeMiseEnOeuvre);
-								$table->addRow(1750);
-								$table->addCell(8000,$styleCell)->addText("Contexte/ justification: ".$projet->contexteProjet);
 								
 								$table->addRow(1750);
-								$table->addCell(8000,$styleCell)->addText("Question de recherche / hypothèse: ".$projet->questionDeRecherche);
+								$table->addCell(10000,$styleCell)->addText("Contexte/ justification: ".$projet->contexteProjet);
+								
+								$table->addRow(1750);
+								$table->addCell(10000,$styleCell)->addText("Question de recherche / hypothèse: ".$projet->questionDeRecherche);
 								
 			        			$table->addRow(1750);
 								$objectifs=$table->addCell(8000,$styleCell);
@@ -102,9 +132,9 @@ class WordProjetController extends Controller
 								
 								//activites
 								$table->addRow(2000);
-								$table->addCell(8000)->addText("Résumé des méthodes d\'étude: ".$projet->resumeDesMethodeEtude);
+								$table->addCell(10000)->addText("Résumé des méthodes d\'étude: ".$projet->resumeDesMethodeEtude);
 								$table->addRow(2000);
-								$activites = $table->addCell(8000);
+								$activites = $table->addCell(10000);
 								$activites->addText("Activités menées jusqu'en dateQuestion: ".$projet->resumeDesMethodeEtude);
 								foreach ($projet->Activite as $act) {
 									$activites->addText($act->contenu);
@@ -112,7 +142,7 @@ class WordProjetController extends Controller
 								
 								//Resultat
 								$table->addRow(2000);
-								$resultats = $table->addCell(8000);
+								$resultats = $table->addCell(10000);
 								$resultats->addText("resultats obtenu jusqu'en dateQuestion: ".$projet->resumeDesMethodeEtude);
 								foreach ($projet->ResultatObtenu as $resul) {
 									$resultats->addText($resul->contenu);
@@ -122,7 +152,7 @@ class WordProjetController extends Controller
 									
 								
 								$table->addRow(3000);
-								$publications = $table->addCell(8000);
+								$publications = $table->addCell(10000);
 								$publications->addText("Valorisation planifiée ou déja effectuée des resultats préliminaires du projet: ");
 									//Articles
 								$nbrArticle=$projet->Publication->where('typePublication_id',1)->where('projet_id',$projet->id)->count();
@@ -146,13 +176,13 @@ class WordProjetController extends Controller
 								$publications->addText("Autres : ".$nbrAutre);
 								
 								$table->addRow(3000);
-								$retombes = $table->addCell(8000);
+								$retombes = $table->addCell(10000);
 								$retombes->addText("Frais indirects versées au CM: ".$projet->fraisIndirectverseCM);
 								$retombes->addText("Equipemens acquis: ".$projet->EquipementAcquis->count());
 								$retombes->addText("Bourse de formation: ".$projet->Bourse->count());
 
 								$table->addRow(1500);
-								$perspectives = $table->addCell(8000);
+								$perspectives = $table->addCell(10000);
 								$perspectives->addText("Perspectives: ");
 
 								foreach ($projet->Perspective as $per) 

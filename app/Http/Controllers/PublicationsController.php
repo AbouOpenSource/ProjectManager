@@ -10,7 +10,7 @@ use App\Models\Projet\Projet;
 use App\Models\StructAdmin\Equipe; 
 use App\Models\StructAdmin\UniteDeRecherche;
 use Carbon\Carbon;
-
+use App\User;
 class PublicationsController extends Controller
 {
     
@@ -86,10 +86,11 @@ class PublicationsController extends Controller
                             //  $projets=$struct->projet; 
                            
                              $typePublications=TypePublication::all();
-
+                             $projets=Projet::all();
 
                             return view('publication.create')
-                                ->with('typePublications',$typePublications);
+                                ->with(['typePublications'=>$typePublications,
+                                        'projets'=>$projets]);
                                // ->with('projets',$projets);
                     
 
@@ -104,30 +105,19 @@ class PublicationsController extends Controller
      */
     public function store(Request $request)
     {
-
-
-
-//return $request->media;
-
-//return Storage::putFile('public',$request->file('media'));
-
-
         if($request->hasFile('media'))
          { 
             $request->file('media');
-            //$filename=time().$request->file('media')->getClientOriginalExtension();
             $filename=$request->media->store('publication');
 
             
 
 
     $file = $request->file('media');
-    // generate a new filename. getClientOriginalExtension() for the file extension
     $filename = 'publication-' . time() . '.' . $file->getClientOriginalExtension();
-    // save to storage/app/photos as the new $filename
     $path = $file->storeAs('publications', $filename);
 
-            Publication::create([
+            $publication=Publication::create([
              'typePublication_id'=>$request->typePublication_id,
              'projet_id'=>$request->projet_id,
              'libellePublication'=>$request->libellePublication,
@@ -142,8 +132,7 @@ class PublicationsController extends Controller
         else
             {
             
-            Publication::create([
-             
+            $publication=Publication::create([
              'typePublication_id'=>$request->typePublication_id,
              'projet_id'=>$request->projet_id,
              'libellePublication'=>$request->libellePublication,
@@ -156,7 +145,9 @@ class PublicationsController extends Controller
           ]);
 }
 
-  return redirect()->route('get.publiperso',Auth::user()->id);
+  
+    return redirect()->route('addCoAuteur',$publication->id);
+
 }
 
 
@@ -204,4 +195,36 @@ class PublicationsController extends Controller
     {
         //
     }
+
+    public function addCoAuteur($idPublication)
+    {
+        
+        $users=User::all();
+        $publication=Publication::find($idPublication);
+        return view('publication.addCoAuteur')->with(['publication'=>$publication,
+                                'personnes'=>$users]);
+
+    }
+
+    public function addPostCoAuteur(Request $request,$idPublication)
+    {
+        
+
+        $publication=Publication::find($idPublication);
+
+        $publication->coAuteur()->attach($request->personne_id,
+                                                    ['ordreDimplication' => $request->ordreDimplication,
+                                                  'descriptionParticipation'=> $request->descriptionParticipation,
+                                             
+                                                ]);
+        
+
+
+
+
+    return redirect()->route('addCoAuteur',$publication->id);
+}
+
+
+
 }

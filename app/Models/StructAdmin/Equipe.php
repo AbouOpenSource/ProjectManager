@@ -37,10 +37,4 @@ public function Associe()
 		;
 
 		}	
-
-
-
-
-
-
 }
