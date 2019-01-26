@@ -11,6 +11,6 @@ class PersonneInternesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Cv\PersonneInterne::class, 50)->create();
+        factory(App\Models\Cv\PersonneInterne::class, 200)->create();
     }
 }

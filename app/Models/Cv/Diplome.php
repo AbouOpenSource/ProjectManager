@@ -24,7 +24,7 @@ class Diplome extends Model
       'typeDiplome_id', 'personne_id')->withPivot('numeroDiplome','dateDoptention','mention');	
 	}
 
-
+	protected $dates=['dateDoptention'];
 
 
  protected $table='type_diplomes';

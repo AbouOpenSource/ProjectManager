@@ -11,11 +11,11 @@ class StatutAssociateTableSeeder extends Seeder
      */
     public function run()
     {
-        for($idProjet=2;$idProjet<100;$idProjet++)
+        for($idProjet=1;$idProjet<3;$idProjet++)
         {
 	        $projet=Projet::find($idProjet); 
 	        
-	        $projet->Statut()->attach(rand(1,6), ['debutStatut' => now()]);
+	        $projet->Statut()->attach(1, ['debutStatut' => now()]);
 	     }
         //App\User::find(1)->roles()->save($role, ['expires' => $expires]);	
     }

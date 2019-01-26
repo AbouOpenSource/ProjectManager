@@ -30,10 +30,9 @@ Mes publications
                     <td >{{$publication->typePublication->intituleType}}</td>
                     <td >{{$publication->datePublication->format('M d Y')}}</td>
                       <td>
-                       {{-- @if() --}}
-                        <a href=""><i class="far fa-file-pdf"></i></a>
-                     {{--  @endif --}}
-                 {{-- {{$publication->file}} --}}   
+                       
+                     {{$publication->file? "<a href=\"asset('storage/file.txt')\"><i class=\"far fa-file-pdf\"></i></a>" : " "}}    
+                                              
                       </td>
                   </tr>
                 @endforeach

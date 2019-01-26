@@ -26,19 +26,23 @@ return Auth::user()->Qualification;
 
 
 Route::get('/encore',function(){
-	Auth::user()->assignRole('admin');
+	Auth::user()->assignRole('chefDiretion');
 
 
 
-	return view('publication.test');
+	//return view('publication.test');
 });
 
 //Pour les tests
 
-Route::get('/rapport','WordProjetController@createProjetRapport')->middleware(['auth']);
+Route::post('/rapport','WordProjetController@createProjetRapport')->name('rapport')->middleware(['auth']);
 
 Route::get('/tester',['as'=>'tester','uses'=>'WordGenerateController@createWordDocx'])->middleware(['auth']);
-Route::get('/profile/cv',['as'=>'/profile/cv','uses'=>'WordGenerateController@createWordCV'])->middleware(['auth']);
+
+
+Route::get('/chercheur/{id}/cv','WordGenerateController@createWordCV')->name('genererateCV')->middleware(['auth']);
+
+
 Route::get('/test',['as'=>'/test','uses'=>'WordGenerateController@test'])->middleware(['auth']);
 
 Route::get('/droit',function()
@@ -65,7 +69,7 @@ Route::get('/publicationsPubliques','PublicController@indexPublication')->name('
 //Chemins particuliers pour quelques informations
 Route::get('/chercheur/{id}/publications','PublicationsController@indexPubliPerso')->name('get.publiperso')->middleware('auth');
 
-
+Route::get('chercheursTout','DirectionsController@afficherChercheur')->name('chercheursTout');
 
 
 Route::get('/','PublicController@displayAcceuil');
@@ -95,6 +99,8 @@ Route::middleware(['auth'])->group(function () {
 
 
 });
+
+
 
 Route::resource('bourses','BoursesController')->middleware(['auth','confirmed']);
 
@@ -159,6 +165,12 @@ Route::get('projets/{id}/changeStatut/{idStatut}','ProjetsController@changeStatu
 
 Route::post('projets/{id}/addInvestigateur','ProjetsController@addInvestigateur')->name('addInvestigateur')->middleware(['auth','confirmed']);
 
+Route::post('projets/{id}/addCoInvestigateur','ProjetsController@addCoInvestigateur')->name('addCoInvestigateur')->middleware(['auth','confirmed']);
+
+
+Route::get('projets/{id}/exporterProjet','ProjetsController@exporterProjet')->name('exporterProjet')->middleware(['auth','confirmed']);
+
+
 Route::get('/uniterecherches/{idUnite}/projets','UniteDeRecherchesController@getProjet')->name('get.UniteProjet')->middleware(['auth','confirmed']);
 
 
@@ -182,3 +194,5 @@ Route::post('/addPostChefDepartement','AdminController@addPostChefDepartement')-
 Route::get('/departement/reporting','DepartementsController@afficherDashboard')->name('reportDept');
 
 Route::post('reportingDepartement/{id}','DepartementsController@reportingDepartement')->name('reportingDepartement');
+Route::get('/directeurReporting','DirectionsController@affichePage')->name('directeurReporting');
+

@@ -74,7 +74,7 @@ public function Publication()
 
 public function CoPublication()
     {
-        return $this->belongsToMany('App\Models\Publication\Publication', 'detail_co_auteur', 'personne_id', 'publication_id')->with('ordreDimplication');
+        return $this->belongsToMany('App\Models\Publication\Publication', 'detail_co_auteur', 'personne_id', 'publication_id')->withPivot('ordreDimplication');
     }
 
 public function FormationEnCours()

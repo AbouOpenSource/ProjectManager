@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
+use App\User;
+use Carbon\Carbon;
 
 class WordGenerateController extends Controller
 {
-    
-			public function createWordDocx()
+  			public function createWordDocx()
 			{
 
 					$wordTest = new \PhpOffice\PhpWord\PhpWord();
@@ -37,7 +38,7 @@ class WordGenerateController extends Controller
 			}
 
 
-public function createWordCV()
+public function createWordCV($idUser)
 			{
 					$wordTest = new \PhpOffice\PhpWord\PhpWord();
 					$styleTable = array('borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80);
@@ -49,7 +50,7 @@ public function createWordCV()
 
 
 					$number=1;
-					$user=Auth::user();
+					$user=User::find($idUser);
 					$header = array('size' => 16, 'bold' => true);
 					\PhpOffice\PhpWord\Settings::setCompatibility(false);
 					$wordTest->addTitleStyle(1, array('bold' => true), array('spaceAfter' => 240));
@@ -135,16 +136,7 @@ if($user->Langue->isNotEmpty())
 					$tableLangue->addCell(1750,$styleCell)->addText($langue->pivot->niveauEcrit);
 
         			}
-}
-
-
-
-
-
-
-
-
-				
+}				
 if($user->Association->isNotEmpty())
 {
 					$newSectionGenerale->addText(" ");
@@ -265,8 +257,32 @@ if($user->Publication->sortBy('datePublication')->isNotEmpty())
 					$newSectionGenerale->addText($title9);
 					//$newSectionGenerale->addText($i);
 					$newSectionGenerale->addText(" ");
+					$numb=1;
 							foreach ($user->Publication->sortBy('datePublication') as $publi) 
+							{ 	$newSectionGenerale->addText("Publication ".$numb);
+								$newSectionGenerale->addText($publi->libellePublication.' '.$publi->YearPubli->year,null,array('widowControl' => false, 
+										'indentation' => array('left' => 240)));
+							$newSectionGenerale->addText(' ');
+							$numb++;
+							}	
+							
+}
+
+
+
+if($user->CoPublication->sortBy('datePublication')->isNotEmpty())
+{					$newSectionGenerale->addText(" ");
+					$title10=$number.". Les Co publications de $user->nom";
+					$number++;
+					$newSectionGenerale->addText($title10);
+					
+					$newSectionGenerale->addText(" ");
+						$numb=1;
+							foreach ($user->CoPublication->sortBy('datePublication') as $publi) 
 							{
+						$newSectionGenerale->addText("Co Publication ".$numb);
+								
+						$newSectionGenerale->addText('Auteur '.$publi->pivot->ordreDimplication);
 								$newSectionGenerale->addText($publi->libellePublication.' '.$publi->YearPubli->year,null,array('widowControl' => false, 
 										'indentation' => array('left' => 240)));
 							}	
@@ -300,7 +316,9 @@ if($user->Reference->isNotEmpty())
         			}
 }
 
-
+				//$categories =array('A', 'B', 'C', 'D', 'E');
+				//$series =array(1, 3, 2, 5, 4);
+				//$chart = $newSectionGenerale->addChart('line', $categories, $series);
 
 					$filename=$user->name.now().'.docx';
 					$objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordTest,'Word2007');

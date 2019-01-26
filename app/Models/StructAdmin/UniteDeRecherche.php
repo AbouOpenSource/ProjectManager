@@ -29,20 +29,14 @@ public function Projet()
 	return $this->hasMany('App\Models\Projet\Projet','unite_id');
 }
 
+public function PersonneInterne()
+{
+	return $this->hasMany('App\Models\Cv\PersonneInterne','unite_id');
+}
 
 
 
 
     protected $table= 'unite_de_recherches';
-	public function PersonneInterne()
-			{
-				return $this->hasMany('App\Models\Cv\PersonneInterne','unite_id');
-			}
-
-
-	
-
-
-
 
 }

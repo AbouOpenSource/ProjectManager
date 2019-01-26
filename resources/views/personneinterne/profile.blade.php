@@ -7,8 +7,7 @@ Mes informations
 <br>
 <div class="list-inline">
                 {{--  --}}
-<a href="{{route('/profile/cv')}}"><button><i class="fas fa-file-word"></i><strong>Exporter son CV</strong></button></a>
-<a href="{{route('/profile/cv')}}">Salut Salut</a>
+<a href="{{route('genererateCV',Auth::user()->id)}}"><button><i class="fas fa-file-word"></i><strong>Exporter son CV</strong></button></a>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

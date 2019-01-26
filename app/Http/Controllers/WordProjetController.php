@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
+use App\Models\StructAdmin\Departement;
 use App\Models\Projet\Projet;
+use App\Models\Publication\Publication;
 class WordProjetController extends Controller
 {
     public function createProjetRapport()
@@ -27,19 +29,236 @@ class WordProjetController extends Controller
 					$entete->addText('SECRETARIAT GENERAL');
 					$entete->addText('	  -------------	    ');
 					
+			//	$newSectionGenerale = $word->addSection();
+				$departements=Departement::all();
+ 				foreach ($departements as $departement) 
+
+ 				{
+ 					$newSectionGenerale->addText($departement->nomDepartement);
+ 					
+
+     				$newSectionGenerale->addText($departement->objectifDepartement);
+                     $newSectionGenerale->addText(" ");
+                     $newSectionGenerale->addText(" ");
+
+                     $newSectionGenerale->addText('Liste du personnel chercheur de '.$departement->nomDepartement);
+                     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ $laboratoires=$departement->Laboratoire;
+ 			foreach ($laboratoires as $laboratoire) 
+ {
+ 				$unites=$laboratoire->UniteDeRecherche;			
+// 			//return $unites;
+ 							$newSectionGenerale->addText(' ');
+                     $newSectionGenerale->addText(' ');
+                     $newSectionGenerale->addText(' ');
+
+                     foreach ($unites as $unite) 
+ 			         {	$newSectionGenerale->addText(' ');
+                     	$newSectionGenerale->addText(' ');
+                     	$newSectionGenerale->addText(' ');
+
+                        $table = $newSectionGenerale->addTable('Fancy Table');
+                        
+                         $table->addRow();
+                        $table->addCell(2000,$styleCell)->addText("Unite de recherche ".$unite->nomUnite, array('align' => 'center'));
+                        //$newSectionGenerale->addText($unite->nomUnite);
+                         $table->addRow();
+                        
+                         $table->addCell(2000,$styleCell)->addText("Numero");
+                        
+                         $table->addCell(2000,$styleCell)->addText("Nom et Prenoms");
+                        
+                         $table->addCell(2000,$styleCell)->addText("Diplomes");
+                        
+                         $table->addCell(2000,$styleCell)->addText("Qualifications");
+                     foreach ($unite->PersonneInterne as $membre) 
+                    {
+
+                                
+                             $table->addRow();
+                            
+                              $table->addCell(2000,$styleCell)->addText($membre->id);
+ $table->addCell(2000,$styleCell)->addText($membre->name." ".$membre->prenom);
+                              $diplome=$membre->Diplome->sortByDesc('niveauDiplome')->first();
+                            
+   if($diplome!=null){
+                              $table->addCell(2000,$styleCell)->addText($diplome->libelleDiplome); 
+                          }
+                    else
+                              {
+                              	$table->addCell(2000,$styleCell)->addText("Aucun diplome");
+                              	 }
+                              
+                              
+
+                             if($membre->Qualification->isEmpty()){
+                             $listeQualification="Aucune qualification";
+                         }else
+                         {
+
+
+                      foreach ($membre->Qualification as $qualification) 
+	  						{
+           				$listeQualification.= $qualification->nomQualification.', ';
+        					} 
+        			}
+
+                   $table->addCell(2000,$styleCell)->addText($listeQualification);
+                     }
+ }
+
+ }
+
+ }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					$publications=Publication::all();
+        			//$newSectionGenerale = $word->addSection();
+       	
+        			foreach($publications as $publication) 
+                    {
+                            $newSectionGenerale->addTitle("Les publications");
+                            $newSectionGenerale->addText(' ');
+                            $auteur=$publication->auteur->first();
+                            $coAuteur=$publication->coAuteur->sortBy('ordreDimplication');
+                            $listeCoAuteur=" ";
+                        if($coAuteur->isNotEmpty())
+                        {
+                            
+                            foreach($coAuteur as $person) 
+                            {
+                                $listeCoAuteur.=$person->full_name.' ,';
+                            }
+                        $newSectionGenerale->addText($auteur->full_name.' ,'.$listeCoAuteur.' '.$publication->datePublication->format('M d Y'));
+                        }
+                            else
+                            {
+                                $newSectionGenerale->addText($auteur->full_name.' '.$publication->datePublication);
+                                
+                            }
+                    }
+
 
 					
 
 
-	$entete->addImage(public_path("logo.jpg"),array(
-    'width' => 100,
-    'height' => 50,
-    'wrappingStyle' => 'square',
-    'positioning' => 'absolute',
-    'posHorizontal'    => \PhpOffice\PhpWord\Style\Image::POSITION_HORIZONTAL_CENTER,
-    'posHorizontalRel' => 'margin',
-    'posVerticalRel' => 'line',
-));
+	// $entete->addImage(public_path("logo.jpg"),array(
+ //    'width' => 100,
+ //    'height' => 50,
+ //    'wrappingStyle' => 'square',
+ //    'positioning' => 'absolute',
+ //    'posHorizontal'    => \PhpOffice\PhpWord\Style\Image::POSITION_HORIZONTAL_CENTER,
+ //    'posHorizontalRel' => 'margin',
+ //    'posVerticalRel' => 'line',));
+
+
+
+					
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -48,12 +267,11 @@ class WordProjetController extends Controller
 
 					//return $projets;
 					foreach ($projets as $projet) 
-					{
-							$newSectionGenerale->addTitle("Projet");
+					{		
+							$newSectionGenerale = $word->addSection();
 					
-							$title="Project";
-						
-
+							$newSectionGenerale->addTitle("Projet ".$projet->Currentstatut->first()->intituleStatut);
+					
 								$table = $newSectionGenerale->addTable('Fancy Table');
 								
 
@@ -77,7 +295,7 @@ class WordProjetController extends Controller
 			    				$table->addCell(4000,$styleCell)->addText("Budget: ".$projet->budgetProjet );
 			    				$table->addRow();
 			    				$table->addCell(4000,$styleCell)->addText("Durée du projet: ".$projet->dureeProjet);
-								
+								$listInstTech=" ";
 			    				foreach ($projet->InvestigateurInterne as $investigateur) 
 			    				{
 			    					$listInstTech.=$investigateur->full_name.' ,';	
@@ -193,7 +411,8 @@ class WordProjetController extends Controller
 								
 
         				}
-        				$filename=$user->name.now().'.docx';
+
+        				$filename="reporting".now().'.docx';
 					$objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($word,'Word2007');
 					try{
 							$objectWriter->save(storage_path($filename));

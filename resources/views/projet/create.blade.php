@@ -90,9 +90,7 @@ Creation de Projet-ProjectManager
                             <label for="resumeProjet" class="col-md-4 col-form-label text-md-right">{{ __('Resumé du projet') }}</label>
 
                             <div class="col-md-6">
-                               {{-- <input id="resumeProjet" type="text" class="form-control{{ $errors->has('resumeProjet') ? ' is-invalid' : '' }}" name="resumeProjet" value="{{ old('resumeProjet') }}" required autofocus>
-                                --}}
-
+                              
                                 <textarea name="resumeProjet" class="form-control{{ $errors->has('resumeProjet') ? ' is-invalid' : '' }}" value="{{ old('resumeProjet') }}" required autofocus></textarea>
         
         
@@ -264,6 +262,26 @@ Creation de Projet-ProjectManager
                                 @if ($errors->has('unite'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('unite') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>  
+                 <div class="form-group row">
+                            <label for="statut_id" class="col-md-4 col-form-label text-md-right">{{ __('Statut') }}</label>
+
+                            <div class="col-md-6">
+                            
+                            <select name="unite_id" id="statut_id" class="custom-select custom-select-lg mb-3" required>
+                                    <option selected>Choisir le statut du projet</option>
+                                    @foreach($statuts as $statut)
+                                    
+                                    <option value="{{$statut->id}}">{{$statut->intituleStatut}}</option>
+                                    
+                                    @endforeach
+                            </select>   
+                                @if ($errors->has('statut_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('statut_id') }}</strong>
                                     </span>
                                 @endif
                             </div>

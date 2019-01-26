@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Cv\PersonneInterne;
 use Illuminate\Http\Request;
 use App\Models\StructAdmin\Direction;
 class DirectionsController extends Controller
@@ -83,199 +83,196 @@ class DirectionsController extends Controller
         //
     }
 
-    public function reportingDirection()
-    {
+    // public function reportingDirection()
+    // {
 
-         $styleTable = array('borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80);
-                    $styleCell = array('valign' => 'center');
+    //      $styleTable = array('borderSize' => 6, 'borderColor' => '006699', 'cellMargin' => 80);
+    //                 $styleCell = array('valign' => 'center');
                     
-                    $styleFirstRow = array('borderBottomSize' => 18, 'borderBottomColor' => '000', 'bgColor' => 'ececec');
+    //                 $styleFirstRow = array('borderBottomSize' => 18, 'borderBottomColor' => '000', 'bgColor' => 'ececec');
                                 
-                    $word = new \PhpOffice\PhpWord\PhpWord();
+    //                 $word = new \PhpOffice\PhpWord\PhpWord();
                     
-                    $word->addTableStyle('Fancy Table', $styleTable, $styleFirstRow);
+    //                 $word->addTableStyle('Fancy Table', $styleTable, $styleFirstRow);
                     
                     
-                    $newSectionGenerale = $word->addSection();
+    //                 $newSectionGenerale = $word->addSection();
                     
-                    $entete = $newSectionGenerale->createHeader();      
+    //                 $entete = $newSectionGenerale->createHeader();      
                     
-                    $entete->addText('MINISTERE DE LA SANTE');
-                    $entete->addText('    -------------     ');
-                    $entete->addText('SECRETARIAT GENERAL');
-                    $entete->addText('    -------------     ');
-                    $entete->addImage(public_path("logo.jpg"),array(
-                                'width' => 100,
-                                'height' => 50,
-                                'wrappingStyle' => 'square',
-                                'positioning' => 'absolute',
-                                'posHorizontal'    => \PhpOffice\PhpWord\Style\Image::POSITION_HORIZONTAL_CENTER,
-                                'posHorizontalRel' => 'margin',
-                                'posVerticalRel' => 'line',
-                                ));
+    //                 $entete->addText('MINISTERE DE LA SANTE');
+    //                 $entete->addText('    -------------     ');
+    //                 $entete->addText('SECRETARIAT GENERAL');
+    //                 $entete->addText('    -------------     ');
+    //                 $entete->addImage(public_path("logo.jpg"),array(
+    //                             'width' => 100,
+    //                             'height' => 50,
+    //                             'wrappingStyle' => 'square',
+    //                             'positioning' => 'absolute',
+    //                             'posHorizontal'    => \PhpOffice\PhpWord\Style\Image::POSITION_HORIZONTAL_CENTER,
+    //                             'posHorizontalRel' => 'margin',
+    //                             'posVerticalRel' => 'line',
+    //                             ));
 
-                    $newSectionEquipe = $word->addSection();
-                    $newSectionEquipe->addText($departement->nomDepartement);
-                    $newSectionEquipe->addText('Liste du personnel chercheur de '.$departement->nomDepartement);
-           $departements=Departement::all();
-foreach ($departements as $departement) {
+    //                 $newSectionEquipe = $word->addSection();
+    //                 $newSectionEquipe->addText($departement->nomDepartement);
+    //                 $newSectionEquipe->addText('Liste du personnel chercheur de '.$departement->nomDepartement);
+    //        $departements=Departement::all();
+    //     foreach ($departements as $departement) {
     
 
-         $equipes=$departement->Equipe;
-         $laboratoires=$departement->Laboratoire;
+    //      $equipes=$departement->Equipe;
+    //      $laboratoires=$departement->Laboratoire;
 
 
-            foreach ($equipes as $equipe) 
-            {
+    //         foreach ($equipes as $equipe) 
+    //         {
                         
-                    $table = $newSectionEquipe->addTable('Fancy Table');
+    //                 $table = $newSectionEquipe->addTable('Fancy Table');
                         
-                        $table->addRow();
-                        $table->addCell($styleCell)->addText($equipe->nomEquipe);
-                        $table->addRow();
-                        $table->addCell(2000,$styleCell)->addText("Numero");
-                        $table->addCell(2000,$styleCell)->addText("Nom et Prenoms");
-                        $table->addCell(2000,$styleCell)->addText("Diplomes");
-                        $table->addCell(2000,$styleCell)->addText("Qualifications");
-                    foreach ($equipe->PersonneInterne as $membre) 
-                    {
+    //                     $table->addRow();
+    //                     $table->addCell($styleCell)->addText($equipe->nomEquipe);
+    //                     $table->addRow();
+    //                     $table->addCell(2000,$styleCell)->addText("Numero");
+    //                     $table->addCell(2000,$styleCell)->addText("Nom et Prenoms");
+    //                     $table->addCell(2000,$styleCell)->addText("Diplomes");
+    //                     $table->addCell(2000,$styleCell)->addText("Qualifications");
+    //                 foreach ($equipe->PersonneInterne as $membre) 
+    //                 {
                                 
-                            $table->addRow();
+    //                         $table->addRow();
                             
-                            $table->addCell(2000,$styleCell)->addText($membre->id);
-                            $table->addCell(2000,$styleCell)->addText($membre->full_name);
-                            $diplome=$membre->Diplome->sortByDesc('niveauDiplome')->first();
+    //                         $table->addCell(2000,$styleCell)->addText($membre->id);
+    //                         $table->addCell(2000,$styleCell)->addText($membre->full_name);
+    //                         $diplome=$membre->Diplome->sortByDesc('niveauDiplome')->first();
                            
-                            // foreach ($membre->Diplome as $diplome) {
-                            //  $listeDiplome.= $diplome->libelleDiplome.', ';
-                            // }
+    //                         // foreach ($membre->Diplome as $diplome) {
+    //                         //  $listeDiplome.= $diplome->libelleDiplome.', ';
+    //                         // }
                            
-                            $table->addCell(2000,$styleCell)->addText($diplome->libelleDiplome);
+    //                         $table->addCell(2000,$styleCell)->addText($diplome->libelleDiplome);
 
-                           // $qualifications=$membre->Qualification->sortByDesc('niveauDiplome')->first();
+    //                        // $qualifications=$membre->Qualification->sortByDesc('niveauDiplome')->first();
                            
-                             foreach ($membre->Qualification as $qualification) {
-                              $listeQualification.= $qualification->nomQualification.', ';
-                             }
-                            $table->addCell(2000,$styleCell)->addText($listeQualification);
-                    }
+    //                          foreach ($membre->Qualification as $qualification) {
+    //                           $listeQualification.= $qualification->nomQualification.', ';
+    //                          }
+    //                         $table->addCell(2000,$styleCell)->addText($listeQualification);
+    //                 }
 
-                            $table->addRow();
-                            $table->addCell(2000,$styleCell)->addText("Total des personnes :");
-                            $table->addCell(2000,$styleCell)->addText($equipe->PersonneInterne->count());
+    //                         $table->addRow();
+    //                         $table->addCell(2000,$styleCell)->addText("Total des personnes :");
+    //                         $table->addCell(2000,$styleCell)->addText($equipe->PersonneInterne->count());
                             
 
-            }
+    //         }
 
-        $equipes=$departement->Equipe;
-        $newSectionEquipe = $word->addSection();
+    //     $equipes=$departement->Equipe;
+    //     $newSectionEquipe = $word->addSection();
     
 
-        $newSectionGenerale->addTitle("Projets de ".$departement->nomDepartement);
-        $table = $newSectionEquipe->addTable('Fancy Table');
+    //     $newSectionGenerale->addTitle("Projets de ".$departement->nomDepartement);
+    //     $table = $newSectionEquipe->addTable('Fancy Table');
                         
-                        $table->addRow();
-                        $table->addCell(2000,$styleCell)->addText("Equipe ");
-                        $table->addCell(2000,$styleCell)->addText("Numero projet");
-                        $table->addCell(2000,$styleCell)->addText("Intutilé de projet");
-                        $table->addCell(2000,$styleCell)->addText("Statut");
-          foreach ($equipes as $equipe) 
-          {
+    //                     $table->addRow();
+    //                     $table->addCell(2000,$styleCell)->addText("Equipe ");
+    //                     $table->addCell(2000,$styleCell)->addText("Numero projet");
+    //                     $table->addCell(2000,$styleCell)->addText("Intutilé de projet");
+    //                     $table->addCell(2000,$styleCell)->addText("Statut");
+    //       foreach ($equipes as $equipe) 
+    //       {
                       
-                $projets=$equipe->projets;
-                    foreach ($projets as $projet) 
-                    {
+    //             $projets=$equipe->projets;
+    //                 foreach ($projets as $projet) 
+    //                 {
                         
-                        $table->addRow();
-                        $table->addCell(2000,$styleCell)->addText($equipe->nomEquipe); 
-                        $table->addCell(2000,$styleCell)->addText($projet->id);
-                        $table->addCell(2000,$styleCell)->addText($projet->intitule);
-                        $table->addCell(2000,$styleCell)->addText($projet->CurrentStatut->first()->intituleStatut);   
-                    }
+    //                     $table->addRow();
+    //                     $table->addCell(2000,$styleCell)->addText($equipe->nomEquipe); 
+    //                     $table->addCell(2000,$styleCell)->addText($projet->id);
+    //                     $table->addCell(2000,$styleCell)->addText($projet->intitule);
+    //                     $table->addCell(2000,$styleCell)->addText($projet->CurrentStatut->first()->intituleStatut);   
+    //                 }
+    //         }          
 
-
-
-            }          
-
-            $projets=new Collection();
-        foreach ($departement->Equipe as $equipe) {
-            $projets=$projets->merge($equipe->Projet);
-        }
-        // Projets termines 
-      if($projets->isNotEmpty())
-      {
-        $projetTermine=$projets->CurrentStatut->where('intituleStatut','Terminé');
-        $newSectionProjetTermine = $word->addSection();
-        $newSectionProjetTermine->addTitle("Projets Terminés");
-        wordProjet($projetTermine,$newSectionProjetTermine);
+    //         $projets=new Collection();
+    //     foreach ($departement->Equipe as $equipe) {
+    //         $projets=$projets->merge($equipe->Projet);
+    //     }
+    //     // Projets termines 
+    //   if($projets->isNotEmpty())
+    //   {
+    //     $projetTermine=$projets->CurrentStatut->where('intituleStatut','Terminé');
+    //     $newSectionProjetTermine = $word->addSection();
+    //     $newSectionProjetTermine->addTitle("Projets Terminés");
+    //     wordProjet($projetTermine,$newSectionProjetTermine);
 
 
 
 
-        // Projets en cours 
-        $projetEnCours=$projets->CurrentStatut->where('intituleStatut','En cours');
-        $newSectionProjetEnCours = $word->addSection();
-        $newSectionProjetEnCours->addTitle("Projets En cours");
-        wordProjet($projetEnCours,$newSectionProjetEnCours);
+    //     // Projets en cours 
+    //     $projetEnCours=$projets->CurrentStatut->where('intituleStatut','En cours');
+    //     $newSectionProjetEnCours = $word->addSection();
+    //     $newSectionProjetEnCours->addTitle("Projets En cours");
+    //     wordProjet($projetEnCours,$newSectionProjetEnCours);
 
 
 
 
 
-        //Projets soumis
-        $projetSoumis=$projets->CurrentStatut->where('intituleStatut','Soumis');
-        $newSectionProjetSoumis = $word->addSection();
-        $newSectionProjetSoumis->addTitle("Projets Soumis");
-        wordProjet($projetSoumis,$newSectionProjetSoumis);
-        }
-    }
-        //les publications 
-        $publications=Publication::all();
-        $newSectionPublication = $word->addSection();
-        // wordPublication($publications,$newSectionPublication);
+    //     //Projets soumis
+    //     $projetSoumis=$projets->CurrentStatut->where('intituleStatut','Soumis');
+    //     $newSectionProjetSoumis = $word->addSection();
+    //     $newSectionProjetSoumis->addTitle("Projets Soumis");
+    //     wordProjet($projetSoumis,$newSectionProjetSoumis);
+    //     }
+    // }
+    //     //les publications 
+    //     $publications=Publication::all();
+    //     $newSectionPublication = $word->addSection();
+    //     // wordPublication($publications,$newSectionPublication);
 
-        foreach($publications as $publication) 
-                    {
-                            $newSectionPublication->addTitle("Les publications");
-                            $auteur=$publication->auteur->first();
-                            $coAuteur=$publication->coAuteur->sortBy('ordreDimplication');
-                            $listeCoAuteur=" ";
-                            if($coAuteur->isNotEmpty())
-                            {
+    //     foreach($publications as $publication) 
+    //                 {
+    //                         $newSectionPublication->addTitle("Les publications");
+    //                         $auteur=$publication->auteur->first();
+    //                         $coAuteur=$publication->coAuteur->sortBy('ordreDimplication');
+    //                         $listeCoAuteur=" ";
+    //                         if($coAuteur->isNotEmpty())
+    //                         {
                             
-                            foreach($coAuteur as $person) 
-                            {
-                                $listeCoAuteur.=$person->full_name.' ,';
-                            }
-                    $newSectionPublication->addText($auteur->full_name.' ,'.$listeCoAuteur.' '.$publication->datePublication);
-                            }
-                            else
-                            {
-                                $newSectionPublication->addText($auteur->full_name.' '.$publication->datePublication);
+    //                         foreach($coAuteur as $person) 
+    //                         {
+    //                             $listeCoAuteur.=$person->full_name.' ,';
+    //                         }
+    //                 $newSectionPublication->addText($auteur->full_name.' ,'.$listeCoAuteur.' '.$publication->datePublication);
+    //                         }
+    //                         else
+    //                         {
+    //                             $newSectionPublication->addText($auteur->full_name.' '.$publication->datePublication);
                                 
-                            }
-                    }
+    //                         }
+    //                 }
     
 
 
 
-                    $filename=$departement->nomDepartement.now().'.docx';
-                    $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($word,'Word2007');
-                    try{
-                            $objectWriter->save(storage_path($filename));
-                        }   
-                    catch(Exception $e)
-                        {
+    //                 $filename=$departement->nomDepartement.now().'.docx';
+    //                 $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($word,'Word2007');
+    //                 try{
+    //                         $objectWriter->save(storage_path($filename));
+    //                     }   
+    //                 catch(Exception $e)
+    //                     {
 
-                        }
-                    return response()->download(storage_path($filename));
-
-
-    }
+    //                     }
+    //                 return response()->download(storage_path($filename));
 
 
+    // }
 
-    }
+
+
+    // }
 
 
     public function wordProjet($projets,$newSectionGenerale)
@@ -429,7 +426,14 @@ foreach ($departements as $departement) {
                         }                    
     }
 
+            public function affichePage()
+            {
+                return view('direction.pageReporting');
+            }
 
-
-
+    public function afficherChercheur()
+    {
+        $personnes=PersonneInterne::all();
+        return view('direction.chercheur')->with(['personnes'=>$personnes]);
+    }
 }

@@ -3,20 +3,13 @@
 Accueil-ProjectManager
 @stop
 @section('css')
-{{-- <style>
-#intro{
-	min-height: 400px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	/*background-image:linear-gradient(to bottom,rgb(0,128,128),rgba(14,148,200,0.37)), url('img/1.jpg');
-	background-size:cover;*/
-	background-image: url('img/4.jpg');
-	color: #fff;
-}
-</style> --}}
+
+
 @stop
+
 @section('content')
+{{--  <img src="{{ asset('img/adn.jpg') }}" class="img-fluid">
+ --}}
  <section id="team">
   <div class="container">
     <h2 class="section-title">
@@ -82,7 +75,7 @@ Accueil-ProjectManager
       <div class="row">
         @foreach($departements as $departement)
         
-        <div class="col-lg-3 col-md-4 col-sm-12">
+        <div class="{{-- col-lg-3 --}}col-md-4 col-sm-12">
             <div class="service">
               <div class="icon">    
               </div>

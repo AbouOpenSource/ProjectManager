@@ -27,7 +27,7 @@ public function PersonneInterne()
 
 public function Projet()
 {
-	return $this->hasMany('App\Models\Projet\Projet');
+	return $this->hasMany('App\Models\Projet\Projet','equipe_id');
 }
 
 public function Associe()

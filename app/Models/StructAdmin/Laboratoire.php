@@ -9,7 +9,8 @@ class Laboratoire extends Model
     
 
 	protected $fillable=[
-
+		'departement_id',
+		'nomLaboratoire',
 
 
 	];
@@ -18,7 +19,7 @@ class Laboratoire extends Model
 
 
 
-public function Laboratoire()
+public function UniteDeRecherche()
 {
 return $this->hasMany('App\Models\StructAdmin\UniteDeRecherche','laboratoire_id');
 }

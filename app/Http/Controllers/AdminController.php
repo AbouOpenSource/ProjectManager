@@ -15,8 +15,8 @@ class AdminController extends Controller
     public function valideCompte(){
     	
 
-    $users=User::where('approved_at',null);
-    	//$users=User::all();
+  //  $users=User::where('approved_at',null);
+    	$users=User::all();
     
     	return view('admin.listeDemande')->with(['users'=>$users]);
 

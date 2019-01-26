@@ -16,6 +16,7 @@ i {
  @stop
  @section('content')
 <section class="panel-title">
+<a href="{{ route('exporterProjet',$projet->id) }}"><button class="btn-primary">Repport du projet</button></a>
 <div class="card">
   <h4 class="card-title text-center">{{$projet->intitule}}</h4>
 </div>
@@ -81,6 +82,23 @@ i {
         
       
 @foreach($projet->InvestigateurInterne as $investi)  
+    <div class="media text-muted pt-3">
+      <li>{{$investi->full_name}}</li>
+    </div>
+@endforeach
+    </ul>
+</div>
+</div>
+
+
+
+<div class="container">
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Les Co Investigateurs du projet</h6><button type="button" class="btn btn-primary border-right border-gray pb-2 mb-0" data-toggle="modal" data-target="#modalAddCoInvestigateur" style="float: right;"><i class="fas fa-plus"></i>Ajouter Un Co investigateur</button>
+    <ul>
+        
+      
+@foreach($projet->CoInvestigateurInterne as $investi)  
     <div class="media text-muted pt-3">
       <li>{{$investi->full_name}}</li>
     </div>
@@ -201,9 +219,39 @@ i {
 </div>
 
 
+<div class="modal fade" id="modalAddCoInvestigateur" tabindex="-1" role="dialog" aria-labelledby="modalAddCoInvestigateurModal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalAddCoInvestigateurLabel">Ajout de Co investigateur</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form method="POST" action="{{route('addCoInvestigateur',$projet->id)}}">
+          @csrf
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Les chercheurs</label>
+            <select name="personne_id" class="form-control">
+                @foreach($users as $userItem)
+                    <option value="{{$userItem->id}}">
+                      <img src="/uploads/avatars/{{ $userItem->avatar }}" class="vcenter" style=" width: 50px;height: 50px ;float:left;border-radius: 50%; margin-right: 25px;">
+                      {{$userItem->full_name}}
+                    </option>
+                @endforeach
+            </select>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <input type="submit" class="btn btn-primary"></button>
+      </div>
+    </form>
 
-
-
+    </div>
+  </div>
+</div>
 
 
 
