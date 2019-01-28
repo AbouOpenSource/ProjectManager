@@ -14,6 +14,7 @@ use App\Models\Projet\Objectif;
 use App\User;
 use Carbon\Carbon;
 use App\Models\Projet\Statut;
+use Illuminate\Database\Eloquent\Collection;
 class ProjetsController extends Controller
 {
     
@@ -261,9 +262,14 @@ class ProjetsController extends Controller
 
 
                     $projet=Projet::find($idProjet);
-                                   
+                                if($projet->Currentstatut->isNotEmpty()){   
             $newSectionGenerale->addTitle("Projet ".$projet->Currentstatut->first()->intituleStatut);
-                    
+                    }else{
+                        $newSectionGenerale->addTitle("Projet ");
+                    }
+               $newSectionGenerale->addText(" ");
+               $newSectionGenerale->addText(" ");
+               
                $table = $newSectionGenerale->addTable('Fancy Table');
                                 
 
@@ -311,7 +317,7 @@ class ProjetsController extends Controller
                                 $table->addCell(4000,$styleCell)->addText("Equipe de recherche et partenairiats etablis : ".$instListTech);
                                 $table->addRow();
                                 $table->addCell(4000,$styleCell)->addText("Site de mise en oeuvre au BF: ".$projet->siteDeMiseEnOeuvre);
-                                $table->addCell(4000,$styleCell)->addText("Code Muraz: ".$projet->siteDeMiseEnOeuvre);
+                                $table->addCell(4000,$styleCell)->addText("Code Muraz: ".$projet->codeMuraz);
                                 
                                 $table->addRow(1750);
                                 $table->addCell(10000,$styleCell)->addText("Contexte/ justification: ".$projet->contexteProjet);
@@ -345,15 +351,16 @@ class ProjetsController extends Controller
                                 $table->addCell(10000)->addText("Résumé des méthodes d\'étude: ".$projet->resumeDesMethodeEtude);
                                 $table->addRow(2000);
                                 $activites = $table->addCell(10000);
-                                $activites->addText("Activités menées jusqu'en dateQuestion: ".$projet->resumeDesMethodeEtude);
+                                $activites->addText("Activités menées jusqu'en dateQuestion: ");
                                 foreach ($projet->Activite as $act) {
-                                    $activites->addText($act->contenu);
+                                    $activites->addText($act->contenu.' '.$act->dateActivite);
                                 }
                                 
                                 //Resultat
                                 $table->addRow(2000);
                                 $resultats = $table->addCell(10000);
-                                $resultats->addText("resultats obtenu jusqu'en dateQuestion: ".$projet->resumeDesMethodeEtude);
+                                $resultats->addText("Resultats obtenu jusqu'en dateQuestion: ");
+                                  $resultats->addText($projet->resumeDesMethodeEtude);
                                 foreach ($projet->ResultatObtenu as $resul) {
                                     $resultats->addText($resul->contenu);
                                 }
@@ -425,6 +432,17 @@ class ProjetsController extends Controller
                     return response()->download(storage_path($file));
 
     }
-
+    public function projetChercheur($idUser)
+    {
+        $user=User::find($idUser);
+        $projets= new Collection();
+        $user->ProjetInvestigue;
+        $projets->merge($user->ProjetInvestigue);
+        $projets->merge($user->ProjetCoInvestigue);
+        $projets->merge($user->UniteDeRecherche->Projet);
+        //return $user->ProjetInvestigue;
+         return view('projet.projetPerso')->with(['projets'=>$user->ProjetInvestigue]);
+        
+    }
 
 }

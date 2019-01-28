@@ -11,6 +11,26 @@ protected $dates = [''];
 	protected $fillable=['codeMuraz','unite_id','equipe_id','ideeDeProjet_id','intitule','dureeProjet','resumeProjet','budgetProjet','siteDeMiseEnOeuvre','contexteProjet','nombreEmploi','fraisIndirectverseCM','typeProjet_id','questionDeRecherche','resumeDesMethodeEtude','beneficeNational','beneficeInstitutionnel','evolution'
 ];
 
+	
+
+	public function getIntituleCourtAttribute()
+	{
+		
+		return substr($this->intitule,0,100);
+		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
 	public function institutionFinancier()
 		{
 			return $this

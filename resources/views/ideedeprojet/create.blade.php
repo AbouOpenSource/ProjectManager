@@ -1,6 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.root')
 
 @section('content')
+<br>
+<br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -32,8 +34,8 @@
                             <label for="institutionSouhaite_id" class="col-md-4 col-form-label text-md-right">{{ __('Institution sponsor souhaite') }}</label>
 
                             <div class="col-md-6">
-                                <select name="unite_id" class="custom-select custom-select-lg mb-3">
-                                    <option selected>Choisir l'instituion</option>
+                                <select name="institutionSouhaite_id" class="custom-select custom-select-lg mb-3">
+                                    <option selected>Choisir le sponsor souhaité</option>
                                     @foreach($institutions as $institution)
                                     
                                     <option value="{{$institution->id}}">{{$institution->nomInstitution}}</option>
@@ -49,7 +51,27 @@
                             </div>
                         </div>
                         
+                        <div class="form-group row">
+                            <label for="institutionProposeur_id" class="col-md-4 col-form-label text-md-right">{{ __('Institution promotrice de l\'idée') }}</label>
 
+                            <div class="col-md-6">
+                                <select name="institutionProposeur_id" class="custom-select custom-select-lg mb-3">
+                                    <option selected>Choisir le sponsor souhaité</option>
+                                    @foreach($institutions as $institution)
+                                    
+                                    <option value="{{$institution->id}}">{{$institution->nomInstitution}}</option>
+                                    
+                                    @endforeach
+                            </select>   
+
+                                @if ($errors->has('institutionProposeur_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('institutionProposeur_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
 
                         <div class="form-group row">
                             <label for="cheminProtocole" class="col-md-4 col-form-label text-md-right">{{ __('Le protocole') }}</label>

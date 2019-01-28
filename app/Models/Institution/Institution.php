@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Institution extends Model
 {
     protected $fillable=[
+'nomInstitution',
+'emailInstitution',
+'adresseInstitution',
+'paysInstitution',
 
 
 

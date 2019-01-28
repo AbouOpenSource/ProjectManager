@@ -32,7 +32,7 @@ Creation de Projet-ProjectManager
                             <label for="intitule" class="col-md-4 col-form-label text-md-right">{{ __('L\'intitulé du projet') }}</label>
 
                             <div class="col-md-6">
-                                <input id="intitule" type="text" class="form-control{{ $errors->has('intitule') ? ' is-invalid' : '' }}" name="intitule" value="{{ old('intitule') }}" required autofocus>
+                                <textarea id="intitule" type="text" class="form-control{{ $errors->has('intitule') ? ' is-invalid' : '' }}" name="intitule" value="{{ old('intitule') }}" required autofocus></textarea>
 
                                 @if ($errors->has('intitule'))
                                     <span class="invalid-feedback" role="alert">
@@ -312,13 +312,13 @@ Creation de Projet-ProjectManager
 document.getElementById("equipe_select").addEventListener("change", function() {});
 function uniteDisable()
 {    
-    alert('Salut')
+   
     document.getElementById("unite_select").disabled = true;
     
 }
 
 function equipeDisable()
-{    alert('Salut')
+{  
     document.getElementById("equipe_select").disabled = true;
 }
 

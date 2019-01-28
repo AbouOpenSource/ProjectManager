@@ -19,6 +19,8 @@ i {
 <a href="{{ route('exporterProjet',$projet->id) }}"><button class="btn-primary">Repport du projet</button></a>
 <div class="card">
   <h4 class="card-title text-center">{{$projet->intitule}}</h4>
+  <br>
+ Code MURAZ: {{$projet->codeMuraz}}
 </div>
 <div class="container">
   <div class="my-3 p-3 bg-white rounded shadow-sm ">
@@ -101,6 +103,20 @@ i {
 @foreach($projet->CoInvestigateurInterne as $investi)  
     <div class="media text-muted pt-3">
       <li>{{$investi->full_name}}</li>
+    </div>
+@endforeach
+    </ul>
+</div>
+</div>
+<div class="container">
+<div class="my-3 p-3 bg-white rounded shadow-sm">
+    <h6 class="border-bottom border-gray pb-2 mb-0">Les sponsor du projet</h6><button type="button" class="btn btn-primary border-right border-gray pb-2 mb-0" data-toggle="modal" data-target="#modalAddSponsor" style="float: right;"><i class="fas fa-plus"></i>Ajouter Un sponsor</button>
+    <ul>
+        
+      
+@foreach($projet->institutionFinancier as $sponsor)  
+    <div class="media text-muted pt-3">
+      <li>{{$sponsor->nomInstitution}}</li>
     </div>
 @endforeach
     </ul>

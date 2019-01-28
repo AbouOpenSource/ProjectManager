@@ -69,7 +69,7 @@ Route::get('/publicationsPubliques','PublicController@indexPublication')->name('
 //Chemins particuliers pour quelques informations
 Route::get('/chercheur/{id}/publications','PublicationsController@indexPubliPerso')->name('get.publiperso')->middleware('auth');
 
-Route::get('chercheursTout','DirectionsController@afficherChercheur')->name('chercheursTout');
+Route::get('chercheursTout','DirectionsController@afficherChercheur')->name('chercheursTout')->middleware(['auth','confirmed']);
 
 
 Route::get('/','PublicController@displayAcceuil');
@@ -193,6 +193,7 @@ Route::post('/addPostChefDepartement','AdminController@addPostChefDepartement')-
 
 Route::get('/departement/reporting','DepartementsController@afficherDashboard')->name('reportDept');
 
-Route::post('reportingDepartement/{id}','DepartementsController@reportingDepartement')->name('reportingDepartement');
-Route::get('/directeurReporting','DirectionsController@affichePage')->name('directeurReporting');
+Route::post('reportingDepartement/{id}','DepartementsController@reportingDepartement')->name('reportingDepartement')->middleware(['auth','confirmed']);;
+Route::get('/directeurReporting','DirectionsController@affichePage')->name('directeurReporting')->middleware(['auth','confirmed']);;
 
+Route::get('chercheur/{id}/projets','ProjetsController@projetChercheur')->name('projets.chercheur')->middleware(['auth','confirmed']);

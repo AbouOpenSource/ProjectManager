@@ -17,7 +17,11 @@
 <!-- Our Custom CSS -->
 <link rel="stylesheet" href="{{asset('style2.css')}}">
 <!-- Scrollbar Custom CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css">
+{{-- 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.5/jquery.mCustomScrollbar.min.css"> --}}
+
+
+<link rel="stylesheet" href="{{ asset('jquery.mCustomScrollbar.min.css') }}">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     @yield('css')
 
@@ -48,7 +52,10 @@
                             <a href="{{route('projets.create')}}">Creer un projet</a>
                         </li>
                         <li>
-                            <a href="{{route('projets.index')}}">Projets</a>
+                            <a href="{{route('projets.chercheur',Auth::user()->id)}}">Mes Projets</a>
+                        </li>
+                        <li>
+                            <a href="{{route('projets.index')}}">Tous les Projets</a>
                         </li>
                     </ul>
                 </li>

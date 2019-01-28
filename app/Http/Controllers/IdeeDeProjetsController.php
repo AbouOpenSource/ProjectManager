@@ -48,7 +48,10 @@ class IdeeDeProjetsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        IdeeDeProjet::create([
+            
+
+        ]);        
     }
 
     /**

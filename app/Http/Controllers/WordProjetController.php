@@ -269,9 +269,12 @@ class WordProjetController extends Controller
 					foreach ($projets as $projet) 
 					{		
 							$newSectionGenerale = $word->addSection();
-					
+					if($projet->Currentstatut->isNotEmpty()){
 							$newSectionGenerale->addTitle("Projet ".$projet->Currentstatut->first()->intituleStatut);
-					
+					}else
+					{
+							$newSectionGenerale->addTitle("Projet ");
+					}
 								$table = $newSectionGenerale->addTable('Fancy Table');
 								
 

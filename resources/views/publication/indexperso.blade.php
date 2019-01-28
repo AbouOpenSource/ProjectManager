@@ -26,12 +26,15 @@ Mes publications
                   @foreach($publications as $publication)
                   
                   <tr>
-                    <td >{{$publication->libellePublication}}</td>
+                    
+                      <td><a href="{{ route('addCoAuteur',$publication->id) }}">{{$publication->libellePublication}}</a>
+                      </td>
+                    
                     <td >{{$publication->typePublication->intituleType}}</td>
                     <td >{{$publication->datePublication->format('M d Y')}}</td>
                       <td>
                        
-                     {{$publication->file? "<a href=\"asset('storage/file.txt')\"><i class=\"far fa-file-pdf\"></i></a>" : " "}}    
+                     {{$publication->file? "<a><i class=\"far fa-file-pdf\"></i></a>" : " "}}    
                                               
                       </td>
                   </tr>

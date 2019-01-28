@@ -121,14 +121,14 @@
 
 
                         <div class="form-group row">
-                            <label for="media" class="col-md-4 col-form-label text-md-right">{{ __('Joindre Un fichier') }}</label>
+                            <label for="media" class="col-md-4 col-form-label text-md-right">{{ __('Le projet') }}</label>
 
                             <div class="col-md-6">
                                 <select id="projet_id" type="file" class="form-control{{ $errors->has('media') ? ' is-invalid' : '' }}" name="projet_id" value="{{ old('media') }}" >
                                 <option value="">Selectionner un projet</option>
                                 
                                 @foreach($projets as $projet)
-                                <option value="{{$projet->id}}">{{$projet->intitule}}</option>
+                                <option value="{{$projet->id}}">{{$projet->intitule_court}}</option>
 
                                 @endforeach
 
