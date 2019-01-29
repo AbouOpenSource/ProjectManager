@@ -46,8 +46,17 @@ public function createWordCV($idUser)
 					$styleFirstRow = array('borderBottomSize' => 18, 'borderBottomColor' => '0000FF', 'bgColor' => '66BBFF');
 					$wordTest->addTableStyle('Fancy Table', $styleTable, $styleFirstRow);
 					
-
-
+	$fontStyleName = 'oneUserDefinedStyle';
+$wordTest->addFontStyle(
+    $fontStyleName,
+    array('name' => 'Tahoma', 'size' => 10, 'color' => '1B2232', 'bold' => true)
+);
+$wordTest->addFontStyle(
+    'titleStyle',
+    array('name' => 'Tahoma', 'size' => 20, 'color' => '1B2232', 'bold' => true)
+);
+$wordTest->setDefaultFontName('Times New Roman');
+$wordTest->setDefaultFontSize(12);
 
 					$number=1;
 					$user=User::find($idUser);
@@ -66,7 +75,7 @@ public function createWordCV($idUser)
 
 					$title1=$number.". Informations générales";
 					$number++;
-					$newSectionGenerale->addTitle($Titre);
+					$newSectionGenerale->addText($Titre,$fontStyleName);
 					$newSectionGenerale->addText($title1);
 					$newSectionGenerale->addText(" ");
 					
@@ -226,7 +235,7 @@ if($user->ExperienceProfessionnelle->isNotEmpty())
 					
 {					
 					$newSectionGenerale->addText(" ");
-					$title8=$number.". Experience Specifique";
+					$title8=$number.". Experience professionnelles";
 					$number++;
 					$newSectionGenerale->addText($title8);
 					

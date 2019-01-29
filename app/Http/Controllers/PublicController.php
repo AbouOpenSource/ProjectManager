@@ -19,7 +19,7 @@ class PublicController extends Controller
     }
     public function indexChercheur()
     {
-    		$users=User::paginate(12);
+    		$users=User::paginate(8);
     		return view('publicView.indexChercheur')->with(['users'=>$users]);
 
 
@@ -38,7 +38,7 @@ class PublicController extends Controller
         $publications=Publication::orderBy('datePublication','desc')->take(3)->get();
         $nbrProjet=count(Projet::all());
         $departements=Departement::all();
-        $chercheurs=User::take(12);
+        $chercheurs=User::take(4)->get();
         return view('publicView.accueil')
         ->with(['nbrProjet'=>$nbrProjet])
         ->with(['publications'=>$publications])

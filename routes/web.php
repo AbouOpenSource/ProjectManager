@@ -8,11 +8,18 @@ use App\Models\Publication\Publication;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Carbon\Carbon;
+use App\User;
 
 Route::get('/date',function()
 {
 
-return Auth::user()->Qualification;
+//  $projet=Projet::find(1);
+// //return $projet;
+
+//$projet->budgetProjet='12 000 000 euros';
+  //$projet->evolution=100;
+ //$projet->save();
+//  $projet->Statut()->attach(6,['debutStatut'=>now()]);
 
 });
 

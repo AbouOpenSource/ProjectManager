@@ -126,10 +126,10 @@
                     <a href="#pageSubmenudirecteur" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Direction Scientifique</a>
                     <ul class="collapse list-unstyled" id="pageSubmenudirecteur">
                         <li>
-                            <a href="{{ route('directeurReporting') }}">Faire le reporting </a>
+                            <a href="{{route('chercheursTout')}}">Liste des chercheurs</a>
                         </li>
                         <li>
-                            <a href="{{route('chercheursTout')}}">Liste des chercheurs</a>
+                            <a href="{{ route('directeurReporting') }}">Faire le reporting </a>
                         </li>
                     </ul>
                 </li>

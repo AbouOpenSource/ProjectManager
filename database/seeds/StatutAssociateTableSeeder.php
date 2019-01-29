@@ -15,7 +15,7 @@ class StatutAssociateTableSeeder extends Seeder
         {
 	        $projet=Projet::find($idProjet); 
 	        
-	        $projet->Statut()->attach(1, ['debutStatut' => now()]);
+	        $projet->Statut()->attach(4, ['debutStatut' => now()]);
 	     }
         //App\User::find(1)->roles()->save($role, ['expires' => $expires]);	
     }

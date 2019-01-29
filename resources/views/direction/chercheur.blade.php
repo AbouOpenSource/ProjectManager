@@ -23,7 +23,7 @@
                   
                   @foreach($personnes as $personne)
                   <tr>
-                    <td>
+                    <td >
                       <a href="{{ route('get.publiperso',$personne->id) }}">{{$personne->full_name}}</a>
                     </td>
                     <td>
@@ -33,7 +33,12 @@
                      {{$personne->CoPublication->count()}}
                     </td>
                     <td>
+                      @if($personne->cv_extract)
                       <a href="{{route('genererateCV',$personne->id)}}"><button>Extraire le Cv</button></a>
+                      @else
+                      <a class="btn disabled" href="{{route('genererateCV',$personne->id)}}"><button>Extraire le Cv</button></a>
+                      
+                      @endif
                     </td>
                    </tr>
                     @endforeach

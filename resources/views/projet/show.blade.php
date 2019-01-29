@@ -53,9 +53,16 @@ i {
 @foreach($projet->Objectif as $objectif)  
     <div class="media text-muted pt-3">
       <p class="media-body pb-3 mb-0 small {{-- lh-125 border-bottom --}} border-gray">
-        <strong class="d-block text-gray-dark">Objectif {{$objectif->id}}</strong>
+        @if($objectif->typeObjectif=="principal")
+        <strong class="d-block text-gray-dark">Objectif principal</strong>
         {{$objectif->description}}
         </p>
+        @else
+        <strong class="d-block text-gray-dark">Objectif secondaire</strong>
+        {{$objectif->description}}
+        </p>
+        
+        @endif
     </div>
 @endforeach
 </div>

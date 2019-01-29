@@ -17,7 +17,22 @@ class UniteDeRecherche extends Model
 
 
 
-
+public function ToutChefUnite()
+		{
+			return $this
+					->belongsToMany('App\Models\Cv\PersonneInterne', 'detail_chef_unite', 
+      'unite_id', 'personne_id')
+				->withPivot('debutMandat','finMandat');	
+		}
+	
+public function ChefUnite()
+		{
+			return $this
+					->belongsToMany('App\Models\Cv\PersonneInterne', 'detail_chef_unite', 
+      'unite_id', 'personne_id')
+				->withPivot('debutMandat','finMandat')->wherePivot('finMandat',null);	
+		}
+	
 
 
 

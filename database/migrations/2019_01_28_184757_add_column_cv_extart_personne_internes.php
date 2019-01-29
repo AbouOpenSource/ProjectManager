@@ -14,7 +14,7 @@ class AddColumnCvExtartPersonneInternes extends Migration
     public function up()
     {
         Schema::table('personne_internes', function (Blueprint $table) {
-             $table->boolean('cv_extract')->default();
+             $table->boolean('cv_extract')->default(1);
         });
     }
 

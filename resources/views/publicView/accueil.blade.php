@@ -3,13 +3,53 @@
 Accueil-ProjectManager
 @stop
 @section('css')
-
-
+<style>
+#intro
+{
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ /* background-image:linear-gradient(to bottom,rgb(0,128,128),rgba(14,148,200,0.37)), url('img/statut.jpg');
+  background-size: auto;*/
+  background-size:cover;
+  background-image: url('img/statut.jpg');
+  color: #fff;
+}
+#image{
+  width: 1500px;
+  height: 500px;
+}
+</style>
 @stop
 
 @section('content')
 {{--  <img src="{{ asset('img/adn.jpg') }}" class="img-fluid">
- --}}
+ --}}{{-- 
+ <section id="intro">
+   
+
+   <img class="img-fluid" src="img/chercheur.jpg" alt="" style="width: 1500px;
+  height: 500px;">
+ 
+<img class="img-fluid" src="img/statut.jpg" alt="" style="width: 1500px;
+  height: 500px;">
+ 
+
+
+ </section> --}}
+<section id="intro">
+      <div class="container text-center">
+        <h1 class="display-3 mb-3">
+          <em style=" font-size: 100px">
+            Bienvenue au Centre MURAZ
+          </em>
+          
+        </h1>
+        {{-- <a href="" class="btn btn-info btn-lg">Lire plus</a> --}}
+      </div>  
+</section>
+
  <section id="team">
   <div class="container">
     <h2 class="section-title">
